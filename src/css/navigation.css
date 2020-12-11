@@ -1,0 +1,16 @@
+.app-navbar{
+    background-color: rgba(128,128,128,0.8);
+    box-shadow:
+            0 0 0 2px yellow;
+}
+
+.app-navbar-link {
+    color: wheat !important;
+    padding: 0.5rem 1rem;
+    font-size: x-large;
+}
+
+.app-navbar-link:hover {
+    color: white !important;
+    text-decoration: none;
+}
