@@ -5,7 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 import Container from 'react-bootstrap/Container';
 import Navigation from "./components/navigation";
-
+import AdminLoginForm from "./admin/adminLoginForm";
 
 
 class App extends Component {
@@ -16,7 +16,7 @@ class App extends Component {
                 <Container className="app-main-container p-0" fluid={true}>
                     <Navigation/>
                     <Switch>
-
+                        <Route path="/adminlogin" component={AdminLoginForm}/>
                     </Switch>
                 </Container>
             </div>
