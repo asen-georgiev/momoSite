@@ -84,6 +84,7 @@ class AdminLoginForm extends Component {
     };
 
 
+
     render() {
         return (
             <div>
@@ -131,7 +132,7 @@ class AdminLoginForm extends Component {
                                         <Col>
                                             <Row className="justify-content-end px-3">
                                                 {this.state.isDisabled &&
-                                                <Button>
+                                                <Button href="/admin">
                                                     ADMIN PANEL
                                                 </Button>
                                                 }

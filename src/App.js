@@ -6,9 +6,27 @@ import './App.css';
 import Container from 'react-bootstrap/Container';
 import Navigation from "./components/navigation";
 import AdminLoginForm from "./admin/adminLoginForm";
+import {getCurrentAdmin} from "./services/adminLoginService";
+import {getCurrentUser} from "./services/userLoginService";
+import AdminPanel from "./admin/adminPanel";
 
 
 class App extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            admin:null,
+            user:null
+        }
+    }
+
+    componentDidMount() {
+        const admin = getCurrentAdmin();
+        const user = getCurrentUser();
+        this.setState({admin,user})
+        console.log(admin,user);
+    }
+
     render() {
         return (
             <div>
@@ -17,6 +35,10 @@ class App extends Component {
                     <Navigation/>
                     <Switch>
                         <Route path="/adminlogin" component={AdminLoginForm}/>
+                        {this.state.admin &&
+                        <Switch>
+                            <Route path="/admin" component={AdminPanel}/>
+                        </Switch>}
                     </Switch>
                 </Container>
             </div>
