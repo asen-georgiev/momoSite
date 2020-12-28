@@ -6,9 +6,14 @@ import './App.css';
 import Container from 'react-bootstrap/Container';
 import Navigation from "./components/navigation";
 import AdminLoginForm from "./admin/adminLoginForm";
+import RegisterAdminForm from "./admin/admin/registerAdminForm";
 import {getCurrentAdmin} from "./services/adminLoginService";
 import {getCurrentUser} from "./services/userLoginService";
 import AdminPanel from "./admin/adminPanel";
+import Products from "./pages/products";
+import Basket from "./pages/basket";
+import AllAdminsList from "./admin/admin/allAdminsList";
+import UpdateAdminForm from "./admin/admin/updateAdminForm";
 
 
 class App extends Component {
@@ -35,8 +40,13 @@ class App extends Component {
                     <Navigation/>
                     <Switch>
                         <Route path="/adminlogin" component={AdminLoginForm}/>
+                        <Route path="/products" component={Products}/>
+                        <Route path="/basket" component={Basket}/>
                         {this.state.admin &&
                         <Switch>
+                            <Route path="/admin/registeradmin" component={RegisterAdminForm}/>
+                            <Route path="/admin/adminslist/:id" component={UpdateAdminForm}/>
+                            <Route path="/admin/adminslist" component={AllAdminsList}/>
                             <Route path="/admin" component={AdminPanel}/>
                         </Switch>}
                     </Switch>
