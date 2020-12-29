@@ -5,15 +5,17 @@ import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 import Container from 'react-bootstrap/Container';
 import Navigation from "./components/navigation";
-import AdminLoginForm from "./admin/adminLoginForm";
+import AdminLoginForm from "./admin/admin/adminLoginForm";
 import RegisterAdminForm from "./admin/admin/registerAdminForm";
 import {getCurrentAdmin} from "./services/adminLoginService";
 import {getCurrentUser} from "./services/userLoginService";
-import AdminPanel from "./admin/adminPanel";
+import AdminPanel from "./admin/admin/adminPanel";
 import Products from "./pages/products";
 import Basket from "./pages/basket";
 import AllAdminsList from "./admin/admin/allAdminsList";
 import UpdateAdminForm from "./admin/admin/updateAdminForm";
+import UserLoginForm from "./pages/user/userLoginForm";
+import UserProfile from "./pages/user/userProfile";
 
 
 class App extends Component {
@@ -40,6 +42,8 @@ class App extends Component {
                     <Navigation/>
                     <Switch>
                         <Route path="/adminlogin" component={AdminLoginForm}/>
+                        <Route path="/userlogin" component={UserLoginForm}/>
+                        <Route path="/userprofile" component={UserProfile}/>
                         <Route path="/products" component={Products}/>
                         <Route path="/basket" component={Basket}/>
                         {this.state.admin &&

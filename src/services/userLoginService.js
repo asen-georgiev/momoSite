@@ -9,7 +9,7 @@ const apiEndPoint = apiUrl + "/userauthent";
 export function userLogin(data) {
     return httpService
         .post(apiEndPoint, data)
-        .then = (response => {
+        .then(response => {
         if (response.data) {
             localStorage.setItem("user", response.data)
         }

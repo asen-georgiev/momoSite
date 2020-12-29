@@ -59,3 +59,13 @@ export function deleteAdmin(adminId) {
             }
         })
 }
+
+
+export function loggedAdmin(){
+    return httpService
+        .get(apiEndPoint+"/adm",{
+            headers:{
+                'x-auth-token': getCurrentAdmin()
+            }
+        })
+}

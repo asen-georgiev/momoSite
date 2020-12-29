@@ -1,25 +1,26 @@
 import React, {Component} from 'react';
 import Container from "react-bootstrap/Container";
-import {getCurrentAdmin,adminLogout} from "../services/adminLoginService";
+import {getCurrentAdmin,adminLogout} from "../../services/adminLoginService";
 import jwtDecode from "jwt-decode";
 import Button from "react-bootstrap/Button";
 import Table from "react-bootstrap/Table";
 import {Link} from "react-router-dom";
+import {loggedAdmin} from "../../services/adminService";
 
 
 class AdminPanel extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            admin:[]
+            admin:[],
         }
     }
 
-    componentDidMount() {
+    async componentDidMount() {
         const jwtAdmin = getCurrentAdmin();
         const admin = jwtDecode(jwtAdmin);
         this.setState({admin});
-        console.log(admin);
+        // console.log(aha);
     }
 
     logoutAdmin = () =>{

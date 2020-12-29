@@ -6,13 +6,13 @@ import Col from "react-bootstrap/Col";
 import Table from "react-bootstrap/Table";
 import {Link} from "react-router-dom";
 import {toast} from "react-toastify";
-import {deleteAdmin, getAllAdmins} from "../../services/adminService";
+import {deleteAdmin, getAllAdmins, loggedAdmin} from "../../services/adminService";
 
 class AllAdminsList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            admins: []
+            admins: [],
         }
     }
 
@@ -20,7 +20,6 @@ class AllAdminsList extends Component {
     async componentDidMount() {
         const {data: admins} = await getAllAdmins();
         this.setState({admins});
-        console.log(this.state.admins);
     }
 
 

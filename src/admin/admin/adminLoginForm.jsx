@@ -9,7 +9,7 @@ import Button from "react-bootstrap/Button";
 import Joi from "joi";
 import {toast} from "react-toastify";
 import Card from "react-bootstrap/Card";
-import {adminLogin, getCurrentAdmin} from "../services/adminLoginService";
+import {adminLogin, getCurrentAdmin} from "../../services/adminLoginService";
 import jwtDecode from "jwt-decode";
 
 
@@ -39,7 +39,7 @@ class AdminLoginForm extends Component {
     });
 
 
-    async componentDidMount() {
+     componentDidMount() {
         const loggedAdmin = getCurrentAdmin();
         this.setState({loggedAdmin});
     }
@@ -155,7 +155,7 @@ class AdminLoginForm extends Component {
                     }
                     {this.state.loggedAdmin &&
                     <Row>
-                        <h3>YOU ARE ALREADY LOGGED IN AS: </h3>
+                        <h3>YOU ARE ALREADY LOGGED IN!</h3>
                     </Row>}
                 </Container>
             </div>
