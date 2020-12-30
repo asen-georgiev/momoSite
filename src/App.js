@@ -16,6 +16,7 @@ import AllAdminsList from "./admin/admin/allAdminsList";
 import UpdateAdminForm from "./admin/admin/updateAdminForm";
 import UserLoginForm from "./pages/user/userLoginForm";
 import UserProfile from "./pages/user/userProfile";
+import RegisterUserForm from "./admin/user/registerUserForm";
 
 
 class App extends Component {
@@ -51,6 +52,7 @@ class App extends Component {
                             <Route path="/admin/registeradmin" component={RegisterAdminForm}/>
                             <Route path="/admin/adminslist/:id" component={UpdateAdminForm}/>
                             <Route path="/admin/adminslist" component={AllAdminsList}/>
+                            <Route path="/admin/registeruser" component={RegisterUserForm}/>
                             <Route path="/admin" component={AdminPanel}/>
                         </Switch>}
                     </Switch>
