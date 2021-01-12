@@ -88,7 +88,7 @@ class AdminLoginForm extends Component {
     render() {
         return (
             <div>
-                <Container className="container" fluid={true}>
+                <Container className="container bg-danger" fluid={true} style={{width:5000}}>
                     {this.state.loggedAdmin === null &&
                     <Row className="m-0">
                         <Col>

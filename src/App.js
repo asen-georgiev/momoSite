@@ -39,7 +39,6 @@ class App extends Component {
         return (
             <div>
                 <ToastContainer/>
-                <Container className="app-main-container p-0" fluid={true}>
                     <Navigation/>
                     <Switch>
                         <Route path="/adminlogin" component={AdminLoginForm}/>
@@ -56,7 +55,6 @@ class App extends Component {
                             <Route path="/admin" component={AdminPanel}/>
                         </Switch>}
                     </Switch>
-                </Container>
             </div>
         );
     }
