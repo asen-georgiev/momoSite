@@ -9,13 +9,22 @@ import Button from "react-bootstrap/Button";
 import Joi from "joi";
 import {toast} from "react-toastify";
 import Card from "react-bootstrap/Card";
-import {userLogout} from "../../services/userLoginService";
+import {getCurrentUser, userLogout} from "../../services/userLoginService";
+import jwtDecode from "jwt-decode";
 
 class UserProfile extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            loggedUser:[]
+        }
     }
 
+    componentDidMount() {
+        const jwtUser = getCurrentUser();
+        const loggedUser = jwtDecode(jwtUser);
+        this.setState({loggedUser});
+    }
 
     logoutUser=()=>{
         userLogout();
@@ -26,7 +35,7 @@ class UserProfile extends Component {
     render() {
         return (
             <div>
-                Profile is working!
+                <h2>Logged as: {this.state.loggedUser.userName}</h2>
                 <Button onClick={this.logoutUser}>
                     LOGOUT USER
                 </Button>

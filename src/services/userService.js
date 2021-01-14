@@ -13,7 +13,17 @@ function userUrl(userId){
 
 export function registerUser(user){
     return httpService
-        .post(apiEndPoint,user);
+        .post(apiEndPoint,user)
+        .then(response => {
+            if (response.data) {
+                localStorage.setItem("user", response.data)
+            }
+            return response.data;
+        })
+        .catch(err => {
+            toast.error(err.response.data);
+            return Promise.reject(err);
+        });
 }
 
 

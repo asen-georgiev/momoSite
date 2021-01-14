@@ -21,11 +21,7 @@ export function uploadImageAdmin(data){
 
 export function uploadImageUser(data){
     return httpService
-        .post(apiEndPoint,data,{
-            headers:{
-                'x-auth-token': getCurrentUser()
-            }
-        });
+        .post(apiEndPoint,data);
 }
 
 

@@ -17,6 +17,7 @@ import UpdateAdminForm from "./admin/admin/updateAdminForm";
 import UserLoginForm from "./pages/user/userLoginForm";
 import UserProfile from "./pages/user/userProfile";
 import RegisterUserForm from "./admin/user/registerUserForm";
+import RegisterUserFormUsr from "./pages/user/registerUserFormUsr";
 
 
 class App extends Component {
@@ -42,6 +43,7 @@ class App extends Component {
                     <Navigation/>
                     <Switch>
                         <Route path="/adminlogin" component={AdminLoginForm}/>
+                        <Route path="/userregister" component={RegisterUserFormUsr}/>
                         <Route path="/userlogin" component={UserLoginForm}/>
                         <Route path="/userprofile" component={UserProfile}/>
                         <Route path="/products" component={Products}/>

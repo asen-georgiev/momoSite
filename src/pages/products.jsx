@@ -23,7 +23,7 @@ class Products extends Component {
         const basket = [...this.state.basket];
         basket.push(product);
         this.setState({basket,products});
-        sessionStorage.setItem("basket",JSON.stringify(basket));
+        localStorage.setItem("basket",JSON.stringify(basket));
         console.log(basket);
   }
 

@@ -36,37 +36,43 @@ class RegisterUserForm extends Component {
             .required()
             .min(3)
             .max(30)
-            .label("userName"),
+            .trim(true)
+            .label("First name"),
         userFamily: Joi.string()
             .required()
             .min(3)
             .max(30)
-            .label("userFamily"),
+            .trim(true)
+            .label("Second name"),
         userPassword: Joi.string()
             .required()
             .min(8)
             .max(255)
-            .label("userPassword"),
+            .trim(true)
+            .label("Password"),
         userEmail: Joi.string()
             .required()
             .min(5)
             .max(50)
-            .label("userEmail"),
+            .trim(true)
+            .label("Email"),
         userPicture: Joi.string()
             .required()
             .min(5)
             .max(50)
-            .label("userPicture"),
+            .label("Profile picture"),
         userAddress: Joi.string()
             .required()
             .min(5)
             .max(100)
-            .label("userAddress"),
+            .trim(true)
+            .label("Address"),
         userTelephone: Joi.string()
             .required()
             .min(5)
             .max(50)
-            .label("userTelephone")
+            .trim(true)
+            .label("Personal telephone")
     })
 
 
@@ -170,6 +176,10 @@ class RegisterUserForm extends Component {
                                         id="image"
                                         name="image"
                                         onChange={this.onImageHandler}/>
+                                    {this.state.errors.userPicture &&
+                                    <p className="text-danger pt-2">
+                                        {this.state.errors.userPicture}
+                                    </p>}
                                 </FormGroup>
                                 <CardImg
                                     src={this.state.showPicture}
@@ -268,7 +278,6 @@ class RegisterUserForm extends Component {
                                 <Row className="mt-3">
                                     <Col md={4}>
                                         <Button
-                                            className="admin-button-submit"
                                             type="submit"
                                             disabled={this.state.isDisabled}>
                                             SUBMIT
@@ -276,7 +285,6 @@ class RegisterUserForm extends Component {
                                     </Col>
                                     <Col md={{span: 4, offset: 4}} className="d-flex flex-row-reverse">
                                         <Button
-                                            className="admin-button-update"
                                             onClick={this.adminRedirect}>
                                             BACK TO ADMIN PANEL
                                         </Button>

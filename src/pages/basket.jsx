@@ -11,7 +11,7 @@ class Basket extends Component {
    }
 
    componentDidMount() {
-       const basket = JSON.parse(sessionStorage.getItem("basket"));
+       const basket = JSON.parse(localStorage.getItem("basket"));
        this.setState({basket});
    }
 
