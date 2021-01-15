@@ -45,7 +45,8 @@ class App extends Component {
                         <Route path="/adminlogin" component={AdminLoginForm}/>
                         <Route path="/userregister" component={RegisterUserFormUsr}/>
                         <Route path="/userlogin" component={UserLoginForm}/>
-                        <Route path="/userprofile" component={UserProfile}/>
+                        {this.state.user !== null &&
+                        <Route path="/userprofile" component={UserProfile}/>}
                         <Route path="/products" component={Products}/>
                         <Route path="/basket" component={Basket}/>
                         {this.state.admin &&

@@ -134,7 +134,7 @@ class UserLoginForm extends Component {
                                             <Row className="justify-content-end px-3">
                                                 {this.state.isDisabled &&
                                                 <Button href="/userprofile">
-                                                    USER PANEL
+                                                    USER PROFILE
                                                 </Button>
                                                 }
                                             </Row>
