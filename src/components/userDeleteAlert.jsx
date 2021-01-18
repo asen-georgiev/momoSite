@@ -12,6 +12,7 @@ function UserDeleteAlert(props) {
         <React.Fragment>
             <Alert style={{width:'40rem'}} show={props.showAlert} variant={props.variant} className="text-center">
                 <Alert.Heading>{props.heading}</Alert.Heading>
+                <hr/>
                 <Row className="justify-content-around">
                 <Button onClick={props.onYes} variant={props.buttonYesVariant}>{props.buttonYes}</Button>
                 <Button onClick={props.onNo} variant={props.buttonNoVariant}>{props.buttonNo}</Button>

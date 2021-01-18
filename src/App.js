@@ -18,6 +18,7 @@ import UserLoginForm from "./pages/user/userLoginForm";
 import UserProfile from "./pages/user/userProfile";
 import RegisterUserForm from "./admin/user/registerUserForm";
 import RegisterUserFormUsr from "./pages/user/registerUserFormUsr";
+import Contacts from "./pages/contacts/contacts";
 
 
 class App extends Component {
@@ -43,6 +44,7 @@ class App extends Component {
                     <Navigation/>
                     <Switch>
                         <Route path="/adminlogin" component={AdminLoginForm}/>
+                        <Route path="/contacts" component={Contacts}/>
                         <Route path="/userregister" component={RegisterUserFormUsr}/>
                         <Route path="/userlogin" component={UserLoginForm}/>
                         {this.state.user !== null &&

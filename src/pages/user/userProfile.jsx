@@ -65,6 +65,7 @@ class UserProfile extends Component {
         return (
             <div>
                 <Container>
+                    <Row className="justify-content-center">
                     <UserDeleteAlert
                         heading="Are you sure you want to delete your profile?"
                         showAlert={this.state.showAlert}
@@ -75,6 +76,7 @@ class UserProfile extends Component {
                         onNo={() => this.showAlert(false)}
                         buttonYesVariant="info"
                         buttonNoVariant="danger"/>
+                    </Row>
                     <Row className="justify-content-center bg-secondary">
                         <Usercard
                             className="d-flex flex-row user-profile-card"
