@@ -20,6 +20,8 @@ import RegisterUserForm from "./admin/user/registerUserForm";
 import RegisterUserFormUsr from "./pages/user/registerUserFormUsr";
 import Contacts from "./pages/contacts/contacts";
 import ImagesUpload from "./admin/images/imagesUpload";
+import AllUsersList from "./admin/user/allUsersList";
+import UpdateUserForm from "./admin/user/updateUserForm";
 
 
 class App extends Component {
@@ -58,6 +60,8 @@ class App extends Component {
                             <Route path="/admin/adminslist/:id" component={UpdateAdminForm}/>
                             <Route path="/admin/adminslist" component={AllAdminsList}/>
                             <Route path="/admin/registeruser" component={RegisterUserForm}/>
+                            <Route path="/admin/userslist/:id" component={UpdateUserForm}/>
+                            <Route path="/admin/userslist" component={AllUsersList}/>
                             <Route path="/admin/imagesupload" component={ImagesUpload}/>
                             <Route path="/admin" component={AdminPanel}/>
                         </Switch>}
