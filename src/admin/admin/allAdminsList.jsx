@@ -52,11 +52,6 @@ class AllAdminsList extends Component {
                         <Col>
                             <h2>All registered Admins table :</h2>
                         </Col>
-                        <Col>
-                            <Button onClick={this.adminRedirect}>
-                                BACK TO ADMIN PANEL
-                            </Button>
-                        </Col>
                     </Row>
                     <Table>
                         <thead>
@@ -93,6 +88,9 @@ class AllAdminsList extends Component {
                         })}
                         </tbody>
                     </Table>
+                    <Button onClick={this.adminRedirect}>
+                        BACK TO ADMIN PANEL
+                    </Button>
                 </Container>
             </div>
         );

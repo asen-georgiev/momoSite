@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Container from "react-bootstrap/Container";
-import {getCurrentAdmin,adminLogout} from "../../services/adminLoginService";
+import {getCurrentAdmin, adminLogout} from "../../services/adminLoginService";
 import jwtDecode from "jwt-decode";
 import Button from "react-bootstrap/Button";
 import Table from "react-bootstrap/Table";
@@ -12,7 +12,7 @@ class AdminPanel extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            admin:[],
+            admin: [],
         }
     }
 
@@ -23,7 +23,7 @@ class AdminPanel extends Component {
         // console.log(aha);
     }
 
-    logoutAdmin = () =>{
+    logoutAdmin = () => {
         adminLogout();
         this.props.history.push("/adminlogin");
     }
@@ -35,30 +35,38 @@ class AdminPanel extends Component {
                     <h3>Logged as: {this.state.admin.adminName}</h3>
                     <Table>
                         <thead>
-                            <tr>
-                                <th>Element name</th>
-                                <th>Create new</th>
-                                <th>To list</th>
-                            </tr>
+                        <tr>
+                            <th>Element name</th>
+                            <th>Create new</th>
+                            <th>To list</th>
+                        </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Admins</td>
-                                <td>
-                                    <Link to="/admin/registeradmin">
-                                        Register
-                                    </Link>
-                                </td>
-                                <td>
-                                    <Link to="/admin/adminslist">
-                                        All Admins list
-                                    </Link>
-                                </td>
-                            </tr>
+                        <tr>
+                            <td>Admins</td>
+                            <td>
+                                <Link to="/admin/registeradmin">
+                                    Register
+                                </Link>
+                            </td>
+                            <td>
+                                <Link to="/admin/adminslist">
+                                    All Admins list
+                                </Link>
+                            </td>
+                        </tr>
                         <tr>
                             <td>Users</td>
-                            <td>Register</td>
-                            <td>All Users list</td>
+                            <td>
+                                <Link to="/admin/registeruser">
+                                    Register
+                                </Link>
+                            </td>
+                            <td>
+                                <Link to="/admin/userslist">
+                                    All Users list
+                                </Link>
+                            </td>
                         </tr>
                         </tbody>
                     </Table>

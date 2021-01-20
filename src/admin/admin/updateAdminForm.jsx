@@ -83,7 +83,7 @@ class UpdateAdminForm extends Component {
             _id: admin._id,
             adminName: admin.adminName,
             adminEmail: admin.adminEmail,
-            adminPassword: admin.adminPassword,
+            // adminPassword: admin.adminPassword,
             isAdmin: admin.isAdmin
         };
     }
@@ -191,6 +191,7 @@ class UpdateAdminForm extends Component {
                               id="isAdmin"
                               name="isAdmin"
                               type="checkbox"
+                              checked={this.state.admin.isAdmin}
                               value={this.state.admin.isAdmin}
                               label="Define Admin rights"
                               onChange={this.handleChange}/>
