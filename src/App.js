@@ -22,6 +22,7 @@ import Contacts from "./pages/contacts/contacts";
 import ImagesUpload from "./admin/images/imagesUpload";
 import AllUsersList from "./admin/user/allUsersList";
 import UpdateUserForm from "./admin/user/updateUserForm";
+import AllEmailsList from "./admin/emails/allEmailsList";
 
 
 class App extends Component {
@@ -63,6 +64,7 @@ class App extends Component {
                             <Route path="/admin/userslist/:id" component={UpdateUserForm}/>
                             <Route path="/admin/userslist" component={AllUsersList}/>
                             <Route path="/admin/imagesupload" component={ImagesUpload}/>
+                            <Route path="/admin/emailslist" component={AllEmailsList}/>
                             <Route path="/admin" component={AdminPanel}/>
                         </Switch>}
                     </Switch>

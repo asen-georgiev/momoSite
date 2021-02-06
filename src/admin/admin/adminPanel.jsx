@@ -6,6 +6,7 @@ import Button from "react-bootstrap/Button";
 import Table from "react-bootstrap/Table";
 import {Link} from "react-router-dom";
 import {loggedAdmin} from "../../services/adminService";
+import TrTdTable from "../../components/trTdTable";
 
 
 class AdminPanel extends Component {
@@ -42,32 +43,24 @@ class AdminPanel extends Component {
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>Admins</td>
-                            <td>
-                                <Link to="/admin/registeradmin">
-                                    Register
-                                </Link>
-                            </td>
-                            <td>
-                                <Link to="/admin/adminslist">
-                                    All Admins list
-                                </Link>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Users</td>
-                            <td>
-                                <Link to="/admin/registeruser">
-                                    Register
-                                </Link>
-                            </td>
-                            <td>
-                                <Link to="/admin/userslist">
-                                    All Users list
-                                </Link>
-                            </td>
-                        </tr>
+                        <TrTdTable
+                            name="Admins"
+                            link1Name="Register"
+                            link1To="/admin/registeradmin"
+                            link2Name="All Admins list"
+                            link2To="/admin/adminslist"/>
+                        <TrTdTable
+                            name="Users"
+                            link1Name="Register"
+                            link1To="/admin/registeruser"
+                            link2Name="All Users list"
+                            link2To="/admin/userslist"/>
+                        <TrTdTable
+                            name="Emails"
+                            link1Name="N/A"
+                            link1To="/admin/"
+                            link2Name="All Emails List"
+                            link2To="/admin/emailslist"/>
                         </tbody>
                     </Table>
                     <Button

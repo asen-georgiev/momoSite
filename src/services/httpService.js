@@ -9,7 +9,7 @@ axios.interceptors.response.use(success =>{
         error.response.status >=400 &&
         error.response.status <500;
     if(expectedError){
-        console.log(error.response);
+        console.log(error.response.data);
         toast.error(error.response.data);
     }
     if(!expectedError){
