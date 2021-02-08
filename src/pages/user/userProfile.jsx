@@ -51,6 +51,8 @@ class UserProfile extends Component {
         }
     }
 
+
+
     showAlert = (boolean) => {
         this.setState({showAlert: boolean})
 }

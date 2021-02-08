@@ -1,6 +1,7 @@
-import React,{Component} from "react";
+import React, {Component} from "react";
 import {Route, Redirect, Switch} from "react-router-dom";
 import {ToastContainer} from "react-toastify";
+import jwtDecode from "jwt-decode";
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 import Container from 'react-bootstrap/Container';
@@ -29,45 +30,54 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            admin:null,
-            user:null
+            admin: null,
+            user: null
         }
     }
 
     componentDidMount() {
-        const admin = getCurrentAdmin();
-        const user = getCurrentUser();
-        this.setState({admin,user})
-        console.log(admin,user);
+        const jwtAdmin = getCurrentAdmin();
+        if (jwtAdmin !== null) {
+            const admin = jwtDecode(jwtAdmin);
+            this.setState({admin});
+            console.log(admin);
+        }
+        const jwtUser = getCurrentUser();
+        if (jwtUser !== null) {
+            const user = jwtDecode(jwtUser);
+            this.setState({user});
+            console.log(user);
+        }
     }
+
 
     render() {
         return (
             <div>
                 <ToastContainer/>
-                    <Navigation/>
+                <Navigation/>
+                <Switch>
+                    <Route path="/adminlogin" component={AdminLoginForm}/>
+                    <Route path="/contacts" component={Contacts}/>
+                    <Route path="/userregister" component={RegisterUserFormUsr}/>
+                    <Route path="/userlogin" component={UserLoginForm}/>
+                    {this.state.user !== null &&
+                    <Route path="/userprofile" component={UserProfile}/>}
+                    <Route path="/products" component={Products}/>
+                    <Route path="/basket" component={Basket}/>
+                    {this.state.admin &&
                     <Switch>
-                        <Route path="/adminlogin" component={AdminLoginForm}/>
-                        <Route path="/contacts" component={Contacts}/>
-                        <Route path="/userregister" component={RegisterUserFormUsr}/>
-                        <Route path="/userlogin" component={UserLoginForm}/>
-                        {this.state.user !== null &&
-                        <Route path="/userprofile" component={UserProfile}/>}
-                        <Route path="/products" component={Products}/>
-                        <Route path="/basket" component={Basket}/>
-                        {this.state.admin &&
-                        <Switch>
-                            <Route path="/admin/registeradmin" component={RegisterAdminForm}/>
-                            <Route path="/admin/adminslist/:id" component={UpdateAdminForm}/>
-                            <Route path="/admin/adminslist" component={AllAdminsList}/>
-                            <Route path="/admin/registeruser" component={RegisterUserForm}/>
-                            <Route path="/admin/userslist/:id" component={UpdateUserForm}/>
-                            <Route path="/admin/userslist" component={AllUsersList}/>
-                            <Route path="/admin/imagesupload" component={ImagesUpload}/>
-                            <Route path="/admin/emailslist" component={AllEmailsList}/>
-                            <Route path="/admin" component={AdminPanel}/>
-                        </Switch>}
-                    </Switch>
+                        <Route path="/admin/registeradmin" component={RegisterAdminForm}/>
+                        <Route path="/admin/adminslist/:id" component={UpdateAdminForm}/>
+                        <Route path="/admin/adminslist" component={AllAdminsList}/>
+                        <Route path="/admin/registeruser" component={RegisterUserForm}/>
+                        <Route path="/admin/userslist/:id" component={UpdateUserForm}/>
+                        <Route path="/admin/userslist" component={AllUsersList}/>
+                        <Route path="/admin/imagesupload" component={ImagesUpload}/>
+                        <Route path="/admin/emailslist" component={AllEmailsList}/>
+                        <Route path="/admin" component={AdminPanel}/>
+                    </Switch>}
+                </Switch>
             </div>
         );
     }
