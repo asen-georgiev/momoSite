@@ -10,7 +10,7 @@ import Button from "react-bootstrap/Button";
 import {toast} from "react-toastify";
 import {FormLabel, Image} from "react-bootstrap";
 import {picUrl} from "../../config.json";
-import {getUser, updateUserAdmin} from "../../services/userService";
+import {getUserAdmin, updateUserAdmin} from "../../services/userService";
 import {uploadImageAdmin} from "../../services/imgService";
 
 class UpdateUserForm extends Component {
@@ -91,7 +91,7 @@ class UpdateUserForm extends Component {
     populateUser = async () => {
         try {
             const userId = this.props.match.params.id;
-            const {data: user} = await getUser(userId);
+            const {data: user} = await getUserAdmin(userId);
             this.setState({user: this.mapToViewModel(user)});
         } catch (e) {
             if (e.response && e.response.status === 404)
@@ -207,7 +207,7 @@ class UpdateUserForm extends Component {
                                     </div>}
                                     {this.state.showPicture &&
                                     <Col>
-                                        <h5>Updated prrofile picture :</h5>
+                                        <h5>Updated profile picture :</h5>
                                         <Image src={this.state.showPicture}
                                                width="300"
                                                height="auto"/>
@@ -238,7 +238,7 @@ class UpdateUserForm extends Component {
                                                 name="userName"
                                                 type="text"
                                                 value={this.state.user.userName}
-                                                placeholder="Enter user's firs name"
+                                                placeholder="Enter user's first name"
                                                 onChange={this.handleChange}/>
                                             {this.state.errors.userName &&
                                             <p className="text-danger pt-2">
@@ -323,7 +323,7 @@ class UpdateUserForm extends Component {
                                         name="userPassword"
                                         type="password"
                                         value={this.state.user.userPassword}
-                                        placeholder="Enter user's password : min, 8 symbols"
+                                        placeholder="Enter user's password : min. 8 symbols"
                                         onChange={this.handleChange}/>
                                     {this.state.errors.userPassword &&
                                     <p className="text-danger pt-2">

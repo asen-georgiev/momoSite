@@ -37,7 +37,7 @@ export function registerUserAdmin(user){
 }
 
 
-export function getUser(userId){
+export function getUserAdmin(userId){
     return httpService
         .get(userUrl(userId),{
             headers:{
@@ -46,6 +46,15 @@ export function getUser(userId){
         });
 }
 
+
+export function getUserUser(userId){
+    return httpService
+        .get(userUrl(userId),{
+            headers:{
+                'x-auth-token': getCurrentUser()
+            }
+        });
+}
 
 export function getAllUsers(){
     return httpService

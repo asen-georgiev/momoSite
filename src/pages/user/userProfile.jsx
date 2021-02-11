@@ -17,7 +17,7 @@ import Usercard from "../../components/usercard";
 import '../../css/user/userProfile.css'
 import {deleteUser} from "../../services/userService";
 import UserDeleteAlert from "../../components/userDeleteAlert";
-import {CSSTransition} from "react-transition-group";
+import {Link} from "react-router-dom";
 
 
 class UserProfile extends Component {
@@ -52,10 +52,9 @@ class UserProfile extends Component {
     }
 
 
-
     showAlert = (boolean) => {
         this.setState({showAlert: boolean})
-}
+    }
 
     logoutUser = () => {
         userLogout();
@@ -68,16 +67,16 @@ class UserProfile extends Component {
             <div>
                 <Container>
                     <Row className="justify-content-center">
-                    <UserDeleteAlert
-                        heading="Are you sure you want to delete your profile?"
-                        showAlert={this.state.showAlert}
-                        variant="danger"
-                        buttonYes="Qj laina!"
-                        buttonNo="Ne qj laina!"
-                        onYes={() => this.handleDelete(this.state.loggedUser)}
-                        onNo={() => this.showAlert(false)}
-                        buttonYesVariant="info"
-                        buttonNoVariant="danger"/>
+                        <UserDeleteAlert
+                            heading="Are you sure you want to delete your profile?"
+                            showAlert={this.state.showAlert}
+                            variant="danger"
+                            buttonYes="Qj laina!"
+                            buttonNo="Ne qj laina!"
+                            onYes={() => this.handleDelete(this.state.loggedUser)}
+                            onNo={() => this.showAlert(false)}
+                            buttonYesVariant="info"
+                            buttonNoVariant="danger"/>
                     </Row>
                     <Row className="justify-content-center bg-secondary">
                         <Usercard
@@ -87,7 +86,7 @@ class UserProfile extends Component {
                             loggedUser={this.state.loggedUser}/>
                     </Row>
                     <Row className="bg-dark d-flex justify-content-around">
-                        <Button onClick={this.handleUpdate}>UPDATE PROFILE</Button>
+                        <Link to={`/userprofile/${this.state.loggedUser._id}`}>UPDATE PROFILE</Link>
                         <Button onClick={() => this.showAlert(true)}>DELETE PROFILE</Button>
                         <Button onClick={this.logoutUser}>LOG OUT</Button>
                     </Row>

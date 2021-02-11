@@ -24,6 +24,7 @@ import ImagesUpload from "./admin/images/imagesUpload";
 import AllUsersList from "./admin/user/allUsersList";
 import UpdateUserForm from "./admin/user/updateUserForm";
 import AllEmailsList from "./admin/emails/allEmailsList";
+import UpdateUserFormUsr from "./pages/user/updateUserFormUsr";
 
 
 class App extends Component {
@@ -62,7 +63,10 @@ class App extends Component {
                     <Route path="/userregister" component={RegisterUserFormUsr}/>
                     <Route path="/userlogin" component={UserLoginForm}/>
                     {this.state.user !== null &&
-                    <Route path="/userprofile" component={UserProfile}/>}
+                    <Switch>
+                        <Route path="/userprofile/:id" component={UpdateUserFormUsr}/>
+                        <Route path="/userprofile" component={UserProfile}/>
+                    </Switch>}
                     <Route path="/products" component={Products}/>
                     <Route path="/basket" component={Basket}/>
                     {this.state.admin &&
