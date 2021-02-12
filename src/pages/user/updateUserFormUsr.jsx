@@ -27,7 +27,7 @@ class UpdateUserFormUsr extends Component {
                 userAddress: "",
                 userTelephone: "",
                 userPicture: "",
-                repeatedPassword:''
+                repeatedPassword: ''
             },
             uploadPicture: null,
             showPicture: null,
@@ -135,7 +135,6 @@ class UpdateUserFormUsr extends Component {
     }
 
 
-
     handleSubmit = async (event) => {
         event.preventDefault();
         const errors = this.validateUser();
@@ -144,7 +143,11 @@ class UpdateUserFormUsr extends Component {
         });
         if (errors) return;
 
-
+        const result = _.isEqual(this.state.user.userPassword, this.state.user.repeatedPassword);
+        if (result !== true) {
+            toast.error("Your passwords did not match!");
+            return;
+        }
 
         if (this.state.uploadPicture !== null) {
             const data = new FormData();
@@ -363,13 +366,13 @@ class UpdateUserFormUsr extends Component {
                                     <Col>
                                         <FormGroup>
                                             <FormLabel>
-                                                Repeat password :
+                                                Confirm password :
                                             </FormLabel>
                                             <FormControl
                                                 name="repeatedPassword"
                                                 type="password"
                                                 value={this.state.repeatedPassword}
-                                                placeholder="Please repeat your password: min. 8 symbols"
+                                                placeholder="Please confirm your password: min. 8 symbols"
                                                 onChange={this.handleChange}/>
                                             {this.state.errors.repeatedPassword &&
                                             <p className="text-danger pt-2">

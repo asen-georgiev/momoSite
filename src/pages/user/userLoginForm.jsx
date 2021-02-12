@@ -11,6 +11,7 @@ import {toast} from "react-toastify";
 import Card from "react-bootstrap/Card";
 import {getCurrentUser, userLogin} from "../../services/userLoginService";
 import {FormLabel} from "react-bootstrap";
+import {updateUserPassword} from "../../services/userService";
 
 class UserLoginForm extends Component {
     constructor(props) {
@@ -20,7 +21,8 @@ class UserLoginForm extends Component {
             userPassword: '',
             errors: {},
             isDisabled: false,
-            loggedUser: ''
+            loggedUser: '',
+            forgotPassword: false
         }
     };
 
@@ -56,6 +58,11 @@ class UserLoginForm extends Component {
     }
 
 
+    handleForgot = () => {
+        this.setState({forgotPassword: true});
+    }
+
+
     handleSubmit = async (event) => {
         event.preventDefault();
         const errors = this.validateUser();
@@ -71,6 +78,14 @@ class UserLoginForm extends Component {
 
     }
 
+    newPasswordSubmit = async (event) => {
+        event.preventDefault();
+        const userEmail = {userEmail: this.state.userEmail};
+        await updateUserPassword(userEmail);
+        this.setState({forgotPassword: false});
+        toast.success(`Your new password was sent to ${this.state.userEmail}!`);
+    }
+
 
     validateUser = () => {
         const user = {userEmail: this.state.userEmail, userPassword: this.state.userPassword};
@@ -84,11 +99,12 @@ class UserLoginForm extends Component {
         return errors;
     }
 
+
     render() {
         return (
             <div>
                 <Container className="container" fluid={true}>
-                    {this.state.loggedUser === null &&
+                    {!this.state.forgotPassword && this.state.loggedUser === null &&
                     <Row className="m-0">
                         <Col>
                             <Row>
@@ -99,7 +115,7 @@ class UserLoginForm extends Component {
                                     <FormGroup>
                                         <Row>
                                             <Col>
-                                                <FormLabel>User email</FormLabel>
+                                                <FormLabel>User email :</FormLabel>
                                                 <FormControl
                                                     autoFocus={true}
                                                     id="userEmail"
@@ -114,7 +130,7 @@ class UserLoginForm extends Component {
                                                 </p>}
                                             </Col>
                                             <Col>
-                                                <FormLabel>User password</FormLabel>
+                                                <FormLabel>User password :</FormLabel>
                                                 <FormControl
                                                     id="userPassword"
                                                     name="userPassword"
@@ -130,15 +146,26 @@ class UserLoginForm extends Component {
                                         </Row>
                                     </FormGroup>
                                     <Row className="py-2">
+                                        {!this.state.forgotPassword && !this.state.isDisabled &&
                                         <Col>
                                             <Row className="justify-content-end px-3">
-                                                {this.state.isDisabled &&
+                                                <Button
+                                                    onClick={this.handleForgot}>
+                                                    I forgot my password.
+                                                </Button>
+                                            </Row>
+                                        </Col>
+                                        }
+                                        {this.state.isDisabled &&
+                                        <Col>
+                                            <Row className="justify-content-end px-3">
+
                                                 <Button href="/userprofile">
                                                     USER PROFILE
                                                 </Button>
-                                                }
                                             </Row>
                                         </Col>
+                                        }
                                         <Col>
                                             <Row className="justify-content-end px-3">
                                                 <Button
@@ -156,6 +183,28 @@ class UserLoginForm extends Component {
                     {this.state.loggedUser &&
                     <Row>
                         <h3>YOU ARE ALREADY LOGGED IN!</h3>
+                    </Row>}
+                    {this.state.forgotPassword &&
+                    <Row className="m-0">
+                        <Col className="p-5">
+                            <Form onSubmit={this.newPasswordSubmit}>
+                                <FormGroup>
+                                    <FormLabel>
+                                        Your email :
+                                    </FormLabel>
+                                    <FormControl
+                                        autoFocus={true}
+                                        id="userEmail"
+                                        name="userEmail"
+                                        type="email"
+                                        placeholder="Please enter your registration email"
+                                        onChange={this.handleChange}/>
+                                </FormGroup>
+                                <Button type="submit">
+                                    Send me new password
+                                </Button>
+                            </Form>
+                        </Col>
                     </Row>}
                 </Container>
             </div>

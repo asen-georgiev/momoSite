@@ -77,6 +77,15 @@ export function updateUser(user, userId){
 }
 
 
+export function updateUserPassword(userEmail){
+    const body = {...userEmail}
+    return httpService
+        .put(apiEndPoint+"/pass/update",body);
+}
+
+
+
+
 export function updateUserAdmin(user, userId){
     const body = {...user};
     return httpService
