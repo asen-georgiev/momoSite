@@ -36,6 +36,10 @@ class AllEmailsList extends Component {
         }
     }
 
+    adminRedirect = () => {
+        this.props.history.push("/admin");
+    }
+
 
     render() {
         return (
@@ -61,7 +65,7 @@ class AllEmailsList extends Component {
                                     <td>{eml.message}</td>
                                     <td>
                                         <Button
-                                        onClick={() => this.handleDelete(eml)}>
+                                            onClick={() => this.handleDelete(eml)}>
                                             DELETE
                                         </Button>
                                     </td>
@@ -70,6 +74,9 @@ class AllEmailsList extends Component {
                         })}
                         </tbody>
                     </Table>
+                    <Button onClick={this.adminRedirect}>
+                        BACK TO ADMIN PANEL
+                    </Button>
                 </Container>
             </div>
         );

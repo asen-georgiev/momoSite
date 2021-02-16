@@ -56,6 +56,12 @@ class AdminPanel extends Component {
                             link2Name="All Users list"
                             link2To="/admin/userslist"/>
                         <TrTdTable
+                            name="Bios"
+                            link1Name="Create"
+                            link1To="/admin/registerbio"
+                            link2Name="All Bios list"
+                            link2To="/admin/bioslist"/>
+                        <TrTdTable
                             name="Emails"
                             link1Name="N/A"
                             link1To="/admin/"

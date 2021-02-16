@@ -27,7 +27,7 @@ class ImagesUpload extends Component {
 
         if (this.maxSelectFiles(event)) {
 
-            const files = []
+            const files = [];
             for (let i = 0; i < event.target.files.length; i++) {
                 files.push(URL.createObjectURL(event.target.files[i]));
             }

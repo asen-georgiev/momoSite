@@ -25,6 +25,8 @@ import AllUsersList from "./admin/user/allUsersList";
 import UpdateUserForm from "./admin/user/updateUserForm";
 import AllEmailsList from "./admin/emails/allEmailsList";
 import UpdateUserFormUsr from "./pages/user/updateUserFormUsr";
+import RegisterBioForm from "./admin/bios/registerBioForm";
+import AllBiosList from "./admin/bios/allBiosList";
 
 
 class App extends Component {
@@ -77,6 +79,8 @@ class App extends Component {
                         <Route path="/admin/registeruser" component={RegisterUserForm}/>
                         <Route path="/admin/userslist/:id" component={UpdateUserForm}/>
                         <Route path="/admin/userslist" component={AllUsersList}/>
+                        <Route path="/admin/registerbio" component={RegisterBioForm}/>
+                        <Route path="/admin/bioslist" component={AllBiosList}/>
                         <Route path="/admin/imagesupload" component={ImagesUpload}/>
                         <Route path="/admin/emailslist" component={AllEmailsList}/>
                         <Route path="/admin" component={AdminPanel}/>
