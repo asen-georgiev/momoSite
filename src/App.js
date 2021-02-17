@@ -27,7 +27,7 @@ import AllEmailsList from "./admin/emails/allEmailsList";
 import UpdateUserFormUsr from "./pages/user/updateUserFormUsr";
 import RegisterBioForm from "./admin/bios/registerBioForm";
 import AllBiosList from "./admin/bios/allBiosList";
-
+import UpdateBioForm from "./admin/bios/updateBioForm";
 
 class App extends Component {
     constructor(props) {
@@ -80,6 +80,7 @@ class App extends Component {
                         <Route path="/admin/userslist/:id" component={UpdateUserForm}/>
                         <Route path="/admin/userslist" component={AllUsersList}/>
                         <Route path="/admin/registerbio" component={RegisterBioForm}/>
+                        <Route path="/admin/bioslist/:id" component={UpdateBioForm}/>
                         <Route path="/admin/bioslist" component={AllBiosList}/>
                         <Route path="/admin/imagesupload" component={ImagesUpload}/>
                         <Route path="/admin/emailslist" component={AllEmailsList}/>
