@@ -93,7 +93,7 @@ class AllBiosList extends Component {
                                     <td>
                                         <Button
                                             onClick={() => this.handleDelete(bio)}>
-                                            Delete bio
+                                            Delete
                                         </Button>
                                     </td>
                                 </tr>

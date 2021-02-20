@@ -11,16 +11,18 @@ import {toast} from "react-toastify";
 import {FormLabel} from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import CardImg from "react-bootstrap/CardImg";
-import {createBio} from "../../services/bioService";
+import {createBlog} from "../../services/blogService";
 import {uploadImageAdmin} from "../../services/imgService";
 
-class RegisterBioForm extends Component {
+class RegisterBlogForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            bioTitle: '',
-            bioText: '',
-            bioPictures: [],
+            blogTitle: '',
+            blogSubTitle: '',
+            blogText: '',
+            blogPictures: [],
+            blogLink: '',
             errors: {},
             isDisabled: true,
             showPictures: [],
@@ -29,51 +31,67 @@ class RegisterBioForm extends Component {
     }
 
     schema = Joi.object({
-        bioTitle: Joi.string()
+        blogTitle: Joi.string()
             .required()
             .min(5)
             .max(100)
             .trim(true)
-            .label('Bio title'),
-        bioText: Joi.string()
+            .label('Blog title'),
+        blogSubTitle: Joi.string()
             .required()
-            .min(10)
-            .max(1024)
+            .min(5)
+            .max(100)
             .trim(true)
-            .label('Bio text'),
-        bioPictures: Joi.array()
-            .items(Joi.string())
+            .label('Blog sub title'),
+        blogText: Joi.string()
             .required()
-            .label('Bio pictures')
+            .min(20)
+            .max(2000)
+            .trim(true)
+            .label('Blog text'),
+        blogPictures: Joi.array()
+            .items(Joi.string())
+            .allow('')
+            .label('Blog pictures'),
+        blogLink: Joi.string()
+            .min(5)
+            .max(50)
+            .allow('')
+            .label('Blog link')
     })
 
 
     handleSubmit = async (event) => {
         event.preventDefault();
-        const errors = this.validateBioInput();
-        this.setState({errors: errors || {}});
+        const errors = this.validateBlogInput();
+        this.setState({
+            errors: errors || {}
+        });
         console.log(errors);
         if (errors) return;
 
-        const bio = {
-            bioTitle: this.state.bioTitle,
-            bioText: this.state.bioText,
-            bioPictures: this.state.bioPictures
+        if (this.state.uploadPictures !== null) {
+            const data = new FormData();
+            for (let i = 0; i < this.state.uploadPictures.length; i++) {
+                data.append('file', this.state.uploadPictures[i]);
+            }
+            await uploadImageAdmin(data);
+            toast.success('Images for the Bio were successfully uploaded!');
         }
-        await createBio(bio);
-        toast.success('Bio was successfully created!');
 
-        const data = new FormData();
-        for (let i = 0; i < this.state.uploadPictures.length; i++) {
-            data.append('file', this.state.uploadPictures[i]);
+        const blog = {
+            blogTitle: this.state.blogTitle,
+            blogSubTitle: this.state.blogSubTitle,
+            blogText: this.state.blogText,
+            blogPictures: this.state.blogPictures,
+            blogLink: this.state.blogLink
         }
-        await uploadImageAdmin(data);
+        await createBlog(blog);
+        toast.success("Blog was successfully created!");
+
         this.setState({
             isDisabled: true
         });
-        toast.success('Images for the Bio were successfully uploaded!');
-
-        console.log(this.state);
     }
 
 
@@ -81,13 +99,13 @@ class RegisterBioForm extends Component {
 
         if (this.maxSelectedFiles(event)) {
             const showFiles = [];
-            const bioFiles = [];
+            const blogFiles = [];
             for (let i = 0; i < event.target.files.length; i++) {
                 showFiles.push(URL.createObjectURL(event.target.files[i]));
-                bioFiles.push(event.target.files[i].name);
+                blogFiles.push(event.target.files[i].name);
             }
             this.setState({
-                bioPictures: bioFiles,
+                blogPictures: blogFiles,
                 showPictures: showFiles,
                 uploadPictures: event.target.files,
                 isDisabled: false
@@ -95,11 +113,10 @@ class RegisterBioForm extends Component {
         }
     }
 
-
     handleChange = (event) => {
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
-        const name = target.name
+        const name = target.name;
 
         this.setState({
             [name]: value,
@@ -109,10 +126,9 @@ class RegisterBioForm extends Component {
 
 
     maxSelectedFiles = (event) => {
-
         let files = event.target.files;
-        if (files.length > 3) {
-            toast.error("Only 3 images can be uploaded at a time");
+        if (files.length > 5) {
+            toast.error("Only 5 images can be uploaded at a time");
             event.target.value = null;
             return false;
         }
@@ -120,14 +136,16 @@ class RegisterBioForm extends Component {
     }
 
 
-    validateBioInput = () => {
-        const bio = {
-            bioTitle: this.state.bioTitle,
-            bioText: this.state.bioText,
-            bioPictures: this.state.bioPictures
+    validateBlogInput = () => {
+        const blog = {
+            blogTitle: this.state.blogTitle,
+            blogSubTitle: this.state.blogSubTitle,
+            blogText: this.state.blogText,
+            blogPictures: this.state.blogPictures,
+            blogLink: this.state.blogLink
         };
         const options = {abortEarly: false};
-        const result = this.schema.validate(bio, options);
+        const result = this.schema.validate(blog, options);
 
         if (!result.error) return null;
 
@@ -150,7 +168,7 @@ class RegisterBioForm extends Component {
                     <Row>
                         <Col>
                             <Row>
-                                <h3>Register Biography Form</h3>
+                                <h3>Register Blog Form</h3>
                             </Row>
                             <Card>
                                 {this.state.uploadPictures !== null &&
@@ -170,52 +188,82 @@ class RegisterBioForm extends Component {
                                     }
                                     <Form onSubmit={this.handleSubmit}>
                                         <FormGroup>
-                                            <FormLabel htmlFor="images">
+                                            <FormLabel>
                                                 Upload images :
                                             </FormLabel>
                                             <Form.File
                                                 type="file"
                                                 id="images"
                                                 name="images"
-                                                label="Max images to upload : 3"
+                                                label="Max images to upload : 5"
                                                 multiple
-                                                onChange={this.handleImages}
-                                            />
-                                            {this.state.errors.bioPictures &&
+                                                onChange={this.handleImages}/>
+                                            {this.state.errors.blogPictures &&
                                             <p className="text-danger pt-2">
-                                                {this.state.errors.bioPictures}
+                                                {this.state.errors.blogPictures}
                                             </p>}
                                         </FormGroup>
                                         <FormGroup>
                                             <FormLabel>
-                                                Bio title :
+                                                Blog title :
                                             </FormLabel>
                                             <FormControl
                                                 autoFocus={true}
-                                                name="bioTitle"
+                                                name="blogTitle"
                                                 type="text"
-                                                value={this.state.bioTitle}
-                                                placeholder="Enter title for the Bio"
+                                                value={this.state.blogTitle}
+                                                placeholder="Enter title for the Blog"
                                                 onChange={this.handleChange}/>
-                                            {this.state.errors.bioTitle &&
+                                            {this.state.errors.blogTitle &&
                                             <p className="text-danger pt-2">
-                                                {this.state.errors.bioTitle}
+                                                {this.state.errors.blogTitle}
                                             </p>}
                                         </FormGroup>
                                         <FormGroup>
                                             <FormLabel>
-                                                Bio text :
+                                                Blog sub title :
                                             </FormLabel>
                                             <FormControl
-                                                name="bioText"
+                                                name="blogSubTitle"
+                                                type="text"
+                                                value={this.state.blogSubTitle}
+                                                placeholder="Enter sub title for the Blog"
+                                                onChange={this.handleChange}/>
+                                            {this.state.errors.blogSubTitle &&
+                                            <p className="text-danger pt-2">
+                                                {this.state.errors.blogSubTitle}
+                                            </p>}
+                                        </FormGroup>
+                                        <FormGroup>
+                                            <FormLabel>
+                                                Blog text :
+                                            </FormLabel>
+                                            <FormControl
+                                                name="blogText"
                                                 as="textarea"
                                                 rows="5"
-                                                value={this.state.bioText}
-                                                placeholder="Enter text for the Bio"
+                                                value={this.state.blogText}
+                                                placeholder="Enter text for the Blog"
                                                 onChange={this.handleChange}/>
-                                            {this.state.errors.bioText &&
+                                            {this.state.errors.blogText &&
                                             <p className="text-danger pt-2">
-                                                {this.state.errors.bioText}
+                                                {this.state.errors.blogText}
+                                            </p>}
+                                        </FormGroup>
+                                        <FormGroup>
+                                            <FormLabel>
+                                                Blog link :
+                                            </FormLabel>
+                                            <FormControl
+                                                name="blogLink"
+                                                type="text"
+                                                value={this.state.blogLink}
+                                                placeholder="Enter link to additional info"
+                                                onChange={this.handleChange}
+                                            />
+                                            {this.state.errors.blogLink &&
+                                            <p className="text-danger pt-2">
+                                                {this.state.errors.blogLink}
                                             </p>}
                                         </FormGroup>
                                         <Row className="mt-3">
@@ -244,4 +292,4 @@ class RegisterBioForm extends Component {
     }
 }
 
-export default RegisterBioForm;
+export default RegisterBlogForm;
