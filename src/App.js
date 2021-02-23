@@ -31,6 +31,8 @@ import UpdateBioForm from "./admin/bios/updateBioForm";
 import RegisterBlogForm from "./admin/blogs/registerBlogForm";
 import AllBlogsList from "./admin/blogs/allBlogsList";
 import UpdateBlogForm from "./admin/blogs/updateBlogForm";
+import Blog from "./pages/blog/blog";
+import BlogDetails from "./pages/blog/blogDetails";
 
 class App extends Component {
     constructor(props) {
@@ -64,6 +66,8 @@ class App extends Component {
                 <Navigation/>
                 <Switch>
                     <Route path="/adminlogin" component={AdminLoginForm}/>
+                    <Route path="/blog/:id" component={BlogDetails}/>
+                    <Route path="/blog" component={Blog}/>
                     <Route path="/contacts" component={Contacts}/>
                     <Route path="/userregister" component={RegisterUserFormUsr}/>
                     <Route path="/userlogin" component={UserLoginForm}/>
