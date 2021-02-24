@@ -6,7 +6,8 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 function NavLinkComp(props) {
     const {items, className} = props;
     return (
-        items.map(item => {
+        <div>
+            {items.map(item => {
             return (
                 <NavLink
                     key={item._id}
@@ -22,8 +23,12 @@ function NavLinkComp(props) {
                     </span>
                 </NavLink>
             )
-        })
+        })}
+        <NavLink
+        to={'/admin'}>Qj laina</NavLink>
+        </div>
+
     );
-}
+};
 
 export default NavLinkComp;

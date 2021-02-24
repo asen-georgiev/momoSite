@@ -9,10 +9,10 @@ function BlogComments(props) {
 
     return (
         <React.Fragment>
+            <Card>
             {comments.map(comment => {
                 return (
-                    <Card key={comment._id}>
-                        <Card.Body className="d-flex flex-row">
+                        <Card.Body className="d-flex flex-row" key={comment._id}>
                             <Image
                                 src={picUrl + comment.user.userPicture}
                                 style={{width: '5rem'}}
@@ -26,9 +26,9 @@ function BlogComments(props) {
                                 </Card.Text>
                             </Col>
                         </Card.Body>
-                    </Card>
                 )
             })}
+            </Card>
         </React.Fragment>
     );
 }
