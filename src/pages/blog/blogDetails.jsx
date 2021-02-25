@@ -6,10 +6,8 @@ import Joi from "joi";
 import Form from "react-bootstrap/Form";
 import FormGroup from "react-bootstrap/FormGroup";
 import FormControl from "react-bootstrap/FormControl";
-import {Link} from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import CardImg from "react-bootstrap/CardImg";
 import {toast} from "react-toastify";
 import {getBlog} from "../../services/blogService";
 import {picUrl} from "../../config.json";
@@ -131,7 +129,7 @@ class BlogDetails extends Component {
 
 
     registerRedirect = () => {
-        this.props.history.push("/userregister");
+        this.props.history.push("/userlogin");
     }
 
 

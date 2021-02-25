@@ -7,6 +7,7 @@ import FormGroup from "react-bootstrap/FormGroup";
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
 import Joi from "joi";
+import {Link} from "react-router-dom";
 import {toast} from "react-toastify";
 import Card from "react-bootstrap/Card";
 import {getCurrentUser, userLogin} from "../../services/userLoginService";
@@ -105,87 +106,73 @@ class UserLoginForm extends Component {
             <div>
                 <Container className="container" fluid={true}>
                     {!this.state.forgotPassword && this.state.loggedUser === null &&
-                    <Row className="m-0">
-                        <Col>
-                            <Row>
-                                <h4>User login:</h4>
-                            </Row>
-                            <Card>
-                                <Form onSubmit={this.handleSubmit}>
-                                    <FormGroup>
-                                        <Row>
-                                            <Col>
-                                                <FormLabel>User email :</FormLabel>
-                                                <FormControl
-                                                    autoFocus={true}
-                                                    id="userEmail"
-                                                    name="userEmail"
-                                                    type="email"
-                                                    placeholder="Enter your email"
-                                                    value={this.state.userEmail}
-                                                    onChange={this.handleChange}/>
-                                                {this.state.errors.userEmail &&
-                                                <p className="text-danger pt-2">
-                                                    {this.state.errors.userEmail}
-                                                </p>}
-                                            </Col>
-                                            <Col>
-                                                <FormLabel>User password :</FormLabel>
-                                                <FormControl
-                                                    id="userPassword"
-                                                    name="userPassword"
-                                                    type="password"
-                                                    placeholder="Enter your password"
-                                                    value={this.state.userPassword}
-                                                    onChange={this.handleChange}/>
-                                                {this.state.errors.userPassword &&
-                                                <p className="text-danger pt-2">
-                                                    {this.state.errors.userPassword}
-                                                </p>}
-                                            </Col>
-                                        </Row>
-                                    </FormGroup>
-                                    <Row className="py-2">
+                    <Row className="m-0 justify-content-center align-content-center" style={{height:'40rem'}}>
+                        <Card style={{width: '30rem'}}>
+                            <Form onSubmit={this.handleSubmit}>
+                                <FormGroup>
+                                    <FormLabel>User email :</FormLabel>
+                                    <FormControl
+                                        autoFocus={true}
+                                        id="userEmail"
+                                        name="userEmail"
+                                        type="email"
+                                        placeholder="Enter your email"
+                                        value={this.state.userEmail}
+                                        onChange={this.handleChange}/>
+                                    {this.state.errors.userEmail &&
+                                    <p className="text-danger pt-2">
+                                        {this.state.errors.userEmail}
+                                    </p>}
+                                    <FormLabel>User password :</FormLabel>
+                                    <FormControl
+                                        id="userPassword"
+                                        name="userPassword"
+                                        type="password"
+                                        placeholder="Enter your password"
+                                        value={this.state.userPassword}
+                                        onChange={this.handleChange}/>
+                                    {this.state.errors.userPassword &&
+                                    <p className="text-danger pt-2">
+                                        {this.state.errors.userPassword}
+                                    </p>}
+                                </FormGroup>
+                                <Row className="py-2">
+                                    <Col className="d-flex flex-column mx-5">
+                                        <Button
+                                            className="m-3"
+                                            disabled={this.state.isDisabled}
+                                            type="submit">
+                                            LOGIN
+                                        </Button>
                                         {!this.state.forgotPassword && !this.state.isDisabled &&
-                                        <Col>
-                                            <Row className="justify-content-end px-3">
-                                                <Button
-                                                    onClick={this.handleForgot}>
-                                                    I forgot my password.
-                                                </Button>
-                                            </Row>
-                                        </Col>
+                                        <Button
+                                            className="m-3"
+                                            onClick={this.handleForgot}>
+                                            I forgot my password.
+                                        </Button>
                                         }
+                                        <Row className="justify-content-center">
+                                        <span>Not registered : &nbsp;</span>
+                                        <Link to={"/userregister"}>Create an account
+                                        </Link>
+                                        </Row>
                                         {this.state.isDisabled &&
-                                        <Col>
-                                            <Row className="justify-content-end px-3">
-
-                                                <Button href="/userprofile">
-                                                    USER PROFILE
-                                                </Button>
-                                            </Row>
-                                        </Col>
-                                        }
-                                        <Col>
-                                            <Row className="justify-content-end px-3">
-                                                <Button
-                                                    disabled={this.state.isDisabled}
-                                                    type="submit">
-                                                    SUBMIT
-                                                </Button>
-                                            </Row>
-                                        </Col>
-                                    </Row>
-                                </Form>
-                            </Card>
-                        </Col>
+                                        <Button
+                                            className="m-3"
+                                            href="/userprofile">
+                                            USER PROFILE
+                                        </Button>}
+                                    </Col>
+                                </Row>
+                            </Form>
+                        </Card>
                     </Row>}
                     {this.state.loggedUser &&
                     <Row>
                         <h3>YOU ARE ALREADY LOGGED IN!</h3>
                     </Row>}
                     {this.state.forgotPassword &&
-                    <Row className="m-0">
+                    <Row className="m-5">
                         <Col className="p-5">
                             <Form onSubmit={this.newPasswordSubmit}>
                                 <FormGroup>
@@ -205,7 +192,8 @@ class UserLoginForm extends Component {
                                 </Button>
                             </Form>
                         </Col>
-                    </Row>}
+                    </Row>
+                    }
                 </Container>
             </div>
         );

@@ -33,6 +33,7 @@ import AllBlogsList from "./admin/blogs/allBlogsList";
 import UpdateBlogForm from "./admin/blogs/updateBlogForm";
 import Blog from "./pages/blog/blog";
 import BlogDetails from "./pages/blog/blogDetails";
+import AllCommentsList from "./admin/comments/AllCommentsList";
 
 class App extends Component {
     constructor(props) {
@@ -93,6 +94,7 @@ class App extends Component {
                         <Route path="/admin/blogslist/:id" component={UpdateBlogForm}/>
                         <Route path="/admin/blogslist" component={AllBlogsList}/>
                         <Route path="/admin/imagesupload" component={ImagesUpload}/>
+                        <Route path="/admin/commentslist" component={AllCommentsList}/>
                         <Route path="/admin/emailslist" component={AllEmailsList}/>
                         <Route path="/admin" component={AdminPanel}/>
                     </Switch>}

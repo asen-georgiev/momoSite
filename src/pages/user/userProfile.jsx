@@ -18,6 +18,8 @@ import '../../css/user/userProfile.css'
 import {deleteUser} from "../../services/userService";
 import UserDeleteAlert from "../../components/userDeleteAlert";
 import {Link} from "react-router-dom";
+import {getCommentsByUser} from "../../services/commentService";
+import BlogComments from "../../components/blogComments";
 
 
 class UserProfile extends Component {
@@ -25,16 +27,18 @@ class UserProfile extends Component {
         super(props);
         this.state = {
             loggedUser: [],
+            comments: [],
             url: '',
             showAlert: false
         }
     }
 
-    componentDidMount() {
+    async componentDidMount() {
         const url = picUrl;
         const jwtUser = getCurrentUser();
         const loggedUser = jwtDecode(jwtUser);
-        this.setState({loggedUser, url});
+        const {data: comments} = await getCommentsByUser(loggedUser._id)
+        this.setState({loggedUser, url, comments});
     }
 
     handleDelete = async (user) => {
@@ -89,6 +93,13 @@ class UserProfile extends Component {
                         <Link to={`/userprofile/${this.state.loggedUser._id}`}>UPDATE PROFILE</Link>
                         <Button onClick={() => this.showAlert(true)}>DELETE PROFILE</Button>
                         <Button onClick={this.logoutUser}>LOG OUT</Button>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <h4>My comments: </h4>
+                            <BlogComments
+                                comments={this.state.comments}/>
+                        </Col>
                     </Row>
                 </Container>
             </div>

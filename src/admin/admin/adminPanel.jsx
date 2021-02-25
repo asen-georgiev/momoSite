@@ -68,6 +68,12 @@ class AdminPanel extends Component {
                             link2Name="All Blogs list"
                             link2To="/admin/blogslist"/>
                         <TrTdTable
+                            name="Comments"
+                            link1Name="N/A"
+                            link1To="/admin/"
+                            link2Name="All Comments list"
+                            link2To="/admin/commentslist"/>
+                        <TrTdTable
                             name="Emails"
                             link1Name="N/A"
                             link1To="/admin/"
