@@ -58,7 +58,7 @@ class AllBlogsList extends Component {
                         <tr>
                             <th>Title</th>
                             <th>Sub Title</th>
-                            <td>Date</td>
+                            <th>Date</th>
                             <th>Text</th>
                             <th>Pictures</th>
                             <th>Link</th>

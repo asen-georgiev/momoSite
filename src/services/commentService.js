@@ -61,3 +61,13 @@ export function getCommentsByUser(userId) {
             }
         })
 }
+
+//Deleting single Comment
+export function deleteComment(commentId){
+    return httpService
+        .delete(commentUrl(commentId),{
+            headers: {
+                'x-auth-token': getCurrentAdmin()
+            }
+        })
+}
