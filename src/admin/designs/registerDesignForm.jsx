@@ -11,18 +11,16 @@ import {toast} from "react-toastify";
 import {FormLabel} from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import CardImg from "react-bootstrap/CardImg";
-import {createBlog} from "../../services/blogService";
 import {uploadImageAdmin} from "../../services/imgService";
+import {createDesign} from "../../services/designService";
 
-class RegisterBlogForm extends Component {
+class RegisterDesignForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            blogTitle: '',
-            blogSubTitle: '',
-            blogText: '',
-            blogPictures: [],
-            blogLink: '',
+            designTitle: '',
+            designText: '',
+            designPictures: '',
             errors: {},
             isDisabled: true,
             showPictures: [],
@@ -31,39 +29,27 @@ class RegisterBlogForm extends Component {
     }
 
     schema = Joi.object({
-        blogTitle: Joi.string()
+        designTitle: Joi.string()
             .required()
             .min(5)
             .max(100)
             .trim(true)
-            .label('Blog title'),
-        blogSubTitle: Joi.string()
-            .required()
-            .min(5)
+            .label('Design title'),
+        designText: Joi.string()
+            .allow('')
+            .min(10)
             .max(100)
             .trim(true)
-            .label('Blog sub title'),
-        blogText: Joi.string()
-            .required()
-            .min(20)
-            .max(2000)
-            .trim(true)
-            .label('Blog text'),
-        blogPictures: Joi.array()
+            .label('Design text'),
+        designPictures: Joi.array()
             .items(Joi.string())
-            .allow('')
-            .label('Blog pictures'),
-        blogLink: Joi.string()
-            .min(5)
-            .max(50)
-            .allow('')
-            .label('Blog link')
+            .label('Design pictures')
     })
 
 
     handleSubmit = async (event) => {
         event.preventDefault();
-        const errors = this.validateBlogInput();
+        const errors = this.validateDesignInput();
         this.setState({
             errors: errors || {}
         });
@@ -76,18 +62,16 @@ class RegisterBlogForm extends Component {
                 data.append('file', this.state.uploadPictures[i]);
             }
             await uploadImageAdmin(data);
-            toast.success('Images for the Bio were successfully uploaded!');
+            toast.success('Images for the Design were successfully uploaded!');
         }
 
-        const blog = {
-            blogTitle: this.state.blogTitle,
-            blogSubTitle: this.state.blogSubTitle,
-            blogText: this.state.blogText,
-            blogPictures: this.state.blogPictures,
-            blogLink: this.state.blogLink
+        const design = {
+            designTitle: this.state.designTitle,
+            designText: this.state.designText,
+            designPictures: this.state.designPictures
         }
-        await createBlog(blog);
-        toast.success("Blog was successfully created!");
+        await createDesign(design);
+        toast.success('Design was successfully created!');
 
         this.setState({
             isDisabled: true
@@ -98,20 +82,21 @@ class RegisterBlogForm extends Component {
     handleImages = (event) => {
 
         if (this.maxSelectedFiles(event)) {
+            const designFiles = [];
             const showFiles = [];
-            const blogFiles = [];
             for (let i = 0; i < event.target.files.length; i++) {
+                designFiles.push(event.target.files[i].name);
                 showFiles.push(URL.createObjectURL(event.target.files[i]));
-                blogFiles.push(event.target.files[i].name);
             }
             this.setState({
-                blogPictures: blogFiles,
+                designPictures: designFiles,
                 showPictures: showFiles,
                 uploadPictures: event.target.files,
                 isDisabled: false
             });
         }
     }
+
 
     handleChange = (event) => {
         const target = event.target;
@@ -121,31 +106,28 @@ class RegisterBlogForm extends Component {
         this.setState({
             [name]: value,
             isDisabled: false
-        });
+        })
     }
 
 
     maxSelectedFiles = (event) => {
         let files = event.target.files;
-        if (files.length > 5) {
-            toast.error("Only 5 images can be uploaded!");
+        if (files.length > 20) {
+            toast.error('Only 20 images can be uploaded!');
             event.target.value = null;
             return false;
         }
         return true;
     }
 
-
-    validateBlogInput = () => {
-        const blog = {
-            blogTitle: this.state.blogTitle,
-            blogSubTitle: this.state.blogSubTitle,
-            blogText: this.state.blogText,
-            blogPictures: this.state.blogPictures,
-            blogLink: this.state.blogLink
+    validateDesignInput = () => {
+        const design = {
+            designTitle: this.state.designTitle,
+            designText: this.state.designText,
+            designPictures: this.state.designPictures
         };
         const options = {abortEarly: false};
-        const result = this.schema.validate(blog, options);
+        const result = this.schema.validate(design, options);
 
         if (!result.error) return null;
 
@@ -192,75 +174,44 @@ class RegisterBlogForm extends Component {
                                                 type="file"
                                                 id="images"
                                                 name="images"
-                                                label="Max images to upload : 5"
+                                                label="Max images to upload : 20"
                                                 multiple
                                                 onChange={this.handleImages}/>
-                                            {this.state.errors.blogPictures &&
+                                            {this.state.errors.designPictures &&
                                             <p className="text-danger pt-2">
-                                                {this.state.errors.blogPictures}
+                                                {this.state.errors.designPictures}
                                             </p>}
                                         </FormGroup>
                                         <FormGroup>
                                             <FormLabel>
-                                                Blog title :
+                                                Design title :
                                             </FormLabel>
                                             <FormControl
                                                 autoFocus={true}
-                                                name="blogTitle"
+                                                name="designTitle"
                                                 type="text"
-                                                value={this.state.blogTitle}
-                                                placeholder="Enter title for the Blog"
+                                                value={this.state.designTitle}
+                                                placeholder="Enter title for the Design"
                                                 onChange={this.handleChange}/>
-                                            {this.state.errors.blogTitle &&
+                                            {this.state.errors.designTitle &&
                                             <p className="text-danger pt-2">
-                                                {this.state.errors.blogTitle}
+                                                {this.state.errors.designTitle}
                                             </p>}
                                         </FormGroup>
                                         <FormGroup>
                                             <FormLabel>
-                                                Blog sub title :
+                                                Design text :
                                             </FormLabel>
                                             <FormControl
-                                                name="blogSubTitle"
-                                                type="text"
-                                                value={this.state.blogSubTitle}
-                                                placeholder="Enter sub title for the Blog"
-                                                onChange={this.handleChange}/>
-                                            {this.state.errors.blogSubTitle &&
-                                            <p className="text-danger pt-2">
-                                                {this.state.errors.blogSubTitle}
-                                            </p>}
-                                        </FormGroup>
-                                        <FormGroup>
-                                            <FormLabel>
-                                                Blog text :
-                                            </FormLabel>
-                                            <FormControl
-                                                name="blogText"
+                                                name="designText"
                                                 as="textarea"
-                                                rows="5"
-                                                value={this.state.blogText}
-                                                placeholder="Enter text for the Blog"
+                                                rows="3"
+                                                value={this.state.designText}
+                                                placehodler="Enter text for the Design (not mandatory)"
                                                 onChange={this.handleChange}/>
-                                            {this.state.errors.blogText &&
+                                            {this.state.errors.designText &&
                                             <p className="text-danger pt-2">
-                                                {this.state.errors.blogText}
-                                            </p>}
-                                        </FormGroup>
-                                        <FormGroup>
-                                            <FormLabel>
-                                                Blog link :
-                                            </FormLabel>
-                                            <FormControl
-                                                name="blogLink"
-                                                type="text"
-                                                value={this.state.blogLink}
-                                                placeholder="Enter link to additional info"
-                                                onChange={this.handleChange}
-                                            />
-                                            {this.state.errors.blogLink &&
-                                            <p className="text-danger pt-2">
-                                                {this.state.errors.blogLink}
+                                                {this.state.designText}
                                             </p>}
                                         </FormGroup>
                                         <Row className="mt-3">
@@ -268,7 +219,7 @@ class RegisterBlogForm extends Component {
                                                 <Button
                                                     type="submit"
                                                     disabled={this.state.isDisabled}>
-                                                    CREATE BLOG
+                                                    CREATE DESIGN
                                                 </Button>
                                             </Col>
                                             <Col md={{span: 4, offset: 4}} className="d-flex flex-row-reverse">
@@ -289,4 +240,4 @@ class RegisterBlogForm extends Component {
     }
 }
 
-export default RegisterBlogForm;
+export default RegisterDesignForm;

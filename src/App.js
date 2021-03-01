@@ -34,6 +34,9 @@ import UpdateBlogForm from "./admin/blogs/updateBlogForm";
 import Blog from "./pages/blog/blog";
 import BlogDetails from "./pages/blog/blogDetails";
 import AllCommentsList from "./admin/comments/AllCommentsList";
+import RegisterDesignForm from "./admin/designs/registerDesignForm";
+import AllDesignsList from "./admin/designs/allDesignsList";
+import UpdateDesignForm from "./admin/designs/updateDesignForm";
 
 class App extends Component {
     constructor(props) {
@@ -93,9 +96,12 @@ class App extends Component {
                         <Route path="/admin/registerblog" component={RegisterBlogForm}/>
                         <Route path="/admin/blogslist/:id" component={UpdateBlogForm}/>
                         <Route path="/admin/blogslist" component={AllBlogsList}/>
-                        <Route path="/admin/imagesupload" component={ImagesUpload}/>
                         <Route path="/admin/commentslist" component={AllCommentsList}/>
+                        <Route path="/admin/registerdesign" component={RegisterDesignForm}/>
+                        <Route path="/admin/designslist/:id" component={UpdateDesignForm}/>
+                        <Route path="/admin/designslist" component={AllDesignsList}/>
                         <Route path="/admin/emailslist" component={AllEmailsList}/>
+                        <Route path="/admin/imagesupload" component={ImagesUpload}/>
                         <Route path="/admin" component={AdminPanel}/>
                     </Switch>}
                 </Switch>

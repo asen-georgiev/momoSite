@@ -67,9 +67,8 @@ class AllCommentsList extends Component {
                                     <td>{comment.commentText}</td>
                                     <td>{new Date(comment.commentDate).toLocaleString()}</td>
                                     <td>
-                                        <Button onClick={() => {
-                                            this.handleDelete(comment)
-                                        }}>
+                                        <Button onClick={() =>
+                                            this.handleDelete(comment)}>
                                             Delete
                                         </Button>
                                     </td>
