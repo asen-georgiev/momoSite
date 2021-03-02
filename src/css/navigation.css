@@ -6,7 +6,7 @@
 
 .app-navbar-link {
     color: wheat !important;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 1rem !important;
     font-size: x-large;
 }
 

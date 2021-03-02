@@ -1,5 +1,5 @@
 import React from 'react';
-import {NavLink} from "react-router-dom";
+import {Link} from "react-router-dom";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
 
@@ -9,7 +9,7 @@ function NavLinkComp(props) {
         <div>
             {items.map(item => {
             return (
-                <NavLink
+                <Link
                     key={item._id}
                     className={className}
                     to={item.to}
@@ -21,11 +21,9 @@ function NavLinkComp(props) {
                     <span>
                         {item.name}
                     </span>
-                </NavLink>
+                </Link>
             )
         })}
-        <NavLink
-        to={'/admin'}>Qj laina</NavLink>
         </div>
 
     );

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import '../css/navigation.css'
-import {NavLink} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 import NavLinkComp from "./navLinkComp";
 import {faHome, faDiceD20, faPenNib,faUserFriends,faSignature} from "@fortawesome/free-solid-svg-icons";
 

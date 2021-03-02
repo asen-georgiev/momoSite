@@ -7,10 +7,9 @@ import FormGroup from "react-bootstrap/FormGroup";
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
 import Joi from "joi";
-import {toast} from "react-toastify";
-import Card from "react-bootstrap/Card";
+import {Slide, toast} from "react-toastify";
 import {adminLogin, getCurrentAdmin} from "../../services/adminLoginService";
-import jwtDecode from "jwt-decode";
+import "../../css/admin/adminLogin.css"
 
 
 class AdminLoginForm extends Component {
@@ -30,20 +29,19 @@ class AdminLoginForm extends Component {
             .required()
             .min(5)
             .max(50)
-            .label("AdminEmail"),
+            .label("Admin email"),
         adminPassword: Joi.string()
             .required()
             .min(8)
             .max(255)
-            .label("AdminPassword")
+            .label("Admin password")
     });
 
 
-     componentDidMount() {
+    componentDidMount() {
         const loggedAdmin = getCurrentAdmin();
         this.setState({loggedAdmin});
     }
-
 
 
     handleChange = (event) => {
@@ -61,12 +59,17 @@ class AdminLoginForm extends Component {
         const errors = this.validate();
         this.setState({errors: errors || {}});
         if (errors) return;
+
         console.log('Form submitted.');
 
         const admin = {adminEmail: this.state.adminEmail, adminPassword: this.state.adminPassword};
         await adminLogin(admin);
 
-        toast.success('Admin logged successfully!');
+        toast('Admin logged in!', {
+            position: "top-center",
+            transition: Slide,
+            className: 'login-toaster'
+        });
         this.setState({isDisabled: true});
     }
 
@@ -84,79 +87,84 @@ class AdminLoginForm extends Component {
     };
 
 
-
     render() {
         return (
             <div>
-                <Container className="container bg-danger" fluid={true} style={{width:5000}}>
-                    {this.state.loggedAdmin === null &&
-                    <Row className="m-0">
-                        <Col>
-                            <Row className="bg-light">
-                                <h4>Login for the Admin panel:</h4>
-                            </Row>
-                            <Card className="bg-dark">
-                                <Form onSubmit={this.handleSubmit}>
-                                    <FormGroup className="py-5">
-                                        <Row>
+                <Container className="main-container" fluid={true}>
+                    <Container className="container-lg sub-container" fluid={true}>
+                        {this.state.loggedAdmin === null &&
+                        <Row className="align-content-center" style={{height: '40rem'}}>
+                            <Col>
+                                <div className="div-form m-3">
+                                    <Form onSubmit={this.handleSubmit}>
+                                        <FormGroup className="px-5 pt-5">
+                                            <Row>
+                                                <Col>
+                                                    {/*{this.state.errors.adminEmail &&*/}
+                                                    {/*<p className="text-danger pt-2">*/}
+                                                    {/*    {this.state.errors.adminEmail}*/}
+                                                    {/*</p>}*/}
+                                                    <FormControl
+                                                        className="login-form-control"
+                                                        autoFocus={true}
+                                                        id="adminEmail"
+                                                        name="adminEmail"
+                                                        type="email"
+                                                        placeholder={this.state.errors.adminEmail || "admin email"}
+                                                        value={this.state.adminEmail}
+                                                        onChange={this.handleChange}/>
+                                                </Col>
+                                                <Col>
+                                                    {/*{this.state.errors.adminPassword &&*/}
+                                                    {/*<p className="text-danger pt-2">*/}
+                                                    {/*    {this.state.errors.adminPassword}*/}
+                                                    {/*</p>}*/}
+                                                    <FormControl
+                                                        className="login-form-control"
+                                                        id="adminPassword"
+                                                        name="adminPassword"
+                                                        type="password"
+                                                        placeholder={this.state.errors.adminPassword || "admin password"}
+                                                        value={this.state.adminPassword}
+                                                        onChange={this.handleChange}/>
+                                                </Col>
+                                            </Row>
+                                        </FormGroup>
+                                        <Row className="px-5 pb-5 py-3">
                                             <Col>
-                                                <FormControl
-                                                    autoFocus={true}
-                                                    id="adminEmail"
-                                                    name="adminEmail"
-                                                    type="email"
-                                                    placeholder={"Admin email"}
-                                                    value={this.state.adminEmail}
-                                                    onChange={this.handleChange}/>
-                                                {this.state.errors.adminEmail &&
-                                                <p className="text-danger pt-2">
-                                                    {this.state.errors.adminEmail}
-                                                </p>}
+                                                <Row className="justify-content-start px-3">
+                                                    {this.state.isDisabled &&
+                                                    <Button
+                                                        className="admin-redirect-button"
+                                                        href="/admin">
+                                                        TO ADMIN PANEL
+                                                    </Button>
+                                                    }
+                                                </Row>
                                             </Col>
                                             <Col>
-                                                <FormControl
-                                                    id="adminPassword"
-                                                    name="adminPassword"
-                                                    type="password"
-                                                    placeholder={"Admin password"}
-                                                    value={this.state.adminPassword}
-                                                    onChange={this.handleChange}/>
-                                                {this.state.errors.adminPassword &&
-                                                <p className="text-danger pt-2">
-                                                    {this.state.errors.adminPassword}
-                                                </p>}
+                                                <Row className="justify-content-end px-3">
+                                                    <Button
+                                                        className="admin-login-button"
+                                                        disabled={this.state.isDisabled}
+                                                        type="submit">
+                                                        LOGIN
+                                                    </Button>
+                                                </Row>
                                             </Col>
                                         </Row>
-                                    </FormGroup>
-                                    <Row className="py-2">
-                                        <Col>
-                                            <Row className="justify-content-end px-3">
-                                                {this.state.isDisabled &&
-                                                <Button href="/admin">
-                                                    ADMIN PANEL
-                                                </Button>
-                                                }
-                                            </Row>
-                                        </Col>
-                                        <Col>
-                                            <Row className="justify-content-end px-3">
-                                                <Button
-                                                    disabled={this.state.isDisabled}
-                                                    type="submit">
-                                                    SUBMIT
-                                                </Button>
-                                            </Row>
-                                        </Col>
-                                    </Row>
-                                </Form>
-                            </Card>
-                        </Col>
-                    </Row>
-                    }
-                    {this.state.loggedAdmin &&
-                    <Row>
-                        <h3>YOU ARE ALREADY LOGGED IN!</h3>
-                    </Row>}
+                                    </Form>
+                                </div>
+                            </Col>
+                        </Row>
+                        }
+                        {this.state.loggedAdmin &&
+                        <Row className="align-content-center" style={{height: '40rem'}}>
+                            <Col>
+                                <h2 className="text-center" style={{color: 'wheat'}}>YOU ARE ALREADY LOGGED IN!</h2>
+                            </Col>
+                        </Row>}
+                    </Container>
                 </Container>
             </div>
         );

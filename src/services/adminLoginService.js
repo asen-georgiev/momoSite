@@ -16,7 +16,7 @@ export function adminLogin(data) {
             return response.data;
         })
         .catch(err => {
-            toast.error(err.response.data);
+            // toast.error(err.response.data);
             return Promise.reject(err);
         });
 }

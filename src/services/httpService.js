@@ -1,18 +1,20 @@
 import axios from "axios";
 import {toast} from "react-toastify";
 
-axios.interceptors.response.use(success =>{
+axios.interceptors.response.use(success => {
     console.log(success);
-    return(success);
-},error => {
+    return (success);
+}, error => {
     const expectedError = error.response &&
-        error.response.status >=400 &&
-        error.response.status <500;
-    if(expectedError){
+        error.response.status >= 400 &&
+        error.response.status < 500;
+    if (expectedError) {
         console.log(error.response.data);
-        toast.error(error.response.data);
+        toast.error(error.response.data, {
+            position: "top-center"
+        });
     }
-    if(!expectedError){
+    if (!expectedError) {
         console.log(error);
         toast.error('An Unexpected error occured!');
     }

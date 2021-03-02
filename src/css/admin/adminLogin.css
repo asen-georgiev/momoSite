@@ -1,0 +1,85 @@
+.main-container{
+    height: 100vh;
+    background-image: linear-gradient(orangered,indigo);
+}
+
+.sub-container{
+    height: 100vh;
+}
+
+.div-form{
+    background-color: rgba(255,255,255,0.1);
+}
+
+.login-form-control{
+    border-radius: 0 !important;
+    font-style: italic !important;
+    font-size: x-large !important;
+    background: transparent !important;
+    border-top: transparent !important;
+    border-left: transparent !important;
+    border-right: transparent !important;
+    border-bottom-color: wheat !important;
+    color:  #ffffff !important;
+    border-bottom-width: 2px !important;
+}
+
+.login-form-control:focus {
+    box-shadow: none !important;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-text-fill-color: white;
+}
+
+::placeholder{
+    color:wheat !important;
+    font-size: large !important;
+
+}
+
+.admin-login-button{
+    background-color: orangered;
+    border: none;
+    padding-inline: 5rem;
+}
+
+.admin-login-button:hover{
+    background-color: red;
+}
+
+.admin-login-button:focus{
+    background-color: red;
+    box-shadow: none !important;
+}
+
+
+.admin-login-button:disabled{
+    background-color: lightcoral;
+}
+
+.admin-redirect-button{
+    background-color: orangered;
+    border: none;
+    padding-inline: 5rem;
+}
+
+.admin-redirect-button:hover{
+    background-color: red;
+}
+
+.admin-redirect-button:focus{
+    background-color: red;
+    box-shadow: none !important;
+}
+
+.login-toaster{
+    background-color: seagreen;
+    color: white;
+    font-size: x-large;
+    text-align: center !important;
+}
