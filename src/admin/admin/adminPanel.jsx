@@ -4,8 +4,8 @@ import {getCurrentAdmin, adminLogout} from "../../services/adminLoginService";
 import jwtDecode from "jwt-decode";
 import Button from "react-bootstrap/Button";
 import Table from "react-bootstrap/Table";
-import {Link} from "react-router-dom";
-import {loggedAdmin} from "../../services/adminService";
+import "../../css/admin/adminPanel.css";
+import Row from "react-bootstrap/Row";
 import TrTdTable from "../../components/trTdTable";
 
 
@@ -32,17 +32,20 @@ class AdminPanel extends Component {
     render() {
         return (
             <div>
-                <Container>
-                    <h3>Logged as: {this.state.admin.adminName}</h3>
-                    <Table>
-                        <thead>
+                <Container className="panel-main-container" fluid={true}>
+                    <Container className="panel-sub-container container" fluid={true}>
+                        <Row className="m-0">
+                    <span className="panel-span">Admin : {this.state.admin.adminName}</span>
+                        </Row>
+                    <Table className="panel-table">
+                        <thead className="panel-thead">
                         <tr>
                             <th>Element name</th>
                             <th>Create new</th>
                             <th>To list</th>
                         </tr>
                         </thead>
-                        <tbody>
+                        <tbody className="panel-thead">
                         <TrTdTable
                             name="Admins"
                             link1Name="Register"
@@ -88,9 +91,11 @@ class AdminPanel extends Component {
                         </tbody>
                     </Table>
                     <Button
+                        className="panel-logout-button"
                         onClick={this.logoutAdmin}>
-                        Logout
+                        LOGOUT
                     </Button>
+                    </Container>
                 </Container>
             </div>
         );

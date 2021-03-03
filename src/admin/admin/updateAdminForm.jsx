@@ -7,9 +7,10 @@ import Joi from "joi";
 import Form from "react-bootstrap/Form";
 import FormGroup from "react-bootstrap/FormGroup";
 import FormControl from "react-bootstrap/FormControl";
-import {toast} from "react-toastify";
+import {toast, Zoom} from "react-toastify";
 import {FormLabel} from "react-bootstrap";
 import FormCheck from "react-bootstrap/FormCheck";
+import "../../css/admin/adminUpdate.css";
 import {getAdmin, updateAdmin} from "../../services/adminService";
 
 class UpdateAdminForm extends Component {
@@ -17,13 +18,13 @@ class UpdateAdminForm extends Component {
         super(props);
         this.state = {
             admin: {
-                adminName:"",
-                adminEmail:"",
-                adminPassword:"",
+                adminName: "",
+                adminEmail: "",
+                adminPassword: "",
                 isAdmin: false
             },
-            errors:{},
-            isDisabled:true
+            errors: {},
+            isDisabled: true
         }
 
     }
@@ -50,7 +51,7 @@ class UpdateAdminForm extends Component {
     });
 
 
-    handleChange = (event) =>{
+    handleChange = (event) => {
         const admin = {...this.state.admin};
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -63,13 +64,13 @@ class UpdateAdminForm extends Component {
     }
 
 
-    async populateAdmin(){
-        try{
+    async populateAdmin() {
+        try {
             const adminId = this.props.match.params.id;
             const {data: admin} = await getAdmin(adminId);
             this.setState({admin: this.mapToViewModel(admin)});
-        }catch (e) {
-            if(e.response && e.response.status === 404)
+        } catch (e) {
+            if (e.response && e.response.status === 404)
                 console.log('There is no Admin with the given ID!');
         }
     }
@@ -78,7 +79,7 @@ class UpdateAdminForm extends Component {
         await this.populateAdmin();
     }
 
-    mapToViewModel(admin){
+    mapToViewModel(admin) {
         return {
             _id: admin._id,
             adminName: admin.adminName,
@@ -89,11 +90,11 @@ class UpdateAdminForm extends Component {
     }
 
 
-    handleSubmit = async (event) =>{
+    handleSubmit = async (event) => {
         event.preventDefault();
         const errors = this.validateAdminInput();
         this.setState({errors: errors || {}});
-        if(errors) return;
+        if (errors) return;
 
         const admin = {
             adminName: this.state.admin.adminName,
@@ -102,9 +103,13 @@ class UpdateAdminForm extends Component {
             isAdmin: this.state.admin.isAdmin
         };
 
-        await updateAdmin(admin,this.state.admin._id);
+        await updateAdmin(admin, this.state.admin._id);
         this.setState({isDisabled: true});
-        toast.success('Admin update was successful!');
+        toast('Admin update was successful!', {
+            position: "top-center",
+            transition: Zoom,
+            className: 'update-toaster'
+        });
     }
 
 
@@ -116,10 +121,10 @@ class UpdateAdminForm extends Component {
             isAdmin: this.state.admin.isAdmin
         };
         const options = {abortEarly: false};
-        const result = this.schema.validate(admin,options);
+        const result = this.schema.validate(admin, options);
         console.log(result);
 
-        if(!result.error) return null;
+        if (!result.error) return null;
         const errors = {};
         for (let item of result.error.details)
             errors[item.path[0]] = item.message;
@@ -135,84 +140,86 @@ class UpdateAdminForm extends Component {
     render() {
         return (
             <div>
-              <Container>
-                  <Form onSubmit={this.handleSubmit}>
-                      <FormGroup>
-                          <FormLabel>
-                              Admin Name
-                          </FormLabel>
-                          <FormControl
-                              autoFocus={true}
-                              id="adminName"
-                              name="adminName"
-                              type="text"
-                              value={this.state.admin.adminName}
-                              placeholder="Enter Admin's name"
-                              onChange={this.handleChange}/>
-                          {this.state.errors.adminName &&
-                          <span className="text-danger pt-2">
-                                {this.state.errors.adminName}
-                            </span>}
-                      </FormGroup>
-                      <FormGroup>
-                          <FormLabel>
-                              Admin Email
-                          </FormLabel>
-                          <FormControl
-                              id="adminEmail"
-                              name="adminEmail"
-                              type="email"
-                              value={this.state.admin.adminEmail}
-                              placeholder="Enter Admin's email"
-                              onChange={this.handleChange}/>
-                          {this.state.errors.adminEmail &&
-                          <span className="text-danger pt-2">
-                                {this.state.errors.adminEmail}
-                            </span>}
-                      </FormGroup>
-                      <FormGroup>
-                          <FormLabel>
-                              Admin Password
-                          </FormLabel>
-                          <FormControl
-                              id="adminPassword"
-                              name="adminPassword"
-                              type="password"
-                              value={this.state.admin.adminPassword}
-                              placeholder="Enter Admin's password"
-                              onChange={this.handleChange}/>
-                          {this.state.errors.adminPassword &&
-                          <span className="text-danger pt-2">
-                                {this.state.errors.adminPassword}
-                            </span>}
-                      </FormGroup>
-                      <FormGroup>
-                          <FormCheck
-                              id="isAdmin"
-                              name="isAdmin"
-                              type="checkbox"
-                              checked={this.state.admin.isAdmin}
-                              value={this.state.admin.isAdmin}
-                              label="Define Admin rights"
-                              onChange={this.handleChange}/>
-                      </FormGroup>
-                      <Row>
-                          <Col>
-                              <Button
-                                  type="submit"
-                                  disabled={this.state.isDisabled}>
-                                  UPDATE ADMIN
-                              </Button>
-                          </Col>
-                          <Col>
-                              <Button
-                                  onClick={this.adminRedirect}>
-                                  BACK TO ADMINS LIST
-                              </Button>
-                          </Col>
-                      </Row>
-                  </Form>
-              </Container>
+                <Container className="update-main-container" fluid={true}>
+                    <Container className="update-sub-container container" fluid={true}>
+                        <Row className="align-content-center" style={{height: '40rem'}}>
+                            <Col>
+                                <div className="update-div-form">
+                                    <Form onSubmit={this.handleSubmit}>
+                                        <FormGroup className="px-5 pt-4">
+                                            {/*<FormLabel>*/}
+                                            {/*    Admin Name*/}
+                                            {/*</FormLabel>*/}
+                                            <FormControl
+                                                className="update-form-control"
+                                                autoFocus={true}
+                                                id="adminName"
+                                                name="adminName"
+                                                type="text"
+                                                value={this.state.admin.adminName}
+                                                placeholder={this.state.errors.adminName || "Enter Admin's name"}
+                                                onChange={this.handleChange}/>
+                                        </FormGroup>
+                                        <FormGroup className="px-5 pt-2">
+                                            {/*<FormLabel>*/}
+                                            {/*    Admin Email*/}
+                                            {/*</FormLabel>*/}
+                                            <FormControl
+                                                className="update-form-control"
+                                                id="adminEmail"
+                                                name="adminEmail"
+                                                type="email"
+                                                value={this.state.admin.adminEmail}
+                                                placeholder={this.state.errors.adminEmail || "Enter Admin's email"}
+                                                onChange={this.handleChange}/>
+                                        </FormGroup>
+                                        <FormGroup className="px-5 pt-2">
+                                            {/*<FormLabel>*/}
+                                            {/*    Admin Password*/}
+                                            {/*</FormLabel>*/}
+                                            <FormControl
+                                                className="update-form-control"
+                                                id="adminPassword"
+                                                name="adminPassword"
+                                                type="password"
+                                                value={this.state.admin.adminPassword}
+                                                placeholder={this.state.errors.adminPassword || "Enter Admin's password"}
+                                                onChange={this.handleChange}/>
+                                        </FormGroup>
+                                        <FormGroup className="px-5 pt-2">
+                                            <FormCheck
+                                                className="update-checkbox"
+                                                id="isAdmin"
+                                                name="isAdmin"
+                                                type="checkbox"
+                                                checked={this.state.admin.isAdmin}
+                                                value={this.state.admin.isAdmin}
+                                                label="User will have Admin rights"
+                                                onChange={this.handleChange}/>
+                                        </FormGroup>
+                                        <Row className="px-5 pb-5 py-2 d-flex justify-content-between">
+                                            <Col>
+                                                <Button
+                                                    className="update-update-button"
+                                                    type="submit"
+                                                    disabled={this.state.isDisabled}>
+                                                    UPDATE ADMIN
+                                                </Button>
+                                            </Col>
+                                            <Col className="d-flex justify-content-end">
+                                                <Button
+                                                    className="update-redirect-button"
+                                                    onClick={this.adminRedirect}>
+                                                    BACK TO ADMINS LIST
+                                                </Button>
+                                            </Col>
+                                        </Row>
+                                    </Form>
+                                </div>
+                            </Col>
+                        </Row>
+                    </Container>
+                </Container>
             </div>
         );
     }

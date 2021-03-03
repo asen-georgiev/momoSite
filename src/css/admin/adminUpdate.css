@@ -1,0 +1,74 @@
+.update-main-container {
+    height: 100vh;
+    background-image: linear-gradient(rgb(7, 2, 36), indigo, coral);
+}
+
+.update-sub-container {
+    height: 100vh;
+}
+
+.update-div-form {
+    background-color: rgba(240, 104, 50, 0.1);
+}
+
+.update-form-control {
+    border-radius: 0 !important;
+    font-size: x-large !important;
+    background: transparent !important;
+    border-top: transparent !important;
+    border-left: transparent !important;
+    border-right: transparent !important;
+    border-bottom-color: wheat !important;
+    color: antiquewhite !important;
+    border-bottom-width: 2px !important;
+}
+
+.update-form-control:focus {
+    box-shadow: none !important;
+}
+
+.update-checkbox{
+    color: darkorange;
+}
+
+.update-update-button{
+    background-color: orangered;
+    border: none;
+    padding-inline: 5rem;
+}
+
+.update-update-button:hover{
+    background-color: red;
+}
+
+.update-update-button:focus{
+    background-color: red;
+    box-shadow: none !important;
+}
+
+.update-update-button:disabled{
+    background-color: lightcoral;
+}
+
+.update-redirect-button{
+    background-color: orangered;
+    border: none;
+    padding-inline: 5rem;
+}
+
+.update-redirect-button:hover{
+    background-color: red;
+}
+
+.update-redirect-button:focus{
+    background-color: red;
+    box-shadow: none !important;
+}
+
+.update-toaster{
+    background-color: darkolivegreen;
+    color: antiquewhite;
+    font-size: x-large;
+    text-align: center !important;
+}
+

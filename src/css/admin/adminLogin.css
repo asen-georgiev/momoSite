@@ -1,26 +1,26 @@
-.main-container{
+.login-main-container{
     height: 100vh;
-    background-image: linear-gradient(orangered,indigo);
+    background-image: linear-gradient(rgb(7, 2, 36),indigo,coral);
 }
 
-.sub-container{
+.login-sub-container{
     height: 100vh;
 }
 
-.div-form{
-    background-color: rgba(255,255,255,0.1);
+.login-div-form{
+    background-color: rgba(240, 104, 50,0.1);
 }
 
 .login-form-control{
     border-radius: 0 !important;
-    font-style: italic !important;
+    /*font-style: italic !important;*/
     font-size: x-large !important;
     background: transparent !important;
     border-top: transparent !important;
     border-left: transparent !important;
     border-right: transparent !important;
     border-bottom-color: wheat !important;
-    color:  #ffffff !important;
+    color:  antiquewhite !important;
     border-bottom-width: 2px !important;
 }
 
@@ -33,13 +33,13 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
     transition: background-color 5000s ease-in-out 0s;
-    -webkit-text-fill-color: white;
+    -webkit-text-fill-color: antiquewhite;
 }
 
 ::placeholder{
+    font-style: italic !important;
     color:wheat !important;
     font-size: large !important;
-
 }
 
 .admin-login-button{
@@ -78,8 +78,15 @@ input:-webkit-autofill:active {
 }
 
 .login-toaster{
-    background-color: seagreen;
-    color: white;
+    background-color: darkolivegreen;
+    color: antiquewhite;
+    font-size: x-large;
+    text-align: center !important;
+}
+
+.http-toaster{
+    background-color: darkred;
+    color: antiquewhite;
     font-size: x-large;
     text-align: center !important;
 }

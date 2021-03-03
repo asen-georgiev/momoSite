@@ -1,0 +1,44 @@
+.panel-main-container{
+    height: 100vh;
+    background-image: linear-gradient(rgb(7, 2, 36),indigo,coral);
+}
+
+.panel-sub-container{
+    height: 100vh;
+}
+
+.panel-table{
+    background-color: rgba(240, 104, 50,0.1);
+    margin-top: 2rem;
+    font-size: large;
+}
+
+.panel-span{
+    font-size: x-large;
+    margin-top: 4rem;
+    color: wheat;
+}
+
+.panel-thead{
+    color: wheat;
+}
+
+.panel-link{
+    color: darkorange;
+}
+
+.panel-link:hover{
+    color: orangered;
+    text-decoration: none;
+}
+
+.panel-logout-button{
+    background-color: orangered;
+    border: none;
+    margin-top: 1rem;
+    padding-inline: 5rem;
+}
+
+.panel-logout-button:hover{
+    background-color: red;
+}

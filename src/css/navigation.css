@@ -1,7 +1,7 @@
 .app-navbar{
-    background-color: rgba(128,128,128,0.8);
-    box-shadow:
-            0 0 0 2px yellow;
+    background-color: rgb(7, 2, 36);
+    /*box-shadow:*/
+    /*        0 0 0 2px yellow;*/
 }
 
 .app-navbar-link {

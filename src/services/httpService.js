@@ -11,7 +11,8 @@ axios.interceptors.response.use(success => {
     if (expectedError) {
         console.log(error.response.data);
         toast.error(error.response.data, {
-            position: "top-center"
+            position: "top-center",
+            className: 'http-toaster'
         });
     }
     if (!expectedError) {

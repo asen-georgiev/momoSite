@@ -7,7 +7,7 @@ import FormGroup from "react-bootstrap/FormGroup";
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
 import Joi from "joi";
-import {Slide, toast} from "react-toastify";
+import {Slide, toast, Zoom} from "react-toastify";
 import {adminLogin, getCurrentAdmin} from "../../services/adminLoginService";
 import "../../css/admin/adminLogin.css"
 
@@ -65,9 +65,9 @@ class AdminLoginForm extends Component {
         const admin = {adminEmail: this.state.adminEmail, adminPassword: this.state.adminPassword};
         await adminLogin(admin);
 
-        toast('Admin logged in!', {
+        toast('You are now logged in!', {
             position: "top-center",
-            transition: Slide,
+            transition: Zoom,
             className: 'login-toaster'
         });
         this.setState({isDisabled: true});
@@ -90,14 +90,14 @@ class AdminLoginForm extends Component {
     render() {
         return (
             <div>
-                <Container className="main-container" fluid={true}>
-                    <Container className="container-lg sub-container" fluid={true}>
+                <Container className="login-main-container" fluid={true}>
+                    <Container className="container-lg login-sub-container" fluid={true}>
                         {this.state.loggedAdmin === null &&
                         <Row className="align-content-center" style={{height: '40rem'}}>
                             <Col>
-                                <div className="div-form m-3">
+                                <div className="login-div-form m-3">
                                     <Form onSubmit={this.handleSubmit}>
-                                        <FormGroup className="px-5 pt-5">
+                                            <FormGroup className="px-5 pt-5">
                                             <Row>
                                                 <Col>
                                                     {/*{this.state.errors.adminEmail &&*/}

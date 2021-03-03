@@ -1,0 +1,73 @@
+.register-main-container {
+    height: 100vh;
+    background-image: linear-gradient(rgb(7, 2, 36), indigo, coral);
+}
+
+.register-sub-container {
+    height: 100vh;
+}
+
+.register-div-form {
+    background-color: rgba(240, 104, 50, 0.1);
+}
+
+.register-form-control {
+    border-radius: 0 !important;
+    font-size: x-large !important;
+    background: transparent !important;
+    border-top: transparent !important;
+    border-left: transparent !important;
+    border-right: transparent !important;
+    border-bottom-color: wheat !important;
+    color: antiquewhite !important;
+    border-bottom-width: 2px !important;
+}
+
+.register-form-control:focus {
+    box-shadow: none !important;
+}
+
+.register-checkbox{
+    color: darkorange;
+}
+
+.register-register-button{
+    background-color: orangered;
+    border: none;
+    padding-inline: 5rem;
+}
+
+.register-register-button:hover{
+    background-color: red;
+}
+
+.register-register-button:focus{
+    background-color: red;
+    box-shadow: none !important;
+}
+
+.register-register-button:disabled{
+    background-color: lightcoral;
+}
+
+.register-redirect-button{
+    background-color: orangered;
+    border: none;
+    padding-inline: 5rem;
+}
+
+.register-redirect-button:hover{
+    background-color: red;
+}
+
+.register-redirect-button:focus{
+    background-color: red;
+    box-shadow: none !important;
+}
+
+.register-toaster{
+    background-color: darkolivegreen;
+    color: antiquewhite;
+    font-size: x-large;
+    text-align: center !important;
+}

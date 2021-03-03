@@ -1,0 +1,70 @@
+.adminlist-main-container{
+    height: 100vh;
+    background-image: linear-gradient(rgb(7, 2, 36),indigo,coral);
+}
+
+.adminlist-sub-container{
+    height: 100vh;
+}
+
+.adminlist-table{
+    background-color: rgba(240, 104, 50,0.1);
+    margin-top: 2rem;
+    font-size: large;
+}
+
+.adminlist-span{
+    font-size: x-large;
+    margin-top: 4rem;
+    color: wheat;
+}
+
+.adminlist-thead{
+    color: wheat;
+}
+
+.adminlist-tbody{
+    color: antiquewhite;
+}
+
+.adminlist-link{
+    color: darkorange;
+}
+
+.adminlist-link:hover{
+    color: orangered;
+    text-decoration: none;
+}
+
+.adminlist-redirect-button{
+    background-color: orangered;
+    border: none;
+    margin-top: 1rem;
+    padding-inline: 5rem;
+}
+
+.adminlist-redirect-button:hover{
+    background-color: red;
+}
+
+.adminlist-delete-button{
+    background-color: red;
+    border: none;
+    padding-inline: 5rem;
+}
+
+.adminlist-delete-button:hover{
+    background-color: orangered;
+}
+
+.adminlist-delete-button:focus{
+    background-color: orangered;
+    box-shadow: none !important;
+}
+
+.adminlist-toaster{
+    background-color: darkolivegreen;
+    color: antiquewhite;
+    font-size: x-large;
+    text-align: center !important;
+}
