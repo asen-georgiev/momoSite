@@ -1,6 +1,6 @@
 .register-main-container {
     height: 100vh;
-    background-image: linear-gradient(rgb(7, 2, 36), indigo, coral);
+    background-image: linear-gradient(rgb(7, 2, 36), indigo,lightskyblue);
 }
 
 .register-sub-container {
