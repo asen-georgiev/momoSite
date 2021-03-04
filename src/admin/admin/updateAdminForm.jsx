@@ -142,7 +142,7 @@ class UpdateAdminForm extends Component {
             <div>
                 <Container className="update-main-container" fluid={true}>
                     <Container className="update-sub-container container" fluid={true}>
-                        <Row className="align-content-center" style={{height: '40rem'}}>
+                        <Row>
                             <Col>
                                 <div className="update-div-form">
                                     <Form onSubmit={this.handleSubmit}>

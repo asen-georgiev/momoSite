@@ -112,9 +112,9 @@ class RegisterAdminForm extends Component {
             <div>
                 <Container className="register-main-container" fluid={true}>
                     <Container className="container-lg register-sub-container">
-                        <Row className="align-content-center" style={{height: '40rem'}}>
+                        <Row>
                             <Col>
-                                <div className="register-div-form m-5">
+                                <div className="register-div-form">
                                     <Form onSubmit={this.handleSubmit}>
                                         <FormGroup className="px-5 pt-4">
                                             {/*<FormLabel>*/}

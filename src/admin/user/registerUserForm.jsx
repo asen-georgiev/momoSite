@@ -170,12 +170,12 @@ class RegisterUserForm extends Component {
             <div>
                 <Container className="register-user-main-container" fluid={true}>
                     <Container className="register-user-sub-container container-lg" fluid={true}>
-                        <Row className="align-content-center bg-dark">
+                        <Row>
                             <Col>
                                 <div className="register-user-div-form">
                                     <Form onSubmit={this.handleSubmit}>
                                         <Row>
-                                            <Col md="auto">
+                                            <Col md="auto" className="pr-0">
                                                 {this.state.showPicture &&
                                                 <CardImg
                                                     className="ml-5 mt-5"
@@ -204,7 +204,7 @@ class RegisterUserForm extends Component {
                                                     {/*</p>}*/}
                                                 </FormGroup>
                                             </Col>
-                                            <Col>
+                                            <Col className="pl-0">
                                                 <FormGroup className="px-5 pt-5">
                                                     <FormControl
                                                         className="register-user-form-control"

@@ -93,9 +93,9 @@ class AdminLoginForm extends Component {
                 <Container className="login-main-container" fluid={true}>
                     <Container className="container-lg login-sub-container" fluid={true}>
                         {this.state.loggedAdmin === null &&
-                        <Row className="align-content-center" style={{height: '40rem'}}>
+                        <Row>
                             <Col>
-                                <div className="login-div-form m-3">
+                                <div className="login-div-form">
                                     <Form onSubmit={this.handleSubmit}>
                                             <FormGroup className="px-5 pt-5">
                                             <Row>

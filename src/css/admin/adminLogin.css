@@ -1,14 +1,14 @@
 .login-main-container{
-    height: 100vh;
+    min-height: 100vh;
     background-image: linear-gradient(rgb(7, 2, 36),indigo,lightskyblue);
 }
 
 .login-sub-container{
-    height: 100vh;
 }
 
 .login-div-form{
     background-color: rgba(240, 104, 50,0.1);
+    margin-top: 20%;
 }
 
 .login-form-control{

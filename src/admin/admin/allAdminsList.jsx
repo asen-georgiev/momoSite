@@ -57,7 +57,7 @@ class AllAdminsList extends Component {
                         <Row className="m-0">
                             <span className="adminlist-span">All registered Admins :</span>
                         </Row>
-                        <Table className="adminlist-table">
+                        <Table responsive className="adminlist-table">
                             <thead className="adminlist-thead">
                             <tr>
                                 <th>Full name</th>

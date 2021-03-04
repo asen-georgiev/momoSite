@@ -1,10 +1,10 @@
 .panel-main-container{
-    height: 100vh;
+    min-height: 100vh;
     background-image: linear-gradient(rgb(7, 2, 36),indigo,lightskyblue);
 }
 
 .panel-sub-container{
-    height: 100vh;
+
 }
 
 .panel-table{
@@ -15,7 +15,7 @@
 
 .panel-span{
     font-size: x-large;
-    margin-top: 4rem;
+    margin-top: 10%;
     color: wheat;
 }
 
@@ -36,6 +36,7 @@
     background-color: orangered;
     border: none;
     margin-top: 1rem;
+    margin-bottom: 2rem;
     padding-inline: 5rem;
 }
 

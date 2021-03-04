@@ -1,10 +1,10 @@
 .adminlist-main-container{
-    height: 100vh;
+    min-height: 100vh;
     background-image: linear-gradient(rgb(7, 2, 36),indigo,lightskyblue);
 }
 
 .adminlist-sub-container{
-    height: 100vh;
+
 }
 
 .adminlist-table{
@@ -15,7 +15,7 @@
 
 .adminlist-span{
     font-size: x-large;
-    margin-top: 4rem;
+    margin-top: 10%;
     color: wheat;
 }
 
