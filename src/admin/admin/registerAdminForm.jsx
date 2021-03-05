@@ -112,6 +112,9 @@ class RegisterAdminForm extends Component {
             <div>
                 <Container className="register-main-container" fluid={true}>
                     <Container className="container-lg register-sub-container">
+                        <Row className="m-0">
+                            <span className="register-span">Register new Admin :</span>
+                        </Row>
                         <Row>
                             <Col>
                                 <div className="register-div-form">

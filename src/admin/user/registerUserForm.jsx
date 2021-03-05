@@ -75,7 +75,7 @@ class RegisterUserForm extends Component {
             .max(50)
             .trim(true)
             .label("Personal telephone")
-            .pattern(new RegExp('[0-9]'))
+        // .pattern(new RegExp('[0-9]'))
     })
 
 
@@ -170,6 +170,9 @@ class RegisterUserForm extends Component {
             <div>
                 <Container className="register-user-main-container" fluid={true}>
                     <Container className="register-user-sub-container container-lg" fluid={true}>
+                        <Row className="m-0">
+                            <span className="register-user-span">Register new User :</span>
+                        </Row>
                         <Row>
                             <Col>
                                 <div className="register-user-div-form">

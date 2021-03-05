@@ -142,6 +142,9 @@ class UpdateAdminForm extends Component {
             <div>
                 <Container className="update-main-container" fluid={true}>
                     <Container className="update-sub-container container" fluid={true}>
+                        <Row className="m-0">
+                            <span className="update-span">Update admin :</span>
+                        </Row>
                         <Row>
                             <Col>
                                 <div className="update-div-form">

@@ -1,68 +1,68 @@
-.adminlist-main-container{
+.biolist-main-container {
     min-height: 100vh;
-    background-image: linear-gradient(rgb(7, 2, 36),indigo,lightskyblue);
+    background-image: linear-gradient(rgb(7, 2, 36), indigo, lightskyblue);
 }
 
-.adminlist-sub-container{
+.biolist-sub-container {
 
 }
 
-.adminlist-table{
-    background-color: rgba(240, 104, 50,0.1);
+.biolist-table {
+    background-color: rgba(240, 104, 50, 0.1);
     margin-top: 2rem;
     font-size: large;
 }
 
-.adminlist-span{
+.biolist-span {
     font-size: x-large;
     margin-top: 10%;
     color: wheat;
 }
 
-.adminlist-thead{
+.biolist-thead {
     color: wheat;
 }
 
-.adminlist-tbody{
+.biolist-tbody {
     color: antiquewhite;
 }
 
-.adminlist-link{
+.biolist-link {
     color: darkorange;
 }
 
-.adminlist-link:hover{
+.biolist-link:hover {
     color: orangered;
     text-decoration: none;
 }
 
-.adminlist-redirect-button{
+.biolist-redirect-button {
     background-color: orangered;
     border: none;
     margin-top: 1rem;
     padding-inline: 5rem;
 }
 
-.adminlist-redirect-button:hover{
+.biolist-redirect-button:hover {
     background-color: red;
 }
 
-.adminlist-delete-button{
+.biolist-delete-button {
     background-color: red;
     border: none;
     padding-inline: 2rem;
 }
 
-.adminlist-delete-button:hover{
+.biolist-delete-button:hover {
     background-color: orangered;
 }
 
-.adminlist-delete-button:focus{
+.biolist-delete-button:focus {
     background-color: orangered;
     box-shadow: none !important;
 }
 
-.adminlist-toaster{
+.biolist-toaster {
     background-color: darkolivegreen;
     color: antiquewhite;
     font-size: x-large;

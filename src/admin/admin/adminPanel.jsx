@@ -37,7 +37,7 @@ class AdminPanel extends Component {
                         <Row className="m-0">
                     <span className="panel-span">Admin : {this.state.admin.adminName}</span>
                         </Row>
-                    <Table className="panel-table">
+                    <Table hover className="panel-table">
                         <thead className="panel-thead">
                         <tr>
                             <th>Element name</th>

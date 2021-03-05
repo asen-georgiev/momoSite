@@ -7,11 +7,13 @@ import Form from "react-bootstrap/Form";
 import FormGroup from "react-bootstrap/FormGroup";
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
-import {toast} from "react-toastify";
+import {toast, Zoom} from "react-toastify";
 import {FormLabel, Image} from "react-bootstrap";
 import {picUrl} from "../../config.json";
 import {getUserAdmin, updateUserAdmin} from "../../services/userService";
 import {uploadImageAdmin} from "../../services/imgService";
+import "../../css/admin/user/userUpdate.css"
+import CardImg from "react-bootstrap/CardImg";
 
 class UpdateUserForm extends Component {
     constructor(props) {
@@ -76,7 +78,8 @@ class UpdateUserForm extends Component {
             .min(5)
             .max(50)
             .trim(true)
-            .label("Personal telephone"),
+            .label("Personal telephone")
+        // .pattern(new RegExp('[0-9]'))
     })
 
 
@@ -134,7 +137,11 @@ class UpdateUserForm extends Component {
             const data = new FormData();
             data.append('file', this.state.uploadPicture);
             await uploadImageAdmin(data);
-            toast.success("New profile picture successfully uploaded!");
+            toast("New image successfully uploaded!", {
+                position: "top-center",
+                transition: Zoom,
+                className: 'update-user-toaster'
+            });
         }
         const user = {
             userName: this.state.user.userName,
@@ -147,7 +154,11 @@ class UpdateUserForm extends Component {
         };
         await updateUserAdmin(user, this.state.user._id);
         this.setState({isDisabled: true});
-        toast.success("The user was successfully updated!");
+        toast("User was successfully updated!", {
+            position: "top-center",
+            transition: Zoom,
+            className: 'update-user-toaster'
+        });
 
 
     }
@@ -193,161 +204,145 @@ class UpdateUserForm extends Component {
     render() {
         return (
             <div>
-                <Container>
-                    <Row>
-                        <Col>
-                            <Form onSubmit={this.handleSubmit}>
-                                <Row className="justify-content-center">
-                                    {this.state.showPicture === null &&
-                                    <div>
-                                        <h5>Current profile picture :</h5>
-                                        <Image src={this.state.url + this.state.user.userPicture}
-                                               width="300"
-                                               height="auto"/>
-                                    </div>}
-                                    {this.state.showPicture &&
-                                    <Col>
-                                        <h5>Updated profile picture :</h5>
-                                        <Image src={this.state.showPicture}
-                                               width="300"
-                                               height="auto"/>
-                                    </Col>}
-                                        <FormGroup className="align-self-center ml-5">
-                                            <FormLabel htmlFor="image">
-                                                Upload :
-                                            </FormLabel>
-                                            <Form.File
-                                                id="image"
-                                                name="userPicture"
-                                                label="Change user profile picture"
-                                                onChange={this.handleImage}/>
-                                            {this.state.errors.userPicture &&
-                                            <p className="text-danger pt-2">
-                                                {this.state.errors.userPicture}
-                                            </p>}
-                                        </FormGroup>
-                                </Row>
-                                <Row>
-                                    <Col>
-                                        <FormGroup>
-                                            <FormLabel>
-                                                First name :
-                                            </FormLabel>
-                                            <FormControl
-                                                autoFocus={true}
-                                                name="userName"
-                                                type="text"
-                                                value={this.state.user.userName}
-                                                placeholder="Enter user's first name"
-                                                onChange={this.handleChange}/>
-                                            {this.state.errors.userName &&
-                                            <p className="text-danger pt-2">
-                                                {this.state.errors.userName}
-                                            </p>}
-                                        </FormGroup>
-                                    </Col>
-                                    <Col>
-                                        <FormGroup>
-                                            <FormLabel>
-                                                Second name :
-                                            </FormLabel>
-                                            <FormControl
-                                                name="userFamily"
-                                                type="text"
-                                                value={this.state.user.userFamily}
-                                                placeholder="Enter user's second name"
-                                                onChange={this.handleChange}/>
-                                            {this.state.errors.userFamily &&
-                                            <p className="text-danger pt-2">
-                                                {this.state.errors.userFamily}
-                                            </p>}
-                                        </FormGroup>
-                                    </Col>
-                                </Row>
-                                <FormGroup>
-                                    <FormLabel>
-                                        Address :
-                                    </FormLabel>
-                                    <FormControl
-                                        name="userAddress"
-                                        type="text"
-                                        value={this.state.user.userAddress}
-                                        placeholder="Enter user's address: country / city / street / postal code"
-                                        onChange={this.handleChange}/>
-                                    {this.state.errors.userAddress &&
-                                    <p className="text-danger pt-2">
-                                        {this.state.errors.userAddress}
-                                    </p>}
-                                </FormGroup>
-                                <Row>
-                                    <Col>
-                                        <FormGroup>
-                                            <FormLabel>
-                                                E-mail :
-                                            </FormLabel>
-                                            <FormControl
-                                                name="userEmail"
-                                                type="email"
-                                                value={this.state.user.userEmail}
-                                                placeholder="Enter user's e-mail address"
-                                                onChange={this.handleChange}/>
-                                            {this.state.errors.userEmail &&
-                                            <p className="text-danger pt-2">
-                                                {this.state.errors.userEmail}
-                                            </p>}
-                                        </FormGroup>
-                                    </Col>
-                                    <Col>
-                                        <FormGroup>
-                                            <FormLabel>
-                                                Telephone :
-                                            </FormLabel>
-                                            <FormControl
-                                                name="userTelephone"
-                                                type="text"
-                                                value={this.state.user.userTelephone}
-                                                placeholder="Enter user's telephone"
-                                                onChange={this.handleChange}/>
-                                            {this.state.errors.userTelephone &&
-                                            <p className="text-danger pt-2">
-                                                {this.state.errors.userTelephone}
-                                            </p>}
-                                        </FormGroup>
-                                    </Col>
-                                </Row>
-                                <FormGroup>
-                                    <FormLabel>
-                                        Password :
-                                    </FormLabel>
-                                    <FormControl
-                                        name="userPassword"
-                                        type="password"
-                                        value={this.state.user.userPassword}
-                                        placeholder="Enter user's password : min. 8 symbols"
-                                        onChange={this.handleChange}/>
-                                    {this.state.errors.userPassword &&
-                                    <p className="text-danger pt-2">
-                                        {this.state.errors.userPassword}
-                                    </p>}
-                                </FormGroup>
-                                <Row className="mt-3">
-                                    <Col md={4}>
-                                        <Button
-                                            type="submit"
-                                            disabled={this.state.isDisabled}>
-                                            SUBMIT
-                                        </Button>
-                                    </Col>
-                                    <Col md={{span: 4, offset: 4}} className="d-flex flex-row-reverse">
-                                        <Button
-                                            onClick={this.adminRedirect}>
-                                            BACK TO USERS LIST
-                                        </Button>
-                                    </Col>
-                                </Row>
-                            </Form>
-                        </Col>
-                    </Row>
+                <Container className="update-user-main-container" fluid={true}>
+                    <Container className="update-user-sub-container container" fluid={true}>
+                        <Row className="m-0">
+                            <span className="update-user-span">Update user :</span>
+                        </Row>
+                        <Row>
+                            <Col>
+                                <div className="update-user-div-form">
+                                    <Form onSubmit={this.handleSubmit}>
+                                        <Row>
+                                            <Col md="auto" className="pr-0">
+                                                {this.state.showPicture === null &&
+                                                <CardImg
+                                                    className="ml-5 mt-5"
+                                                    src={this.state.url + this.state.user.userPicture}
+                                                    style={{width: 300, height: 365}}/>
+                                                }
+                                                {this.state.showPicture &&
+                                                <CardImg
+                                                    className="ml-5 mt-5"
+                                                    src={this.state.showPicture}
+                                                    style={{width: 300, height: 365}}/>
+                                                }
+                                                <FormGroup className="px-5 pt-4">
+                                                    {/*<FormLabel htmlFor="image">*/}
+                                                    {/*    Upload :*/}
+                                                    {/*</FormLabel>*/}
+                                                    <Form.File
+                                                        className="update-user-form"
+                                                        id="image"
+                                                        name="userPicture"
+                                                        label={this.state.errors.userPicture || "Change the profile picture"}
+                                                        onChange={this.handleImage}/>
+                                                </FormGroup>
+                                            </Col>
+                                            <Col className="pl-0">
+                                                <FormGroup className="px-5 pt-5">
+                                                    <FormControl
+                                                        className="update-user-form-control"
+                                                        autoFocus={true}
+                                                        name="userName"
+                                                        type="text"
+                                                        value={this.state.user.userName}
+                                                        placeholder="Enter user's first name"
+                                                        onChange={this.handleChange}/>
+                                                    {this.state.errors.userName &&
+                                                    <p className="text-danger pt-2">
+                                                        {this.state.errors.userName}
+                                                    </p>}
+                                                </FormGroup>
+                                                <FormGroup className="px-5 pt-2">
+                                                    <FormControl
+                                                        className="update-user-form-control"
+                                                        name="userFamily"
+                                                        type="text"
+                                                        value={this.state.user.userFamily}
+                                                        placeholder="Enter user's second name"
+                                                        onChange={this.handleChange}/>
+                                                    {this.state.errors.userFamily &&
+                                                    <p className="text-danger pt-2">
+                                                        {this.state.errors.userFamily}
+                                                    </p>}
+                                                </FormGroup>
+                                                <FormGroup className="px-5 pt-2">
+                                                    <FormControl
+                                                        className="update-user-form-control"
+                                                        name="userAddress"
+                                                        type="text"
+                                                        value={this.state.user.userAddress}
+                                                        placeholder="Enter user's address: country / city / street / postal code"
+                                                        onChange={this.handleChange}/>
+                                                    {this.state.errors.userAddress &&
+                                                    <p className="text-danger pt-2">
+                                                        {this.state.errors.userAddress}
+                                                    </p>}
+                                                </FormGroup>
+                                                <FormGroup className="px-5 pt-2">
+                                                    <FormControl
+                                                        className="update-user-form-control"
+                                                        name="userEmail"
+                                                        type="email"
+                                                        value={this.state.user.userEmail}
+                                                        placeholder="Enter user's e-mail address"
+                                                        onChange={this.handleChange}/>
+                                                    {this.state.errors.userEmail &&
+                                                    <p className="text-danger pt-2">
+                                                        {this.state.errors.userEmail}
+                                                    </p>}
+                                                </FormGroup>
+                                                <FormGroup className="px-5 pt-2">
+                                                    <FormControl
+                                                        className="update-user-form-control"
+                                                        name="userTelephone"
+                                                        type="text"
+                                                        value={this.state.user.userTelephone}
+                                                        placeholder="Enter user's telephone"
+                                                        onChange={this.handleChange}/>
+                                                    {this.state.errors.userTelephone &&
+                                                    <p className="text-danger pt-2">
+                                                        {this.state.errors.userTelephone}
+                                                    </p>}
+                                                </FormGroup>
+                                                <FormGroup className="px-5 pt-2">
+                                                    <FormControl
+                                                        className="update-user-form-control"
+                                                        name="userPassword"
+                                                        type="password"
+                                                        value={this.state.user.userPassword}
+                                                        placeholder="Enter user's password : min. 8 symbols"
+                                                        onChange={this.handleChange}/>
+                                                    {this.state.errors.userPassword &&
+                                                    <p className="text-danger pt-2">
+                                                        {this.state.errors.userPassword}
+                                                    </p>}
+                                                </FormGroup>
+                                            </Col>
+                                        </Row>
+                                        <Row className="px-5 pb-4 py-3 d-flex justify-content-between">
+                                            <Col md={4}>
+                                                <Button
+                                                    className="update-user-register-button"
+                                                    type="submit"
+                                                    disabled={this.state.isDisabled}>
+                                                    UPDATE
+                                                </Button>
+                                            </Col>
+                                            <Col className="d-flex justify-content-end">
+                                                <Button
+                                                    className="update-user-redirect-button"
+                                                    onClick={this.adminRedirect}>
+                                                    BACK TO USERS LIST
+                                                </Button>
+                                            </Col>
+                                        </Row>
+                                    </Form>
+                                </div>
+                            </Col>
+                        </Row>
+                    </Container>
                 </Container>
             </div>
         );

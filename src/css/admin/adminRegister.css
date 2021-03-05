@@ -6,9 +6,15 @@
 .register-sub-container {
 }
 
-.register-div-form {
-    background-color: rgba(240, 104, 50, 0.1);
+.register-span{
+    font-size: x-large;
     margin-top: 10%;
+    color: wheat;
+}
+
+.register-div-form {
+    margin-top: 2rem;
+    background-color: rgba(240, 104, 50, 0.1);
 }
 
 .register-form-control {

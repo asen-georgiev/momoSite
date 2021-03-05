@@ -7,13 +7,14 @@ import FormGroup from "react-bootstrap/FormGroup";
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
 import Joi from "joi";
-import {toast} from "react-toastify";
+import {toast, Zoom} from "react-toastify";
 import {FormLabel} from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import CardImg from "react-bootstrap/CardImg";
 import {picUrl} from "../../config.json";
 import {getBio, updateBio} from "../../services/bioService";
 import {uploadImageAdmin} from "../../services/imgService";
+import "../../css/admin/bios/bioUpdate.css";
 
 class UpdateBioForm extends Component {
     constructor(props) {
@@ -46,7 +47,7 @@ class UpdateBioForm extends Component {
             .trim(true)
             .label('Bio text'),
         bioPictures: Joi.array()
-            .items(Joi.string())
+            .items(Joi.string().required())
             .required()
             .label('Bio pictures')
     })
@@ -64,7 +65,11 @@ class UpdateBioForm extends Component {
                 data.append('file', this.state.uploadPictures[i]);
             }
             await uploadImageAdmin(data);
-            toast.success('Images for the Bio were successfully uploaded!');
+            toast('Images were successfully uploaded!', {
+                position: "top-center",
+                transition: Zoom,
+                className: 'update-bio-toaster'
+            });
         }
 
         const bio = {
@@ -72,7 +77,11 @@ class UpdateBioForm extends Component {
             bioText: this.state.bio.bioText,
             bioPictures: this.state.bio.bioPictures
         }
-        toast.success('Bio update was successful!');
+        toast('Biography update was successful!', {
+            position: "top-center",
+            transition: Zoom,
+            className: 'update-bio-toaster'
+        });
         await updateBio(bio, this.state.bio._id);
 
         this.setState({
@@ -107,7 +116,11 @@ class UpdateBioForm extends Component {
 
         let files = event.target.files;
         if (files.length > 3) {
-            toast.error("Only 3 images can be uploaded at a time");
+            toast("Only 3 images can be uploaded at a time", {
+                position: "top-center",
+                transition: Zoom,
+                className: 'error-bio-toaster'
+            });
             event.target.value = null;
             return false;
         }
@@ -185,123 +198,105 @@ class UpdateBioForm extends Component {
     render() {
         return (
             <div>
-                <Container className="container" fluid={true}>
-                    <Row>
-                        <Col>
-                            <Row>
-                                <h3>Update Biography Form</h3>
-                            </Row>
-                            <Card>
+                <Container className="update-bio-main-container" fluid={true}>
+                    <Container className="update-bio-sub-container container" fluid={true}>
+                        <Row className="m-0">
+                            <span className="update-bio-span">Update Biography :</span>
+                        </Row>
+                        <Row>
+                            <Col>
+                                <div className="update-bio-div-form">
 
-                                {this.state.showPictures === null &&
-                                <Card.Header>
-                                    <span>Current bio pictures :</span>
-                                </Card.Header>}
+                                    {/*{this.state.showPictures === null &&*/}
+                                    {/*<Card.Header>*/}
+                                    {/*    <span>Current bio pictures :</span>*/}
+                                    {/*</Card.Header>}*/}
 
-                                {this.state.showPictures !== null &&
-                                <Card.Header>
-                                    <span>Updated bio pictures waiting for upload :</span>
-                                </Card.Header>}
-
-                                <Card.Body>
-
-                                    {this.state.showPictures === null &&
-                                    <div>
-                                        {this.state.bio.bioPictures.map(bp => {
-                                            return (
-                                                <CardImg
-                                                    key={bp}
-                                                    className="m-2"
-                                                    style={{width: '20rem'}}
-                                                    src={picUrl + bp}/>
-                                            )
-                                        })}
-                                    </div>
-                                    }
-
-                                    {this.state.showPictures !== null &&
-                                    <div>
-                                        {this.state.showPictures.map(sp => {
-                                            return (
-                                                <CardImg
-                                                    key={sp}
-                                                    className="m-2"
-                                                    style={{width: '20rem'}}
-                                                    src={sp}/>
-                                            )
-                                        })}
-                                    </div>
-                                    }
+                                    {/*{this.state.showPictures !== null &&*/}
+                                    {/*<Card.Header>*/}
+                                    {/*    <span>Updated bio pictures waiting for upload :</span>*/}
+                                    {/*</Card.Header>}*/}
 
                                     <Form onSubmit={this.handleSubmit}>
-                                        <FormGroup>
-                                            <FormLabel htmlFor="images">
-                                                Upload images :
-                                            </FormLabel>
+                                        {this.state.showPictures === null &&
+                                        <Row className="justify-content-center">
+                                            {this.state.bio.bioPictures.map(bp => {
+                                                return (
+                                                    <CardImg
+                                                        key={bp}
+                                                        className="mt-5 m-3"
+                                                        style={{width: 300}}
+                                                        src={picUrl + bp}/>
+                                                )
+                                            })}
+                                        </Row>
+                                        }
+
+                                        {this.state.showPictures !== null &&
+                                        <Row className="justify-content-center">
+                                            {this.state.showPictures.map(sp => {
+                                                return (
+                                                    <CardImg
+                                                        key={sp}
+                                                        className="mt-5 m-3"
+                                                        style={{width: 300}}
+                                                        src={sp}/>
+                                                )
+                                            })}
+                                        </Row>
+                                        }
+                                        <FormGroup className="px-5 pt-5">
                                             <Form.File
+                                                className="update-bio-form"
                                                 type="file"
                                                 id="images"
                                                 name="bioPictures"
-                                                label="Max images to upload : 3"
+                                                label="Maximum images allowed to upload : 3"
                                                 multiple
                                                 onChange={this.handleImages}/>
-                                            {this.state.errors.bioPictures &&
-                                            <p className="text-danger pt-2">
-                                                {this.state.errors.bioPictures}
-                                            </p>}
                                         </FormGroup>
-                                        <FormGroup>
-                                            <FormLabel>
-                                                Bio title :
-                                            </FormLabel>
+                                        <FormGroup className="px-5 pt-5">
                                             <FormControl
+                                                className="update-bio-form-control"
                                                 autoFocus={true}
                                                 name="bioTitle"
                                                 type="text"
                                                 value={this.state.bio.bioTitle}
-                                                placeholder="Enter title for the Bio"
+                                                placeholder={this.state.errors.bioTitle || "Enter title for the Biography"}
                                                 onChange={this.handleChange}/>
-                                            {this.state.errors.bioTitle &&
-                                            <p className="text-danger pt-2">
-                                                {this.state.errors.bioTitle}
-                                            </p>}
                                         </FormGroup>
-                                        <FormGroup>
-                                            <FormLabel>
-                                                Bio text :
-                                            </FormLabel>
+                                        <FormGroup className="px-5 pt-5">
                                             <FormControl
+                                                className="update-bio-form-control"
                                                 name="bioText"
                                                 as="textarea"
                                                 rows="5"
                                                 value={this.state.bio.bioText}
-                                                placeholder="Enter text for the Bio"
+                                                placeholder={this.state.errors.bioText || "Enter text for the Biography"}
                                                 onChange={this.handleChange}/>
-                                            {this.state.errors.bioText &&
-                                            <p className="text-danger pt-2">
-                                                {this.state.errors.bioText}
-                                            </p>}
                                         </FormGroup>
-                                        <Row className="mt-3">
+                                        <Row className="px-5 pb-4 py-3 d-flex justify-content-between">
                                             <Col md={4}>
                                                 <Button
+                                                    className="update-bio-register-button"
                                                     type="submit"
                                                     disabled={this.state.isDisabled}>
                                                     UPDATE
                                                 </Button>
                                             </Col>
-                                            <Col md={{span: 4, offset: 4}} className="d-flex flex-row-reverse">
+                                            <Col className="d-flex justify-content-end">
                                                 <Button
+                                                    className="update-bio-redirect-button"
                                                     onClick={this.adminRedirect}>
                                                     BACK TO BIOS LIST
                                                 </Button>
                                             </Col>
                                         </Row>
                                     </Form>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                    </Row>
+                                </div>
+                            </Col>
+                        </Row>
+                    </Container>
                 </Container>
             </div>
         );

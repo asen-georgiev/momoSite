@@ -1,24 +1,24 @@
-.register-user-main-container {
+.update-bio-main-container {
     min-height: 100vh;
     background-image: linear-gradient(rgb(7, 2, 36), indigo,lightskyblue);
 }
 
-.register-user-sub-container {
+.update-bio-sub-container {
 
 }
 
-.register-user-span{
+.update-bio-span{
     font-size: x-large;
     margin-top: 10%;
     color: wheat;
 }
 
-.register-user-div-form {
+.update-bio-div-form {
     background-color: rgba(240, 104, 50, 0.1);
     margin-top: 2rem;
 }
 
-.register-user-form-control {
+.update-bio-form-control {
     border-radius: 0 !important;
     font-size: x-large !important;
     background: transparent !important;
@@ -30,54 +30,54 @@
     border-bottom-width: 2px !important;
 }
 
-.register-user-form-control:focus {
+.update-bio-form-control:focus {
     box-shadow: none !important;
 }
 
-.register-user-register-button{
+.update-bio-register-button{
     background-color: orangered;
     border: none;
     padding-inline: 5rem;
     margin-bottom: 1rem;
 }
 
-.register-user-register-button:hover{
+.update-bio-register-button:hover{
     background-color: red;
 }
 
-.register-user-register-button:focus{
+.update-bio-register-button:focus{
     background-color: red;
     box-shadow: none !important;
 }
 
-.register-user-register-button:disabled{
+.update-bio-register-button:disabled{
     background-color: lightcoral;
 }
 
-.register-user-redirect-button{
+.update-bio-redirect-button{
     background-color: orangered;
     border: none;
     padding-inline: 5rem;
     margin-bottom: 1rem;
 }
 
-.register-user-redirect-button:hover{
+.update-bio-redirect-button:hover{
     background-color: red;
 }
 
-.register-user-redirect-button:focus{
+.update-bio-redirect-button:focus{
     background-color: red;
     box-shadow: none !important;
 }
 
-.register-user-toaster{
+.update-bio-toaster{
     background-color: darkolivegreen;
     color: antiquewhite;
     font-size: x-large;
     text-align: center !important;
 }
 
-.register-user-form{
+.update-bio-form{
     width: 90%;
     color: wheat;
     font-size: medium;
@@ -110,3 +110,9 @@
     margin-right: 1rem;
 }
 
+.error-bio-toaster{
+    background-color: darkred;
+    color: antiquewhite;
+    font-size: x-large;
+    text-align: center !important;
+}

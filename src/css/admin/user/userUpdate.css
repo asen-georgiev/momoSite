@@ -1,23 +1,24 @@
-.update-main-container {
+.update-user-main-container {
     min-height: 100vh;
     background-image: linear-gradient(rgb(7, 2, 36), indigo, lightskyblue);
 }
 
-.update-sub-container {
+.update-user-sub-container {
+
 }
 
-.update-span {
+.update-user-span{
     font-size: x-large;
     margin-top: 10%;
     color: wheat;
 }
 
-.update-div-form {
+.update-user-div-form {
     background-color: rgba(240, 104, 50, 0.1);
     margin-top: 2rem;
 }
 
-.update-form-control {
+.update-user-form-control {
     border-radius: 0 !important;
     font-size: x-large !important;
     background: transparent !important;
@@ -29,54 +30,83 @@
     border-bottom-width: 2px !important;
 }
 
-.update-form-control:focus {
+.update-user-form-control:focus {
     box-shadow: none !important;
 }
 
-.update-checkbox {
-    color: darkorange;
-}
-
-.update-update-button {
+.update-user-register-button {
     background-color: orangered;
     border: none;
     padding-inline: 5rem;
     margin-bottom: 1rem;
 }
 
-.update-update-button:hover {
+.update-user-register-button:hover {
     background-color: red;
 }
 
-.update-update-button:focus {
+.update-user-register-button:focus {
     background-color: red;
     box-shadow: none !important;
 }
 
-.update-update-button:disabled {
+.update-user-register-button:disabled {
     background-color: lightcoral;
 }
 
-.update-redirect-button {
+.update-user-redirect-button {
     background-color: orangered;
     border: none;
     padding-inline: 5rem;
     margin-bottom: 1rem;
 }
 
-.update-redirect-button:hover {
+.update-user-redirect-button:hover {
     background-color: red;
 }
 
-.update-redirect-button:focus {
+.update-user-redirect-button:focus {
     background-color: red;
     box-shadow: none !important;
 }
 
-.update-toaster {
+.update-user-toaster {
     background-color: darkolivegreen;
     color: antiquewhite;
     font-size: x-large;
     text-align: center !important;
+}
+
+.update-user-form {
+    width: 90%;
+    color: wheat;
+    font-size: medium;
+    font-style: italic !important;
+}
+
+
+::-webkit-file-upload-button {
+    background-color: indigo !important;
+    padding: 0.5rem 2rem !important;
+    border: none !important;
+    border-radius: 5px;
+    color: lightblue !important;
+    margin-right: 1rem;
+}
+
+::-webkit-file-upload-button:hover {
+    background-color: lightblue !important;
+    color: indigo !important;
+    padding: 0.5rem 2rem !important;
+    border: none !important;
+}
+
+::-webkit-file-upload-button:focus {
+    background-color: indigo !important;
+    padding: 0.5rem 2rem !important;
+    border: none !important;
+    border-radius: 5px;
+    color: lightblue !important;
+    margin-right: 1rem;
 }
 

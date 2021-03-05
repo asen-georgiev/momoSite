@@ -7,12 +7,13 @@ import FormGroup from "react-bootstrap/FormGroup";
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
 import Joi from "joi";
-import {toast} from "react-toastify";
+import {toast, Zoom} from "react-toastify";
 import {FormLabel} from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import CardImg from "react-bootstrap/CardImg";
 import {createBio} from "../../services/bioService";
 import {uploadImageAdmin} from "../../services/imgService";
+import "../../css/admin/bios/bioRegister.css";
 
 class RegisterBioForm extends Component {
     constructor(props) {
@@ -42,7 +43,7 @@ class RegisterBioForm extends Component {
             .trim(true)
             .label('Bio text'),
         bioPictures: Joi.array()
-            .items(Joi.string())
+            .items(Joi.string().required())
             .required()
             .label('Bio pictures')
     })
@@ -61,18 +62,27 @@ class RegisterBioForm extends Component {
             bioPictures: this.state.bioPictures
         }
         await createBio(bio);
-        toast.success('Bio was successfully created!');
-
-        const data = new FormData();
-        for (let i = 0; i < this.state.uploadPictures.length; i++) {
-            data.append('file', this.state.uploadPictures[i]);
-        }
-        await uploadImageAdmin(data);
-        this.setState({
-            isDisabled: true
+        toast('New Bio was successfully created!', {
+            position: "top-center",
+            transition: Zoom,
+            className: 'register-bio-toaster'
         });
-        toast.success('Images for the Bio were successfully uploaded!');
 
+        if (this.state.uploadPictures !== null) {
+            const data = new FormData();
+            for (let i = 0; i < this.state.uploadPictures.length; i++) {
+                data.append('file', this.state.uploadPictures[i]);
+            }
+            await uploadImageAdmin(data);
+            this.setState({
+                isDisabled: true
+            });
+            toast('Images were successfully uploaded!', {
+                position: "top-center",
+                transition: Zoom,
+                className: 'register-bio-toaster'
+            });
+        }
         console.log(this.state);
     }
 
@@ -112,7 +122,11 @@ class RegisterBioForm extends Component {
 
         let files = event.target.files;
         if (files.length > 3) {
-            toast.error("Only 3 images can be uploaded at a time");
+            toast("Only 3 images can be uploaded at a time", {
+                position: "top-center",
+                transition: Zoom,
+                className: 'error-bio-toaster'
+            });
             event.target.value = null;
             return false;
         }
@@ -146,98 +160,85 @@ class RegisterBioForm extends Component {
     render() {
         return (
             <div>
-                <Container className="container" fluid={true}>
-                    <Row>
-                        <Col>
-                            <Row>
-                                <h3>Register Biography Form</h3>
-                            </Row>
-                            <Card>
-                                {this.state.uploadPictures !== null &&
-                                <Card.Header>
-                                    <span>Images waiting for upload :</span>
-                                </Card.Header>}
-                                <Card.Body>
-                                    {this.state.showPictures.map(sp => {
-                                        return (
-                                            <CardImg
-                                                key={sp}
-                                                className="m-2"
-                                                style={{width: '20rem'}}
-                                                src={sp}/>
-                                        )
-                                    })
-                                    }
+                <Container className="register-bio-main-container" fluid={true}>
+                    <Container className="register-bio-sub-container container" fluid={true}>
+                        <Row className="m-0">
+                            <span className="register-bio-span">Register new Biography :</span>
+                        </Row>
+                        <Row>
+                            <Col>
+                                <div className="register-bio-div-form">
                                     <Form onSubmit={this.handleSubmit}>
-                                        <FormGroup>
-                                            <FormLabel htmlFor="images">
-                                                Upload images :
-                                            </FormLabel>
+                                        <Row className="justify-content-center">
+                                            {this.state.showPictures.map(sp => {
+                                                return (
+                                                    <CardImg
+                                                        key={sp}
+                                                        className="mt-5 m-3"
+                                                        style={{width: 300}}
+                                                        src={sp}/>
+                                                )
+                                            })
+                                            }
+                                        </Row>
+                                        <FormGroup className="px-5 pt-5">
+                                            {/*<FormLabel htmlFor="images">*/}
+                                            {/*    Upload images :*/}
+                                            {/*</FormLabel>*/}
                                             <Form.File
+                                                className="register-bio-form"
                                                 type="file"
                                                 id="images"
                                                 name="images"
-                                                label="Max images to upload : 3"
+                                                label={this.state.errors.bioPictures && "You need to select images to upload"
+                                                || "Maximum images allowed to upload : 3"}
                                                 multiple
                                                 onChange={this.handleImages}
                                             />
-                                            {this.state.errors.bioPictures &&
-                                            <p className="text-danger pt-2">
-                                                {this.state.errors.bioPictures}
-                                            </p>}
                                         </FormGroup>
-                                        <FormGroup>
-                                            <FormLabel>
-                                                Bio title :
-                                            </FormLabel>
+                                        <FormGroup className="px-5 pt-5">
                                             <FormControl
+                                                className="register-bio-form-control"
                                                 autoFocus={true}
                                                 name="bioTitle"
                                                 type="text"
                                                 value={this.state.bioTitle}
-                                                placeholder="Enter title for the Bio"
+                                                placeholder={this.state.errors.bioTitle || "Enter title for the Bio"}
                                                 onChange={this.handleChange}/>
-                                            {this.state.errors.bioTitle &&
-                                            <p className="text-danger pt-2">
-                                                {this.state.errors.bioTitle}
-                                            </p>}
                                         </FormGroup>
-                                        <FormGroup>
-                                            <FormLabel>
-                                                Bio text :
-                                            </FormLabel>
+                                        <FormGroup className="px-5 pt-5">
                                             <FormControl
+                                                className="register-bio-form-control"
                                                 name="bioText"
                                                 as="textarea"
                                                 rows="5"
                                                 value={this.state.bioText}
-                                                placeholder="Enter text for the Bio"
+                                                placeholder={this.state.errors.bioText || "Enter text for the Bio"}
                                                 onChange={this.handleChange}/>
-                                            {this.state.errors.bioText &&
-                                            <p className="text-danger pt-2">
-                                                {this.state.errors.bioText}
-                                            </p>}
                                         </FormGroup>
-                                        <Row className="mt-3">
+                                        <Row className="px-5 pb-4 py-3 d-flex justify-content-between">
                                             <Col md={4}>
                                                 <Button
+                                                    className="register-bio-register-button"
                                                     type="submit"
                                                     disabled={this.state.isDisabled}>
-                                                    SUBMIT
+                                                    CREATE
                                                 </Button>
                                             </Col>
-                                            <Col md={{span: 4, offset: 4}} className="d-flex flex-row-reverse">
+                                            <Col className="d-flex justify-content-end">
                                                 <Button
+                                                    className="register-bio-redirect-button"
                                                     onClick={this.adminRedirect}>
                                                     BACK TO ADMIN PANEL
                                                 </Button>
                                             </Col>
                                         </Row>
                                     </Form>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                    </Row>
+
+                                </div>
+                            </Col>
+                        </Row>
+                    </Container>
                 </Container>
             </div>
         );

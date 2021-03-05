@@ -43,3 +43,7 @@
 .panel-logout-button:hover{
     background-color: red;
 }
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+    color:yellow;
+}
