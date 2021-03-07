@@ -94,7 +94,7 @@ class RegisterAdminForm extends Component {
         };
 
         await registerAdmin(admin);
-        toast('Admin registration was successful!',{
+        toast('Admin registration was successful!', {
             position: "top-center",
             transition: Zoom,
             className: 'register-toaster'
@@ -120,9 +120,10 @@ class RegisterAdminForm extends Component {
                                 <div className="register-div-form">
                                     <Form onSubmit={this.handleSubmit}>
                                         <FormGroup className="px-5 pt-4">
-                                            {/*<FormLabel>*/}
-                                            {/*    Admin Name*/}
-                                            {/*</FormLabel>*/}
+                                            {this.state.errors.adminName &&
+                                            <FormLabel className="text-danger">
+                                                {this.state.errors.adminName}
+                                            </FormLabel>}
                                             <FormControl
                                                 className="register-form-control"
                                                 autoFocus={true}
@@ -130,33 +131,35 @@ class RegisterAdminForm extends Component {
                                                 name="adminName"
                                                 type="text"
                                                 value={this.state.adminName}
-                                                placeholder={this.state.errors.adminName || "Enter Admin's name"}
+                                                placeholder="Enter Admin's full name"
                                                 onChange={this.handleChange}/>
                                         </FormGroup>
                                         <FormGroup className="px-5 pt-2">
-                                            {/*<FormLabel>*/}
-                                            {/*    Admin Email*/}
-                                            {/*</FormLabel>*/}
+                                            {this.state.errors.adminEmail &&
+                                            <FormLabel className="text-danger">
+                                                {this.state.errors.adminEmail}
+                                            </FormLabel>}
                                             <FormControl
                                                 className="register-form-control"
                                                 id="adminEmail"
                                                 name="adminEmail"
                                                 type="email"
                                                 value={this.state.adminEmail}
-                                                placeholder={this.state.errors.adminEmail || "Enter Admin's email"}
+                                                placeholder="Enter Admin's email"
                                                 onChange={this.handleChange}/>
                                         </FormGroup>
                                         <FormGroup className="px-5 pt-2">
-                                            {/*<FormLabel>*/}
-                                            {/*    Admin Password*/}
-                                            {/*</FormLabel>*/}
+                                            {this.state.errors.adminPassword &&
+                                            <FormLabel className="text-danger">
+                                                {this.state.errors.adminPassword}
+                                            </FormLabel>}
                                             <FormControl
                                                 className="register-form-control"
                                                 id="adminPassword"
                                                 name="adminPassword"
                                                 type="password"
                                                 value={this.state.adminPassword}
-                                                placeholder={this.state.errors.adminPassword || "Enter Admin's password"}
+                                                placeholder="Enter Admin's password"
                                                 onChange={this.handleChange}/>
                                         </FormGroup>
                                         <FormGroup className="px-5 pt-2">

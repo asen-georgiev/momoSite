@@ -7,13 +7,14 @@ import FormGroup from "react-bootstrap/FormGroup";
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
 import Joi from "joi";
-import {toast} from "react-toastify";
+import {toast, Zoom} from "react-toastify";
 import {FormLabel} from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import CardImg from "react-bootstrap/CardImg";
 import {picUrl} from "../../config.json";
 import {getDesign, updateDesign} from "../../services/designService";
 import {uploadImageAdmin} from "../../services/imgService";
+import "../../css/admin/designs/designUpdate.css";
 
 class UpdateDesignForm extends Component {
     constructor(props) {
@@ -47,7 +48,8 @@ class UpdateDesignForm extends Component {
             .trim(true)
             .label('Design text'),
         designPictures: Joi.array()
-            .items(Joi.string())
+            .items(Joi.string().required())
+            .required()
             .label('Design pictures')
     })
 
@@ -64,7 +66,11 @@ class UpdateDesignForm extends Component {
                 data.append('file', this.state.uploadPictures[i]);
             }
             await uploadImageAdmin(data);
-            toast.success('Images for the Design were successfully uploaded!');
+            toast('Images were successfully uploaded!', {
+                position: "top-center",
+                transition: Zoom,
+                className: 'update-design-toaster'
+            });
         }
 
         const design = {
@@ -72,7 +78,11 @@ class UpdateDesignForm extends Component {
             designText: this.state.design.designText,
             designPictures: this.state.design.designPictures
         }
-        toast.success('Design update was successful');
+        toast('Design update was successful', {
+            position: "top-center",
+            transition: Zoom,
+            className: 'update-design-toaster'
+        });
         this.setState({
             isDisabled: true
         });
@@ -148,7 +158,11 @@ class UpdateDesignForm extends Component {
     maxSelectedFiles = (event) => {
         let files = event.target.files;
         if (files.length > 20) {
-            toast.error('Only 20 images can be uploaded!');
+            toast('Only 20 images can be uploaded at a time!', {
+                position: "top-center",
+                transition: Zoom,
+                className: 'error-design-toaster'
+            });
             event.target.value = null;
             return false;
         }
@@ -183,101 +197,104 @@ class UpdateDesignForm extends Component {
     render() {
         return (
             <div>
-                <Container className="container" fluid={true}>
-                    <Card>
+                <Container className="update-design-main-container" fluid={true}>
+                    <Container className="update-design-sub-container container" fluid={true}>
+                        <Row className="m-0">
+                            <span className="update-design-span">Update Design :</span>
+                        </Row>
+                        <Row>
+                            <Col>
+                                <div className="update-design-div-form">
+                                    <Form onSubmit={this.handleSubmit}>
 
-                        {this.state.showPictures === null &&
-                        <Card.Header>
-                            <span>Current Design pictures :</span>
-                        </Card.Header>}
+                                        {this.state.showPictures === null &&
+                                        <Row className="justify-content-center">
+                                            {this.state.design.designPictures.map(dp => {
+                                                return (
+                                                    <CardImg
+                                                        key={dp}
+                                                        className="mt-5 m-3"
+                                                        style={{width: 300, height: 300}}
+                                                        src={picUrl + dp}/>
+                                                )
+                                            })}
+                                        </Row>}
 
-                        {this.state.showPictures !== null &&
-                        <Card.Header>
-                            <span>Updated Design pictures waiting for upload :</span>
-                        </Card.Header>}
+                                        {this.state.showPictures !== null &&
+                                        <Row className="justify-content-center">
+                                            {this.state.showPictures.map(sp => {
+                                                return (
+                                                    <CardImg
+                                                        key={sp}
+                                                        className="mt-5 m-3"
+                                                        style={{width: 300, height: 300}}
+                                                        src={sp}/>
+                                                )
+                                            })}
+                                        </Row>}
 
-                        <Card.Body>
-
-                            {this.state.showPictures === null &&
-                            <div>
-                                {this.state.design.designPictures.map(dp => {
-                                    return (
-                                        <CardImg
-                                            key={dp}
-                                            className="m-2"
-                                            style={{width: '20rem'}}
-                                            src={picUrl + dp}/>
-                                    )
-                                })}
-                            </div>}
-
-                            {this.state.showPictures !== null &&
-                            <div>
-                                {this.state.showPictures.map(sp => {
-                                    return (
-                                        <CardImg
-                                            key={sp}
-                                            className="m-2"
-                                            style={{width: '20rem'}}
-                                            src={sp}/>
-                                    )
-                                })}
-                            </div>}
-                            <Form onSubmit={this.handleSubmit}>
-                                <FormGroup>
-                                    <FormLabel>
-                                        Update images :
-                                    </FormLabel>
-                                    <Form.File
-                                        type="file"
-                                        id="images"
-                                        name="designPictures"
-                                        label="Max images to upload : 20"
-                                        multiple
-                                        onChange={this.handleImages}/>
-                                </FormGroup>
-                                <FormGroup>
-                                    <FormLabel>
-                                        Design title :
-                                    </FormLabel>
-                                    <FormControl
-                                        autoFocus={true}
-                                        name="designTitle"
-                                        type="text"
-                                        value={this.state.design.designTitle}
-                                        placeholder="Enter title for the Design"
-                                        onChange={this.handleChange}/>
-                                </FormGroup>
-                                <FormGroup>
-                                    <FormLabel>
-                                        Design text :
-                                    </FormLabel>
-                                    <FormControl
-                                        name="designText"
-                                        as="textarea"
-                                        rows="3"
-                                        value={this.state.design.designText}
-                                        placeholder="Enter text for the Design (not mandatory)"
-                                        onChange={this.handleChange}/>
-                                </FormGroup>
-                                <Row className="mt-3">
-                                    <Col md={4}>
-                                        <Button
-                                            type="submit"
-                                            disabled={this.state.isDisabled}>
-                                            UPDATE
-                                        </Button>
-                                    </Col>
-                                    <Col md={{span: 4, offset: 4}} className="d-flex flex-row-reverse">
-                                        <Button
-                                            onClick={this.adminRedirect}>
-                                            BACK TO DESIGNS LIST
-                                        </Button>
-                                    </Col>
-                                </Row>
-                            </Form>
-                        </Card.Body>
-                    </Card>
+                                        <FormGroup className="px-5 pt-5">
+                                            <Form.File
+                                                className="update-design-form"
+                                                type="file"
+                                                id="images"
+                                                name="designPictures"
+                                                label="Maximum images allowed to upload : 20"
+                                                multiple
+                                                onChange={this.handleImages}/>
+                                        </FormGroup>
+                                        <FormGroup className="px-5 pt-3">
+                                            {this.state.errors.designTitle &&
+                                            <FormLabel className="text-danger">
+                                                {this.state.errors.designTitle}
+                                            </FormLabel>
+                                            }
+                                            <FormControl
+                                                className="update-design-form-control"
+                                                autoFocus={true}
+                                                name="designTitle"
+                                                type="text"
+                                                value={this.state.design.designTitle}
+                                                placeholder="Enter title for the Design"
+                                                onChange={this.handleChange}/>
+                                        </FormGroup>
+                                        <FormGroup className="px-5 pt-2">
+                                            {this.state.errors.designText &&
+                                            <FormLabel className="text-danger">
+                                                {this.state.errors.designText}
+                                            </FormLabel>
+                                            }
+                                            <FormControl
+                                                className="update-design-form-control"
+                                                name="designText"
+                                                as="textarea"
+                                                rows="3"
+                                                value={this.state.design.designText}
+                                                placeholder="Enter text for the Design (not mandatory)"
+                                                onChange={this.handleChange}/>
+                                        </FormGroup>
+                                        <Row className="px-5 pb-4 py-3 d-flex justify-content-between">
+                                            <Col md={4}>
+                                                <Button
+                                                    className="update-design-register-button"
+                                                    type="submit"
+                                                    disabled={this.state.isDisabled}>
+                                                    UPDATE DESIGN
+                                                </Button>
+                                            </Col>
+                                            <Col className="d-flex justify-content-end">
+                                                <Button
+                                                    className="update-design-redirect-button"
+                                                    onClick={this.adminRedirect}>
+                                                    BACK TO DESIGNS LIST
+                                                </Button>
+                                            </Col>
+                                        </Row>
+                                    </Form>
+                                </div>
+                            </Col>
+                        </Row>
+                    </Container>
                 </Container>
             </div>
         );

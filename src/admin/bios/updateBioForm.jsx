@@ -225,7 +225,7 @@ class UpdateBioForm extends Component {
                                                     <CardImg
                                                         key={bp}
                                                         className="mt-5 m-3"
-                                                        style={{width: 300}}
+                                                        style={{width: 300,height:300}}
                                                         src={picUrl + bp}/>
                                                 )
                                             })}
@@ -239,7 +239,7 @@ class UpdateBioForm extends Component {
                                                     <CardImg
                                                         key={sp}
                                                         className="mt-5 m-3"
-                                                        style={{width: 300}}
+                                                        style={{width: 300,height:300}}
                                                         src={sp}/>
                                                 )
                                             })}
@@ -255,24 +255,32 @@ class UpdateBioForm extends Component {
                                                 multiple
                                                 onChange={this.handleImages}/>
                                         </FormGroup>
-                                        <FormGroup className="px-5 pt-5">
+                                        <FormGroup className="px-5 pt-3">
+                                            {this.state.errors.bioTitle &&
+                                            <FormLabel className="text-danger">
+                                                {this.state.errors.bioTitle}
+                                            </FormLabel>}
                                             <FormControl
                                                 className="update-bio-form-control"
                                                 autoFocus={true}
                                                 name="bioTitle"
                                                 type="text"
                                                 value={this.state.bio.bioTitle}
-                                                placeholder={this.state.errors.bioTitle || "Enter title for the Biography"}
+                                                placeholder="Enter title for the Biography"
                                                 onChange={this.handleChange}/>
                                         </FormGroup>
-                                        <FormGroup className="px-5 pt-5">
+                                        <FormGroup className="px-5 pt-2">
+                                            {this.state.errors.bioText &&
+                                            <FormLabel className="text-danger">
+                                                {this.state.errors.bioText}
+                                            </FormLabel>}
                                             <FormControl
                                                 className="update-bio-form-control"
                                                 name="bioText"
                                                 as="textarea"
                                                 rows="5"
                                                 value={this.state.bio.bioText}
-                                                placeholder={this.state.errors.bioText || "Enter text for the Biography"}
+                                                placeholder="Enter text for the Biography"
                                                 onChange={this.handleChange}/>
                                         </FormGroup>
                                         <Row className="px-5 pb-4 py-3 d-flex justify-content-between">
@@ -281,7 +289,7 @@ class UpdateBioForm extends Component {
                                                     className="update-bio-register-button"
                                                     type="submit"
                                                     disabled={this.state.isDisabled}>
-                                                    UPDATE
+                                                    UPDATE BIOGRAPHY
                                                 </Button>
                                             </Col>
                                             <Col className="d-flex justify-content-end">

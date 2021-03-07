@@ -10,6 +10,7 @@ import Joi from "joi";
 import {Slide, toast, Zoom} from "react-toastify";
 import {adminLogin, getCurrentAdmin} from "../../services/adminLoginService";
 import "../../css/admin/adminLogin.css"
+import FormLabel from "react-bootstrap/FormLabel";
 
 
 class AdminLoginForm extends Component {
@@ -100,31 +101,31 @@ class AdminLoginForm extends Component {
                                             <FormGroup className="px-5 pt-5">
                                             <Row>
                                                 <Col>
-                                                    {/*{this.state.errors.adminEmail &&*/}
-                                                    {/*<p className="text-danger pt-2">*/}
-                                                    {/*    {this.state.errors.adminEmail}*/}
-                                                    {/*</p>}*/}
+                                                    {this.state.errors.adminEmail &&
+                                                    <FormLabel className="text-danger">
+                                                        {this.state.errors.adminEmail}
+                                                    </FormLabel>}
                                                     <FormControl
                                                         className="login-form-control"
                                                         autoFocus={true}
                                                         id="adminEmail"
                                                         name="adminEmail"
                                                         type="email"
-                                                        placeholder={this.state.errors.adminEmail || "admin email"}
+                                                        placeholder="admin email"
                                                         value={this.state.adminEmail}
                                                         onChange={this.handleChange}/>
                                                 </Col>
                                                 <Col>
-                                                    {/*{this.state.errors.adminPassword &&*/}
-                                                    {/*<p className="text-danger pt-2">*/}
-                                                    {/*    {this.state.errors.adminPassword}*/}
-                                                    {/*</p>}*/}
+                                                    {this.state.errors.adminPassword &&
+                                                    <FormLabel className="text-danger">
+                                                        {this.state.errors.adminPassword}
+                                                    </FormLabel>}
                                                     <FormControl
                                                         className="login-form-control"
                                                         id="adminPassword"
                                                         name="adminPassword"
                                                         type="password"
-                                                        placeholder={this.state.errors.adminPassword || "admin password"}
+                                                        placeholder="admin password"
                                                         value={this.state.adminPassword}
                                                         onChange={this.handleChange}/>
                                                 </Col>

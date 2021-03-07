@@ -192,75 +192,93 @@ class RegisterUserForm extends Component {
                                                     style={{width: 300, height: 365}}/>
                                                 }
                                                 <FormGroup className="px-5 pt-4">
-                                                    {/*<FormLabel htmlFor="image">*/}
-                                                    {/*    Upload user profile image :*/}
-                                                    {/*</FormLabel>*/}
                                                     <Form.File
                                                         className="register-user-form"
                                                         id="image"
                                                         name="image"
-                                                        label={this.state.errors.userPicture || "Select profile image"}
+                                                        label={this.state.errors.userPicture && "You must select image for profile picture"
+                                                        || "Select image for profile picture"}
                                                         onChange={this.onImageHandler}/>
-                                                    {/*{this.state.errors.userPicture &&*/}
-                                                    {/*<p className="text-danger pt-2">*/}
-                                                    {/*    {this.state.errors.userPicture}*/}
-                                                    {/*</p>}*/}
                                                 </FormGroup>
                                             </Col>
                                             <Col className="pl-0">
                                                 <FormGroup className="px-5 pt-5">
+                                                    {this.state.errors.userName &&
+                                                    <FormLabel className="text-danger">
+                                                        {this.state.errors.userName}
+                                                    </FormLabel>}
                                                     <FormControl
                                                         className="register-user-form-control"
                                                         autoFocus={true}
                                                         name="userName"
                                                         type="text"
                                                         value={this.state.userName}
-                                                        placeholder={this.state.errors.userName || "Enter user's first name"}
+                                                        placeholder="Enter user's first name"
                                                         onChange={this.handleChange}/>
                                                 </FormGroup>
                                                 <FormGroup className="px-5 pt-2">
+                                                    {this.state.errors.userFamily &&
+                                                    <FormLabel className="text-danger">
+                                                        {this.state.errors.userFamily}
+                                                    </FormLabel>}
                                                     <FormControl
                                                         className="register-user-form-control"
                                                         name="userFamily"
                                                         type="text"
                                                         value={this.state.userFamily}
-                                                        placeholder={this.state.errors.userFamily || "Enter user's second name"}
+                                                        placeholder="Enter user's second name"
                                                         onChange={this.handleChange}/>
                                                 </FormGroup>
                                                 <FormGroup className="px-5 pt-2">
+                                                    {this.state.errors.userAddress &&
+                                                    <FormLabel className="text-danger">
+                                                        {this.state.errors.userAddress}
+                                                    </FormLabel>}
                                                     <FormControl
                                                         className="register-user-form-control"
                                                         name="userAddress"
                                                         type="text"
                                                         value={this.state.userAddress}
-                                                        placeholder={this.state.errors.userAddress || "Enter user's address: country / city / street / postal code"}
+                                                        placeholder="Enter user's address: country / city / street / postal code"
                                                         onChange={this.handleChange}/>
                                                 </FormGroup>
                                                 <FormGroup className="px-5 pt-2">
+                                                    {this.state.errors.userEmail &&
+                                                    <FormLabel className="text-danger">
+                                                        {this.state.errors.userEmail}
+                                                    </FormLabel>}
                                                     <FormControl
                                                         className="register-user-form-control"
                                                         name="userEmail"
                                                         type="email"
                                                         value={this.state.userEmail}
-                                                        placeholder={this.state.errors.userEmail || "Enter user's e-mail address"}
+                                                        placeholder="Enter user's e-mail address"
                                                         onChange={this.handleChange}/>
                                                 </FormGroup>
                                                 <FormGroup className="px-5 pt-2">
+                                                    {this.state.errors.userTelephone &&
+                                                    <FormLabel className="text-danger">
+                                                        {this.state.errors.userTelephone}
+                                                    </FormLabel>}
                                                     <FormControl
                                                         className="register-user-form-control"
                                                         name="userTelephone"
                                                         type="text"
                                                         value={this.state.userTelephone}
-                                                        placeholder={this.state.errors.userTelephone || "Enter user's telephone number"}
+                                                        placeholder="Enter user's telephone number"
                                                         onChange={this.handleChange}/>
                                                 </FormGroup>
                                                 <FormGroup className="px-5 pt-2">
+                                                    {this.state.errors.userPassword &&
+                                                    <FormLabel className="text-danger">
+                                                        {this.state.errors.userPassword}
+                                                    </FormLabel>}
                                                     <FormControl
                                                         className="register-user-form-control"
                                                         name="userPassword"
                                                         type="password"
                                                         value={this.state.userPassword}
-                                                        placeholder={this.state.errors.userPassword || "Enter user's password : min. 8 symbols"}
+                                                        placeholder="Enter user's password : min. 8 symbols"
                                                         onChange={this.handleChange}/>
                                                 </FormGroup>
                                             </Col>
@@ -271,7 +289,7 @@ class RegisterUserForm extends Component {
                                                     className="register-user-register-button"
                                                     type="submit"
                                                     disabled={this.state.isDisabled}>
-                                                    REGISTER
+                                                    REGISTER USER
                                                 </Button>
                                             </Col>
                                             <Col className="d-flex justify-content-end">

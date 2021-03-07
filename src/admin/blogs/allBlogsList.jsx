@@ -4,10 +4,11 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Table from "react-bootstrap/Table";
 import {Button, Image} from "react-bootstrap";
-import {toast} from "react-toastify";
+import {toast, Zoom} from "react-toastify";
 import {Link} from "react-router-dom";
 import {picUrl} from "../../config.json";
 import {deleteBlog, getBlogs} from "../../services/blogService";
+import "../../css/admin/blogs/blogAllList.css";
 
 class AllBlogsList extends Component {
     constructor(props) {
@@ -31,7 +32,11 @@ class AllBlogsList extends Component {
         this.setState({blogs});
         try {
             await deleteBlog(blog._id);
-            toast.success(`Blog : ${blog.blogTitle} was successfully deleted!`);
+            toast(`Blog : ${blog.blogTitle} was successfully deleted!`, {
+                position: "top-center",
+                transition: Zoom,
+                className: 'bloglist-toaster'
+            });
         } catch (e) {
             if (e.response && e.response.status === 404) console.log('Blog with the given ID was not found');
             toast.error("This Blog has already been deleted!");
@@ -47,65 +52,70 @@ class AllBlogsList extends Component {
     render() {
         return (
             <div>
-                <Container className="container" fluid={true}>
-                    <Row>
-                        <Col>
-                            <h2>All created Blogs table :</h2>
-                        </Col>
-                    </Row>
-                    <Table striped bordered hover>
-                        <thead>
-                        <tr>
-                            <th>Title</th>
-                            <th>Sub Title</th>
-                            <th>Date</th>
-                            <th>Text</th>
-                            <th>Pictures</th>
-                            <th>Link</th>
-                            <th>Update</th>
-                            <th>Delete</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {this.state.blogs.map(blog => {
-                            return (
-                                <tr key={blog._id}>
-                                    <td>{blog.blogTitle}</td>
-                                    <td>{blog.blogSubTitle}</td>
-                                    <td>{new Date(blog.blogDate).toLocaleString()}</td>
-                                    <td>{blog.blogText}</td>
-                                    <td>
-                                        {blog.blogPictures.map(bp => {
-                                            return (
-                                                <Image
-                                                    key={bp}
-                                                    src={picUrl + bp}
-                                                    width="70"
-                                                    height="70"
-                                                    className="m-1"/>
-                                            )
-                                        })}
-                                    </td>
-                                    <td>{blog.blogLink}</td>
-                                    <td>
-                                        <Link to={`/admin/blogslist/${blog._id}`}>
-                                            Update
-                                        </Link>
-                                    </td>
-                                    <td>
-                                        <Button
-                                            onClick={() => this.handleDelete(blog)}>
-                                            Delete
-                                        </Button>
-                                    </td>
-                                </tr>
-                            )
-                        })}
-                        </tbody>
-                    </Table>
-                    <Button onClick={this.adminRedirect}>
-                        BACK TO ADMIN PANEL
-                    </Button>
+                <Container className="bloglist-main-container" fluid={true}>
+                    <Container className="bloglist-sub-container">
+                        <Row className="m-0">
+                            <span className="bloglist-span">All created Blogs :</span>
+                        </Row>
+                        <Table responsive hover className="bloglist-table">
+                            <thead className="bloglist-thead">
+                            <tr>
+                                <th>Title</th>
+                                <th>Sub Title</th>
+                                <th>Date</th>
+                                <th>Text</th>
+                                <th>Pictures</th>
+                                <th>Link</th>
+                                <th>Update</th>
+                                <th>Delete</th>
+                            </tr>
+                            </thead>
+                            <tbody className="bloglist-tbody">
+                            {this.state.blogs.map(blog => {
+                                return (
+                                    <tr key={blog._id}>
+                                        <td>{blog.blogTitle}</td>
+                                        <td>{blog.blogSubTitle}</td>
+                                        <td>{new Date(blog.blogDate).toLocaleString()}</td>
+                                        <td>{blog.blogText}</td>
+                                        <td>
+                                            {blog.blogPictures.map(bp => {
+                                                return (
+                                                    <Image
+                                                        key={bp}
+                                                        src={picUrl + bp}
+                                                        width="70"
+                                                        height="70"
+                                                        className="m-1"/>
+                                                )
+                                            })}
+                                        </td>
+                                        <td>{blog.blogLink}</td>
+                                        <td>
+                                            <Link
+                                                className="bloglist-link"
+                                                to={`/admin/blogslist/${blog._id}`}>
+                                                Update
+                                            </Link>
+                                        </td>
+                                        <td>
+                                            <Button
+                                                className="bloglist-delete-button"
+                                                onClick={() => this.handleDelete(blog)}>
+                                                Delete
+                                            </Button>
+                                        </td>
+                                    </tr>
+                                )
+                            })}
+                            </tbody>
+                        </Table>
+                        <Button
+                            className="bloglist-redirect-button"
+                            onClick={this.adminRedirect}>
+                            BACK TO ADMIN PANEL
+                        </Button>
+                    </Container>
                 </Container>
             </div>
         );

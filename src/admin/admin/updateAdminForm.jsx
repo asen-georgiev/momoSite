@@ -150,9 +150,10 @@ class UpdateAdminForm extends Component {
                                 <div className="update-div-form">
                                     <Form onSubmit={this.handleSubmit}>
                                         <FormGroup className="px-5 pt-4">
-                                            {/*<FormLabel>*/}
-                                            {/*    Admin Name*/}
-                                            {/*</FormLabel>*/}
+                                            {this.state.errors.adminName &&
+                                            <FormLabel className="text-danger">
+                                                {this.state.errors.adminName}
+                                            </FormLabel>}
                                             <FormControl
                                                 className="update-form-control"
                                                 autoFocus={true}
@@ -160,33 +161,35 @@ class UpdateAdminForm extends Component {
                                                 name="adminName"
                                                 type="text"
                                                 value={this.state.admin.adminName}
-                                                placeholder={this.state.errors.adminName || "Enter Admin's name"}
+                                                placeholder="Enter Admin's name"
                                                 onChange={this.handleChange}/>
                                         </FormGroup>
                                         <FormGroup className="px-5 pt-2">
-                                            {/*<FormLabel>*/}
-                                            {/*    Admin Email*/}
-                                            {/*</FormLabel>*/}
+                                            {this.state.errors.adminEmail &&
+                                            <FormLabel className="text-danger">
+                                                {this.state.errors.adminEmail}
+                                            </FormLabel>}
                                             <FormControl
                                                 className="update-form-control"
                                                 id="adminEmail"
                                                 name="adminEmail"
                                                 type="email"
                                                 value={this.state.admin.adminEmail}
-                                                placeholder={this.state.errors.adminEmail || "Enter Admin's email"}
+                                                placeholder="Enter Admin's email"
                                                 onChange={this.handleChange}/>
                                         </FormGroup>
                                         <FormGroup className="px-5 pt-2">
-                                            {/*<FormLabel>*/}
-                                            {/*    Admin Password*/}
-                                            {/*</FormLabel>*/}
+                                            {this.state.errors.adminPassword &&
+                                            <FormLabel className="text-danger">
+                                                {this.state.errors.adminPassword}
+                                            </FormLabel>}
                                             <FormControl
                                                 className="update-form-control"
                                                 id="adminPassword"
                                                 name="adminPassword"
                                                 type="password"
                                                 value={this.state.admin.adminPassword}
-                                                placeholder={this.state.errors.adminPassword || "Enter Admin's password"}
+                                                placeholder="Enter Admin's password"
                                                 onChange={this.handleChange}/>
                                         </FormGroup>
                                         <FormGroup className="px-5 pt-2">

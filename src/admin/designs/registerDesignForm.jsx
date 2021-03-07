@@ -7,12 +7,13 @@ import FormGroup from "react-bootstrap/FormGroup";
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
 import Joi from "joi";
-import {toast} from "react-toastify";
+import {toast, Zoom} from "react-toastify";
 import {FormLabel} from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import CardImg from "react-bootstrap/CardImg";
 import {uploadImageAdmin} from "../../services/imgService";
 import {createDesign} from "../../services/designService";
+import "../../css/admin/designs/designRegister.css"
 
 class RegisterDesignForm extends Component {
     constructor(props) {
@@ -38,11 +39,12 @@ class RegisterDesignForm extends Component {
         designText: Joi.string()
             .allow('')
             .min(10)
-            .max(100)
+            .max(200)
             .trim(true)
             .label('Design text'),
         designPictures: Joi.array()
-            .items(Joi.string())
+            .items(Joi.string().required())
+            .required()
             .label('Design pictures')
     })
 
@@ -62,7 +64,11 @@ class RegisterDesignForm extends Component {
                 data.append('file', this.state.uploadPictures[i]);
             }
             await uploadImageAdmin(data);
-            toast.success('Images for the Design were successfully uploaded!');
+            toast('Images were successfully uploaded!', {
+                position: "top-center",
+                transition: Zoom,
+                className: 'register-design-toaster'
+            });
         }
 
         const design = {
@@ -71,7 +77,11 @@ class RegisterDesignForm extends Component {
             designPictures: this.state.designPictures
         }
         await createDesign(design);
-        toast.success('Design was successfully created!');
+        toast('New Design was successfully created!', {
+            position: "top-center",
+            transition: Zoom,
+            className: 'register-design-toaster'
+        });
 
         this.setState({
             isDisabled: true
@@ -113,7 +123,11 @@ class RegisterDesignForm extends Component {
     maxSelectedFiles = (event) => {
         let files = event.target.files;
         if (files.length > 20) {
-            toast.error('Only 20 images can be uploaded!');
+            toast('Only 20 images can be uploaded!', {
+                position: "top-center",
+                transition: Zoom,
+                className: 'error-design-toaster'
+            });
             event.target.value = null;
             return false;
         }
@@ -146,94 +160,91 @@ class RegisterDesignForm extends Component {
     render() {
         return (
             <div>
-                <Container className="container" fluid={true}>
-                    <Row>
-                        <Col>
-                            <Card>
-                                {this.state.uploadPictures !== null &&
-                                <Card.Header>
-                                    <span>Images waiting for upload :</span>
-                                </Card.Header>}
-                                <Card.Body>
-                                    {this.state.showPictures.map(sp => {
-                                        return (
-                                            <CardImg
-                                                key={sp}
-                                                className="m-2"
-                                                style={{width: '20rem'}}
-                                                src={sp}/>
-                                        )
-                                    })
-                                    }
+                <Container className="register-design-main-container" fluid={true}>
+                    <Container className="register-design-sub-container container">
+                        <Row className="m-0">
+                            <span className="register-design-span">Create new Design :</span>
+                        </Row>
+                        <Row>
+                            <Col>
+                                <div className="register-design-div-form">
                                     <Form onSubmit={this.handleSubmit}>
-                                        <FormGroup>
-                                            <FormLabel>
-                                                Upload images :
-                                            </FormLabel>
+
+                                        <Row className="justify-content-center">
+                                            {this.state.showPictures.map(sp => {
+                                                return (
+                                                    <CardImg
+                                                        key={sp}
+                                                        className="mt-5 m-3"
+                                                        style={{width: 300, height: 300}}
+                                                        src={sp}/>
+                                                )
+                                            })}
+                                        </Row>
+
+                                        <FormGroup className="px-5 pt-5">
                                             <Form.File
+                                                className="register-design-form"
                                                 type="file"
                                                 id="images"
                                                 name="images"
-                                                label="Max images to upload : 20"
+                                                label={this.state.errors.designPictures && "You need to select images to upload!"
+                                                || "Maximum images allowed to upload : 20"}
                                                 multiple
                                                 onChange={this.handleImages}/>
-                                            {this.state.errors.designPictures &&
-                                            <p className="text-danger pt-2">
-                                                {this.state.errors.designPictures}
-                                            </p>}
                                         </FormGroup>
-                                        <FormGroup>
-                                            <FormLabel>
-                                                Design title :
+                                        <FormGroup className="px-5 pt-3">
+                                            {this.state.errors.designTitle &&
+                                            <FormLabel className="text-danger">
+                                                {this.state.errors.designTitle}
                                             </FormLabel>
+                                            }
                                             <FormControl
+                                                className="register-design-form-control"
                                                 autoFocus={true}
                                                 name="designTitle"
                                                 type="text"
                                                 value={this.state.designTitle}
                                                 placeholder="Enter title for the Design"
                                                 onChange={this.handleChange}/>
-                                            {this.state.errors.designTitle &&
-                                            <p className="text-danger pt-2">
-                                                {this.state.errors.designTitle}
-                                            </p>}
                                         </FormGroup>
-                                        <FormGroup>
-                                            <FormLabel>
-                                                Design text :
+                                        <FormGroup className="px-5 pt-2">
+                                            {this.state.errors.designText &&
+                                            <FormLabel className="text-danger">
+                                                {this.state.errors.designText}
                                             </FormLabel>
+                                            }
                                             <FormControl
+                                                className="register-design-form-control"
                                                 name="designText"
                                                 as="textarea"
                                                 rows="3"
                                                 value={this.state.designText}
-                                                placehodler="Enter text for the Design (not mandatory)"
+                                                placeholder="Enter text for the Design (not mandatory)"
                                                 onChange={this.handleChange}/>
-                                            {this.state.errors.designText &&
-                                            <p className="text-danger pt-2">
-                                                {this.state.designText}
-                                            </p>}
                                         </FormGroup>
-                                        <Row className="mt-3">
+                                        <Row className="px-5 pb-4 py-3 d-flex justify-content-between">
                                             <Col md={4}>
                                                 <Button
+                                                    className="register-design-register-button"
                                                     type="submit"
                                                     disabled={this.state.isDisabled}>
                                                     CREATE DESIGN
                                                 </Button>
                                             </Col>
-                                            <Col md={{span: 4, offset: 4}} className="d-flex flex-row-reverse">
+                                            <Col className="d-flex justify-content-end">
                                                 <Button
+                                                    className="register-design-redirect-button"
                                                     onClick={this.adminRedirect}>
                                                     BACK TO ADMIN PANEL
                                                 </Button>
                                             </Col>
                                         </Row>
                                     </Form>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                    </Row>
+                                </div>
+                            </Col>
+                        </Row>
+                    </Container>
                 </Container>
             </div>
         );

@@ -41,6 +41,7 @@
     border: none;
     margin-top: 1rem;
     padding-inline: 5rem;
+    margin-bottom: 10%;
 }
 
 .biolist-redirect-button:hover {
@@ -55,6 +56,7 @@
 
 .biolist-delete-button:hover {
     background-color: orangered;
+    color:darkred;
 }
 
 .biolist-delete-button:focus {

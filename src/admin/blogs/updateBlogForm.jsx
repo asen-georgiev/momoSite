@@ -7,13 +7,14 @@ import FormGroup from "react-bootstrap/FormGroup";
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
 import Joi from "joi";
-import {toast} from "react-toastify";
+import {toast, Zoom} from "react-toastify";
 import {FormLabel} from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import CardImg from "react-bootstrap/CardImg";
 import {picUrl} from "../../config.json";
 import {getBlog, updateBlog} from "../../services/blogService";
 import {uploadImageAdmin} from "../../services/imgService";
+import "../../css/admin/blogs/blogUpdate.css";
 
 class UpdateBlogForm extends Component {
     constructor(props) {
@@ -44,13 +45,13 @@ class UpdateBlogForm extends Component {
         blogSubTitle: Joi.string()
             .required()
             .min(5)
-            .max(100)
+            .max(200)
             .trim(true)
             .label('Blog sub title'),
         blogText: Joi.string()
             .required()
             .min(20)
-            .max(2000)
+            .max(5000)
             .trim(true)
             .label('Blog text'),
         blogPictures: Joi.array()
@@ -77,7 +78,11 @@ class UpdateBlogForm extends Component {
                 data.append('file', this.state.uploadPictures[i]);
             }
             await uploadImageAdmin(data);
-            toast.success('Images for the Blog were successfully uploaded!');
+            toast('Images were successfully uploaded!', {
+                position: "top-center",
+                transition: Zoom,
+                className: 'update-blog-toaster'
+            });
         }
 
         const blog = {
@@ -87,7 +92,11 @@ class UpdateBlogForm extends Component {
             blogPictures: this.state.blog.blogPictures,
             blogLink: this.state.blog.blogLink
         }
-        toast.success('Blog update was successful');
+        toast('Blog update was successful', {
+            position: "top-center",
+            transition: Zoom,
+            className: 'update-blog-toaster'
+        });
         this.setState({
             isDisabled: true
         });
@@ -167,7 +176,11 @@ class UpdateBlogForm extends Component {
     maxSelectedFiles = (event) => {
         let files = event.target.files;
         if (files.length > 5) {
-            toast.error("Only 5 images can be uploaded at a time");
+            toast("Only 5 images can be uploaded at a time!", {
+                position: "top-center",
+                transition: Zoom,
+                className: 'error-blog-toaster'
+            });
             event.target.value = null;
             return false;
         }
@@ -204,152 +217,144 @@ class UpdateBlogForm extends Component {
     render() {
         return (
             <div>
-                <Container className="container" fluid={true}>
-                    <Row>
-                        <Col>
-                            <Row>
-                                <h3>Update Blog Form</h3>
-                            </Row>
-                            <Card>
+                <Container className="update-blog-main-container" fluid={true}>
+                    <Container className="update-blog-sub-container">
+                        <Row className="m-0">
+                            <span className="update-blog-span">Update Blog :</span>
+                        </Row>
+                        <Row>
+                            <Col>
+                                <div className="update-bio-div-form">
 
-                                {this.state.showPictures === null &&
-                                <Card.Header>
-                                    <span>Current blog pictures :</span>
-                                </Card.Header>}
+                                    {/*{this.state.showPictures === null &&*/}
+                                    {/*<Card.Header className="update-blog-span m-0">*/}
+                                    {/*    <span>Current blog pictures :</span>*/}
+                                    {/*</Card.Header>}*/}
 
-                                {this.state.showPictures !== null &&
-                                <Card.Header>
-                                    <span>Updated blog pictures waiting for upload :</span>
-                                </Card.Header>}
-
-                                <Card.Body>
-
-                                    {this.state.showPictures === null &&
-                                    <div>
-                                        {this.state.blog.blogPictures.map(bp => {
-                                            return (
-                                                <CardImg
-                                                    key={bp}
-                                                    className="m-2"
-                                                    style={{width: '20rem'}}
-                                                    src={picUrl + bp}/>
-                                            )
-                                        })}
-                                    </div>}
-
-                                    {this.state.showPictures !== null &&
-                                    <div>
-                                        {this.state.showPictures.map(sp => {
-                                            return (
-                                                <CardImg
-                                                    key={sp}
-                                                    className="m-2"
-                                                    style={{width: '20rem'}}
-                                                    src={sp}/>
-                                            )
-                                        })}
-                                    </div>}
+                                    {/*{this.state.showPictures !== null &&*/}
+                                    {/*<Card.Header>*/}
+                                    {/*    <span>Updated blog pictures waiting for upload :</span>*/}
+                                    {/*</Card.Header>}*/}
 
                                     <Form onSubmit={this.handleSubmit}>
-                                        <FormGroup>
-                                            <FormLabel>
-                                                Update images :
-                                            </FormLabel>
+
+                                        {this.state.showPictures === null &&
+                                        <Row className="justify-content-center">
+                                            {this.state.blog.blogPictures.map(bp => {
+                                                return (
+                                                    <CardImg
+                                                        key={bp}
+                                                        className="mt-5 m-3"
+                                                        style={{width: 300, height: 300}}
+                                                        src={picUrl + bp}/>
+                                                )
+                                            })}
+                                        </Row>}
+
+                                        {this.state.showPictures !== null &&
+                                        <Row className="justify-content-center">
+                                            {this.state.showPictures.map(sp => {
+                                                return (
+                                                    <CardImg
+                                                        key={sp}
+                                                        className="mt-5 m-3"
+                                                        style={{width: 300, height: 300}}
+                                                        src={sp}/>
+                                                )
+                                            })}
+                                        </Row>}
+
+                                        <FormGroup className="px-5 pt-5">
                                             <Form.File
+                                                className="register-blog-form"
                                                 type="file"
                                                 id="images"
                                                 name="blogPictures"
-                                                label="Max images to upload : 5"
+                                                label={this.state.errors.blogPictures
+                                                || "Maximum images allowed to upload : 5 (not mandatory)"}
                                                 multiple
                                                 onChange={this.handleImages}/>
-                                            {this.state.errors.blogPictures &&
-                                            <p className="text-danger pt-2">
-                                                {this.state.errors.blogPictures}
-                                            </p>}
                                         </FormGroup>
-                                        <FormGroup>
-                                            <FormLabel>
-                                                Blog title :
+                                        <FormGroup className="px-5 pt-3">
+                                            {this.state.errors.blogTitle &&
+                                            <FormLabel className="text-danger">
+                                                {this.state.errors.blogTitle}
                                             </FormLabel>
+                                            }
                                             <FormControl
+                                                className="register-blog-form-control"
                                                 autoFocus={true}
                                                 name="blogTitle"
                                                 type="text"
                                                 value={this.state.blog.blogTitle}
                                                 placeholder="Enter title for the Blog"
                                                 onChange={this.handleChange}/>
-                                            {this.state.errors.blogTitle &&
-                                            <p className="text-danger pt-2">
-                                                {this.state.errors.blogTitle}
-                                            </p>}
                                         </FormGroup>
-                                        <FormGroup>
-                                            <FormLabel>
-                                                Blog sub title :
+                                        <FormGroup className="px-5 pt-2">
+                                            {this.state.errors.blogSubTitle &&
+                                            <FormLabel className="text-danger">
+                                                {this.state.errors.blogSubTitle}
                                             </FormLabel>
+                                            }
                                             <FormControl
+                                                className="register-blog-form-control"
                                                 name="blogSubTitle"
                                                 type="text"
                                                 value={this.state.blog.blogSubTitle}
-                                                placeholder="Enter sub title for the Blog"
+                                                placeholder="Enter short expose for the Blog"
                                                 onChange={this.handleChange}/>
-                                            {this.state.errors.blogSubTitle &&
-                                            <p className="text-danger pt-2">
-                                                {this.state.errors.blogSubTitle}
-                                            </p>}
                                         </FormGroup>
-                                        <FormGroup>
-                                            <FormLabel>
-                                                Blog text :
+                                        <FormGroup className="px-5 pt-2">
+                                            {this.state.errors.blogText &&
+                                            <FormLabel className="text-danger">
+                                                {this.state.errors.blogText}
                                             </FormLabel>
+                                            }
                                             <FormControl
+                                                className="register-blog-form-control"
                                                 name="blogText"
                                                 as="textarea"
                                                 rows="5"
                                                 value={this.state.blog.blogText}
-                                                placeholder="Enter text for the Blog"
+                                                placeholder="Enter main text for the Blog"
                                                 onChange={this.handleChange}/>
-                                            {this.state.errors.blogText &&
-                                            <p className="text-danger pt-2">
-                                                {this.state.errors.blogText}
-                                            </p>}
                                         </FormGroup>
-                                        <FormGroup>
-                                            <FormLabel>
-                                                Blog link :
+                                        <FormGroup className="px-5 pt-2">
+                                            {this.state.errors.blogLink &&
+                                            <FormLabel className="text-danger">
+                                                {this.state.errors.blogLink}
                                             </FormLabel>
+                                            }
                                             <FormControl
+                                                className="register-blog-form-control"
                                                 name="blogLink"
                                                 type="text"
                                                 value={this.state.blog.blogLink}
-                                                placeholder="Enter link to additional info"
+                                                placeholder="Enter link to additional info (not mandatory)"
                                                 onChange={this.handleChange}/>
-                                            {this.state.errors.blogLink &&
-                                            <p className="text-danger pt-2">
-                                                {this.state.errors.blogLink}
-                                            </p>}
                                         </FormGroup>
-                                        <Row className="mt-3">
+                                        <Row className="px-5 pb-4 py-3 d-flex justify-content-between">
                                             <Col md={4}>
                                                 <Button
+                                                    className="update-blog-register-button"
                                                     type="submit"
                                                     disabled={this.state.isDisabled}>
-                                                    UPDATE
+                                                    UPDATE BLOG
                                                 </Button>
                                             </Col>
-                                            <Col md={{span: 4, offset: 4}} className="d-flex flex-row-reverse">
+                                            <Col className="d-flex justify-content-end">
                                                 <Button
+                                                    className="update-blog-redirect-button"
                                                     onClick={this.adminRedirect}>
                                                     BACK TO BLOGS LIST
                                                 </Button>
                                             </Col>
                                         </Row>
                                     </Form>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                    </Row>
-
+                                </div>
+                            </Col>
+                        </Row>
+                    </Container>
                 </Container>
             </div>
         );

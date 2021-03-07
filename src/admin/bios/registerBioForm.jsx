@@ -163,7 +163,7 @@ class RegisterBioForm extends Component {
                 <Container className="register-bio-main-container" fluid={true}>
                     <Container className="register-bio-sub-container container" fluid={true}>
                         <Row className="m-0">
-                            <span className="register-bio-span">Register new Biography :</span>
+                            <span className="register-bio-span">Create new Biography :</span>
                         </Row>
                         <Row>
                             <Col>
@@ -175,7 +175,7 @@ class RegisterBioForm extends Component {
                                                     <CardImg
                                                         key={sp}
                                                         className="mt-5 m-3"
-                                                        style={{width: 300}}
+                                                        style={{width: 300,height:300}}
                                                         src={sp}/>
                                                 )
                                             })
@@ -190,30 +190,38 @@ class RegisterBioForm extends Component {
                                                 type="file"
                                                 id="images"
                                                 name="images"
-                                                label={this.state.errors.bioPictures && "You need to select images to upload"
+                                                label={this.state.errors.bioPictures && "You need to select images to upload!"
                                                 || "Maximum images allowed to upload : 3"}
                                                 multiple
                                                 onChange={this.handleImages}
                                             />
                                         </FormGroup>
-                                        <FormGroup className="px-5 pt-5">
+                                        <FormGroup className="px-5 pt-3">
+                                            {this.state.errors.bioTitle &&
+                                            <FormLabel className="text-danger">
+                                                {this.state.errors.bioTitle}
+                                            </FormLabel>}
                                             <FormControl
                                                 className="register-bio-form-control"
                                                 autoFocus={true}
                                                 name="bioTitle"
                                                 type="text"
                                                 value={this.state.bioTitle}
-                                                placeholder={this.state.errors.bioTitle || "Enter title for the Bio"}
+                                                placeholder="Enter title for the Biography"
                                                 onChange={this.handleChange}/>
                                         </FormGroup>
-                                        <FormGroup className="px-5 pt-5">
+                                        <FormGroup className="px-5 pt-2">
+                                            {this.state.errors.bioText &&
+                                            <FormLabel className="text-danger">
+                                                {this.state.errors.bioText}
+                                            </FormLabel>}
                                             <FormControl
                                                 className="register-bio-form-control"
                                                 name="bioText"
                                                 as="textarea"
                                                 rows="5"
                                                 value={this.state.bioText}
-                                                placeholder={this.state.errors.bioText || "Enter text for the Bio"}
+                                                placeholder="Enter text for the Biography"
                                                 onChange={this.handleChange}/>
                                         </FormGroup>
                                         <Row className="px-5 pb-4 py-3 d-flex justify-content-between">
@@ -222,7 +230,7 @@ class RegisterBioForm extends Component {
                                                     className="register-bio-register-button"
                                                     type="submit"
                                                     disabled={this.state.isDisabled}>
-                                                    CREATE
+                                                    CREATE BIOGRAPHY
                                                 </Button>
                                             </Col>
                                             <Col className="d-flex justify-content-end">

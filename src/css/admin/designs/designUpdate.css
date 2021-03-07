@@ -1,25 +1,25 @@
-.update-bio-main-container {
+.update-design-main-container {
     min-height: 100vh;
     background-image: linear-gradient(rgb(7, 2, 36), indigo,lightskyblue);
 }
 
-.update-bio-sub-container {
+.update-design-sub-container {
 
 }
 
-.update-bio-span{
+.update-design-span{
     font-size: x-large;
     margin-top: 10%;
     color: wheat;
 }
 
-.update-bio-div-form {
+.update-design-div-form {
     background-color: rgba(240, 104, 50, 0.1);
     margin-top: 2rem;
     margin-bottom: 10%;
 }
 
-.update-bio-form-control {
+.update-design-form-control {
     border-radius: 0 !important;
     font-size: x-large !important;
     background: transparent !important;
@@ -31,54 +31,54 @@
     border-bottom-width: 2px !important;
 }
 
-.update-bio-form-control:focus {
+.update-design-form-control:focus {
     box-shadow: none !important;
 }
 
-.update-bio-register-button{
+.update-design-register-button{
     background-color: orangered;
     border: none;
     padding-inline: 5rem;
     margin-bottom: 1rem;
 }
 
-.update-bio-register-button:hover{
+.update-design-register-button:hover{
     background-color: red;
 }
 
-.update-bio-register-button:focus{
+.update-design-register-button:focus{
     background-color: red;
     box-shadow: none !important;
 }
 
-.update-bio-register-button:disabled{
+.update-design-register-button:disabled{
     background-color: lightcoral;
 }
 
-.update-bio-redirect-button{
+.update-design-redirect-button{
     background-color: orangered;
     border: none;
     padding-inline: 5rem;
     margin-bottom: 1rem;
 }
 
-.update-bio-redirect-button:hover{
+.update-design-redirect-button:hover{
     background-color: red;
 }
 
-.update-bio-redirect-button:focus{
+.update-design-redirect-button:focus{
     background-color: red;
     box-shadow: none !important;
 }
 
-.update-bio-toaster{
+.update-design-toaster{
     background-color: darkolivegreen;
     color: antiquewhite;
     font-size: x-large;
     text-align: center !important;
 }
 
-.update-bio-form{
+.update-design-form{
     width: 90%;
     color: wheat;
     font-size: medium;
@@ -111,7 +111,7 @@
     margin-right: 1rem;
 }
 
-.error-bio-toaster{
+.error-design-toaster{
     background-color: darkred;
     color: antiquewhite;
     font-size: x-large;

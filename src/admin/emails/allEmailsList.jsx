@@ -2,9 +2,10 @@ import React, {Component} from 'react';
 import Button from "react-bootstrap/Button";
 import Table from "react-bootstrap/Table";
 import Container from "react-bootstrap/Container";
-import {toast} from "react-toastify";
-import {Link} from "react-router-dom";
+import {toast, Zoom} from "react-toastify";
+import "../../css/admin/emails/emailAllList.css";
 import {deleteEmail, getAllEmails} from "../../services/emailService";
+import Row from "react-bootstrap/Row";
 
 class AllEmailsList extends Component {
     constructor(props) {
@@ -27,7 +28,11 @@ class AllEmailsList extends Component {
 
         try {
             await deleteEmail(email._id);
-            toast.success("Email was successfully deleted!");
+            toast("Email was successfully deleted!",{
+                position: "top-center",
+                transition: Zoom,
+                className: 'commentlist-toaster'
+            });
         } catch (e) {
             if (e.response && e.response.status === 404)
                 console.log('Email with the given ID was not found!');
@@ -44,9 +49,13 @@ class AllEmailsList extends Component {
     render() {
         return (
             <div>
-                <Container>
-                    <Table>
-                        <thead>
+                <Container className="emaillist-main-container" fluid={true}>
+                    <Container className="emaillist-sub-container container" fluid={true}>
+                        <Row className="m-0">
+                            <span className="emaillist-span">All users Emails:</span>
+                        </Row>
+                    <Table responsive hover className="emaillist-table">
+                        <thead className="emaillist-thead">
                         <tr>
                             <th>Name</th>
                             <th>Email</th>
@@ -55,7 +64,7 @@ class AllEmailsList extends Component {
                             <th>Delete</th>
                         </tr>
                         </thead>
-                        <tbody>
+                        <tbody className="emaillist-tbody">
                         {this.state.emails.map(eml => {
                             return (
                                 <tr key={eml._id}>
@@ -65,8 +74,9 @@ class AllEmailsList extends Component {
                                     <td>{eml.message}</td>
                                     <td>
                                         <Button
+                                            className="emaillist-delete-button"
                                             onClick={() => this.handleDelete(eml)}>
-                                            DELETE
+                                            Delete
                                         </Button>
                                     </td>
                                 </tr>
@@ -74,9 +84,12 @@ class AllEmailsList extends Component {
                         })}
                         </tbody>
                     </Table>
-                    <Button onClick={this.adminRedirect}>
+                    <Button
+                        className="emaillist-redirect-button"
+                        onClick={this.adminRedirect}>
                         BACK TO ADMIN PANEL
                     </Button>
+                    </Container>
                 </Container>
             </div>
         );

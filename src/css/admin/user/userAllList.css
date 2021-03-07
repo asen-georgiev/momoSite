@@ -55,6 +55,7 @@
 
 .userlist-delete-button:hover {
     background-color: orangered;
+    color: darkred;
 }
 
 .userlist-delete-button:focus {

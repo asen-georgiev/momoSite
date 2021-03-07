@@ -228,9 +228,6 @@ class UpdateUserForm extends Component {
                                                     style={{width: 300, height: 365}}/>
                                                 }
                                                 <FormGroup className="px-5 pt-4">
-                                                    {/*<FormLabel htmlFor="image">*/}
-                                                    {/*    Upload :*/}
-                                                    {/*</FormLabel>*/}
                                                     <Form.File
                                                         className="update-user-form"
                                                         id="image"
@@ -241,6 +238,10 @@ class UpdateUserForm extends Component {
                                             </Col>
                                             <Col className="pl-0">
                                                 <FormGroup className="px-5 pt-5">
+                                                    {this.state.errors.userName &&
+                                                    <FormLabel className="text-danger">
+                                                        {this.state.errors.userName}
+                                                    </FormLabel>}
                                                     <FormControl
                                                         className="update-user-form-control"
                                                         autoFocus={true}
@@ -249,12 +250,12 @@ class UpdateUserForm extends Component {
                                                         value={this.state.user.userName}
                                                         placeholder="Enter user's first name"
                                                         onChange={this.handleChange}/>
-                                                    {this.state.errors.userName &&
-                                                    <p className="text-danger pt-2">
-                                                        {this.state.errors.userName}
-                                                    </p>}
                                                 </FormGroup>
                                                 <FormGroup className="px-5 pt-2">
+                                                    {this.state.errors.userFamily &&
+                                                    <FormLabel className="text-danger">
+                                                        {this.state.errors.userFamily}
+                                                    </FormLabel>}
                                                     <FormControl
                                                         className="update-user-form-control"
                                                         name="userFamily"
@@ -262,12 +263,12 @@ class UpdateUserForm extends Component {
                                                         value={this.state.user.userFamily}
                                                         placeholder="Enter user's second name"
                                                         onChange={this.handleChange}/>
-                                                    {this.state.errors.userFamily &&
-                                                    <p className="text-danger pt-2">
-                                                        {this.state.errors.userFamily}
-                                                    </p>}
                                                 </FormGroup>
                                                 <FormGroup className="px-5 pt-2">
+                                                    {this.state.errors.userAddress &&
+                                                    <FormLabel className="text-danger">
+                                                        {this.state.errors.userAddress}
+                                                    </FormLabel>}
                                                     <FormControl
                                                         className="update-user-form-control"
                                                         name="userAddress"
@@ -275,12 +276,12 @@ class UpdateUserForm extends Component {
                                                         value={this.state.user.userAddress}
                                                         placeholder="Enter user's address: country / city / street / postal code"
                                                         onChange={this.handleChange}/>
-                                                    {this.state.errors.userAddress &&
-                                                    <p className="text-danger pt-2">
-                                                        {this.state.errors.userAddress}
-                                                    </p>}
                                                 </FormGroup>
                                                 <FormGroup className="px-5 pt-2">
+                                                    {this.state.errors.userEmail &&
+                                                    <FormLabel className="text-danger">
+                                                        {this.state.errors.userEmail}
+                                                    </FormLabel>}
                                                     <FormControl
                                                         className="update-user-form-control"
                                                         name="userEmail"
@@ -288,12 +289,12 @@ class UpdateUserForm extends Component {
                                                         value={this.state.user.userEmail}
                                                         placeholder="Enter user's e-mail address"
                                                         onChange={this.handleChange}/>
-                                                    {this.state.errors.userEmail &&
-                                                    <p className="text-danger pt-2">
-                                                        {this.state.errors.userEmail}
-                                                    </p>}
                                                 </FormGroup>
                                                 <FormGroup className="px-5 pt-2">
+                                                    {this.state.errors.userTelephone &&
+                                                    <FormLabel className="text-danger">
+                                                        {this.state.errors.userTelephone}
+                                                    </FormLabel>}
                                                     <FormControl
                                                         className="update-user-form-control"
                                                         name="userTelephone"
@@ -301,12 +302,12 @@ class UpdateUserForm extends Component {
                                                         value={this.state.user.userTelephone}
                                                         placeholder="Enter user's telephone"
                                                         onChange={this.handleChange}/>
-                                                    {this.state.errors.userTelephone &&
-                                                    <p className="text-danger pt-2">
-                                                        {this.state.errors.userTelephone}
-                                                    </p>}
                                                 </FormGroup>
                                                 <FormGroup className="px-5 pt-2">
+                                                    {this.state.errors.userPassword &&
+                                                    <FormLabel className="text-danger">
+                                                        {this.state.errors.userPassword}
+                                                    </FormLabel>}
                                                     <FormControl
                                                         className="update-user-form-control"
                                                         name="userPassword"
@@ -314,10 +315,6 @@ class UpdateUserForm extends Component {
                                                         value={this.state.user.userPassword}
                                                         placeholder="Enter user's password : min. 8 symbols"
                                                         onChange={this.handleChange}/>
-                                                    {this.state.errors.userPassword &&
-                                                    <p className="text-danger pt-2">
-                                                        {this.state.errors.userPassword}
-                                                    </p>}
                                                 </FormGroup>
                                             </Col>
                                         </Row>
@@ -327,7 +324,7 @@ class UpdateUserForm extends Component {
                                                     className="update-user-register-button"
                                                     type="submit"
                                                     disabled={this.state.isDisabled}>
-                                                    UPDATE
+                                                    UPDATE USER
                                                 </Button>
                                             </Col>
                                             <Col className="d-flex justify-content-end">

@@ -1,42 +1,42 @@
-.adminlist-main-container{
+.emaillist-main-container {
     min-height: 100vh;
-    background-image: linear-gradient(rgb(7, 2, 36),indigo,lightskyblue);
+    background-image: linear-gradient(rgb(7, 2, 36), indigo, lightskyblue);
 }
 
-.adminlist-sub-container{
+.emaillist-sub-container {
 
 }
 
-.adminlist-table{
-    background-color: rgba(240, 104, 50,0.1);
+.emaillist-table {
+    background-color: rgba(240, 104, 50, 0.1);
     margin-top: 2rem;
     font-size: large;
 }
 
-.adminlist-span{
+.emaillist-span {
     font-size: x-large;
     margin-top: 10%;
     color: wheat;
 }
 
-.adminlist-thead{
+.emaillist-thead {
     color: wheat;
 }
 
-.adminlist-tbody{
+.emaillist-tbody {
     color: antiquewhite;
 }
 
-.adminlist-link{
+.emaillist-link {
     color: darkorange;
 }
 
-.adminlist-link:hover{
+.emaillist-link:hover {
     color: orangered;
     text-decoration: none;
 }
 
-.adminlist-redirect-button{
+.emaillist-redirect-button {
     background-color: orangered;
     border: none;
     margin-top: 1rem;
@@ -44,27 +44,27 @@
     margin-bottom: 10%;
 }
 
-.adminlist-redirect-button:hover{
+.emaillist-redirect-button:hover {
     background-color: red;
 }
 
-.adminlist-delete-button{
+.emaillist-delete-button {
     background-color: red;
     border: none;
     padding-inline: 2rem;
 }
 
-.adminlist-delete-button:hover{
+.emaillist-delete-button:hover {
     background-color: orangered;
     color: darkred;
 }
 
-.adminlist-delete-button:focus{
+.emaillist-delete-button:focus {
     background-color: orangered;
     box-shadow: none !important;
 }
 
-.adminlist-toaster{
+.emaillist-toaster {
     background-color: darkolivegreen;
     color: antiquewhite;
     font-size: x-large;

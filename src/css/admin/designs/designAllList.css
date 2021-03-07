@@ -1,42 +1,42 @@
-.adminlist-main-container{
+.designlist-main-container {
     min-height: 100vh;
-    background-image: linear-gradient(rgb(7, 2, 36),indigo,lightskyblue);
+    background-image: linear-gradient(rgb(7, 2, 36), indigo, lightskyblue);
 }
 
-.adminlist-sub-container{
+.designlist-sub-container {
 
 }
 
-.adminlist-table{
-    background-color: rgba(240, 104, 50,0.1);
+.designlist-table {
+    background-color: rgba(240, 104, 50, 0.1);
     margin-top: 2rem;
     font-size: large;
 }
 
-.adminlist-span{
+.designlist-span {
     font-size: x-large;
     margin-top: 10%;
     color: wheat;
 }
 
-.adminlist-thead{
+.designlist-thead {
     color: wheat;
 }
 
-.adminlist-tbody{
+.designlist-tbody {
     color: antiquewhite;
 }
 
-.adminlist-link{
+.designlist-link {
     color: darkorange;
 }
 
-.adminlist-link:hover{
+.designlist-link:hover {
     color: orangered;
     text-decoration: none;
 }
 
-.adminlist-redirect-button{
+.designlist-redirect-button {
     background-color: orangered;
     border: none;
     margin-top: 1rem;
@@ -44,27 +44,27 @@
     margin-bottom: 10%;
 }
 
-.adminlist-redirect-button:hover{
+.designlist-redirect-button:hover {
     background-color: red;
 }
 
-.adminlist-delete-button{
+.designlist-delete-button {
     background-color: red;
     border: none;
     padding-inline: 2rem;
 }
 
-.adminlist-delete-button:hover{
+.designlist-delete-button:hover {
     background-color: orangered;
     color: darkred;
 }
 
-.adminlist-delete-button:focus{
+.designlist-delete-button:focus {
     background-color: orangered;
     box-shadow: none !important;
 }
 
-.adminlist-toaster{
+.designlist-toaster {
     background-color: darkolivegreen;
     color: antiquewhite;
     font-size: x-large;

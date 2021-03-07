@@ -75,18 +75,15 @@ class AllBiosList extends Component {
                                         <td>{bio.bioText}</td>
                                         <td>
                                             <Row className="justify-content-center">
-
                                                 {bio.bioPictures.map(bp => {
                                                     return (
                                                         <Image
                                                             src={picUrl + bp}
-                                                            width="50"
-                                                            height="50"
+                                                            width="70"
+                                                            height="70"
                                                             className="m-1"/>
                                                     )
-                                                })
-                                                }
-
+                                                })}
                                             </Row>
                                         </td>
                                         <td>
