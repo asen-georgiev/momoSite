@@ -10,12 +10,12 @@ function BlogComments(props) {
     return (
         <React.Fragment>
             <Card>
-            {comments.map(comment => {
-                return (
+                {comments.map(comment => {
+                    return (
                         <Card.Body className="d-flex flex-row" key={comment._id}>
                             <Image
                                 src={picUrl + comment.user.userPicture}
-                                style={{width: '5rem'}}
+                                style={{width: '5rem', height: '5rem'}}
                                 roundedCircle/>
                             <Col>
                                 <Card.Title>
@@ -26,8 +26,8 @@ function BlogComments(props) {
                                 </Card.Text>
                             </Col>
                         </Card.Body>
-                )
-            })}
+                    )
+                })}
             </Card>
         </React.Fragment>
     );

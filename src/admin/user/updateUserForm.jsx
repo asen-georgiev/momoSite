@@ -79,7 +79,7 @@ class UpdateUserForm extends Component {
             .max(50)
             .trim(true)
             .label("Personal telephone")
-        // .pattern(new RegExp('[0-9]'))
+            .pattern(new RegExp('^\\+[0-9]?()[0-9](\\s|\\S)(\\d[0-9]{9})$'))
     })
 
 
@@ -300,7 +300,7 @@ class UpdateUserForm extends Component {
                                                         name="userTelephone"
                                                         type="text"
                                                         value={this.state.user.userTelephone}
-                                                        placeholder="Enter user's telephone"
+                                                        placeholder="Enter user's telephone ex (+ or 0)359123456789"
                                                         onChange={this.handleChange}/>
                                                 </FormGroup>
                                                 <FormGroup className="px-5 pt-2">
