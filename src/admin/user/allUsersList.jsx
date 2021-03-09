@@ -9,13 +9,18 @@ import {deleteUserAdmin, getAllUsers} from "../../services/userService";
 import Image from "react-bootstrap/Image";
 import "../../css/admin/user/userAllList.css";
 import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import {paginateFunction} from "../../services/paginateFunction";
+import Paginate from "../../components/paginate";
 
 
 class AllUsersList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            users: []
+            users: [],
+            usersPerPage: 3,
+            currentPage: 1
         }
     }
 
@@ -40,17 +45,36 @@ class AllUsersList extends Component {
         }
     }
 
+
+    handlePageChange = (pageNumber) => {
+        this.setState({currentPage: pageNumber});
+    }
+
+
     adminRedirect = () => {
         this.props.history.push("/admin");
     }
 
     render() {
+
+        const paginatedUsers = paginateFunction(this.state.users, this.state.usersPerPage, this.state.currentPage);
+
         return (
             <div>
                 <Container className="userlist-main-container" fluid={true}>
                     <Container className="userlist-sub-container container" fluid={true}>
                         <Row className="m-0">
+                            <Col className="userlist-span-col">
                             <span className="userlist-span">All registered Users :</span>
+                            </Col>
+                            <Col className="userlist-span-col d-flex justify-content-end">
+                            <Paginate
+                                className="m-0"
+                                itemsCount={this.state.users.length}
+                                itemsPerPage={this.state.usersPerPage}
+                                currentPage={this.state.currentPage}
+                                onPageChange={this.handlePageChange}/>
+                            </Col>
                         </Row>
                         <Table responsive hover className="userlist-table">
                             <thead className="userlist-thead">
@@ -63,7 +87,7 @@ class AllUsersList extends Component {
                             </tr>
                             </thead>
                             <tbody className="userlist-tbody">
-                            {this.state.users.map(usr => {
+                            {paginatedUsers.map(usr => {
                                 return (
                                     <tr key={usr._id}>
                                         <td>{usr.userName} {usr.userFamily}</td>

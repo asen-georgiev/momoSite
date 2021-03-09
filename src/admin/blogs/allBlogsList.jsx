@@ -9,12 +9,16 @@ import {Link} from "react-router-dom";
 import {picUrl} from "../../config.json";
 import {deleteBlog, getBlogs} from "../../services/blogService";
 import "../../css/admin/blogs/blogAllList.css";
+import Paginate from "../../components/paginate";
+import {paginateFunction} from "../../services/paginateFunction";
 
 class AllBlogsList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            blogs: []
+            blogs: [],
+            blogsPerPage: 3,
+            currentPage: 1
         }
     }
 
@@ -44,18 +48,38 @@ class AllBlogsList extends Component {
         }
     }
 
+
+    handlePageChange = (pageNumber) => {
+        this.setState({
+            currentPage: pageNumber
+        });
+    }
+
     adminRedirect = () => {
         this.props.history.push("/admin");
     }
 
 
     render() {
+
+        const paginatedBlogs = paginateFunction(this.state.blogs, this.state.blogsPerPage, this.state.currentPage);
+
         return (
             <div>
                 <Container className="bloglist-main-container" fluid={true}>
                     <Container className="bloglist-sub-container">
                         <Row className="m-0">
-                            <span className="bloglist-span">All created Blogs :</span>
+                            <Col className="bloglist-span-col">
+                                <span className="bloglist-span">All created Blogs :</span>
+                            </Col>
+                            <Col className="biolist-span-col d-flex justify-content-end">
+                                <Paginate
+                                    className="m-0"
+                                    itemsCount={this.state.blogs.length}
+                                    itemsPerPage={this.state.blogsPerPage}
+                                    currentPage={this.state.currentPage}
+                                    onPageChange={this.handlePageChange}/>
+                            </Col>
                         </Row>
                         <Table responsive hover className="bloglist-table">
                             <thead className="bloglist-thead">
@@ -71,13 +95,25 @@ class AllBlogsList extends Component {
                             </tr>
                             </thead>
                             <tbody className="bloglist-tbody">
-                            {this.state.blogs.map(blog => {
+                            {paginatedBlogs.map(blog => {
                                 return (
                                     <tr key={blog._id}>
                                         <td>{blog.blogTitle}</td>
-                                        <td>{blog.blogSubTitle}</td>
+                                        <td>
+                                            <div
+                                                className="overflow-auto"
+                                                style={{height: 250}}>
+                                                {blog.blogSubTitle}
+                                            </div>
+                                        </td>
                                         <td>{new Date(blog.blogDate).toLocaleString()}</td>
-                                        <td>{blog.blogText}</td>
+                                        <td>
+                                            <div
+                                                className="overflow-auto"
+                                                style={{height: 250}}>
+                                                {blog.blogText}
+                                            </div>
+                                        </td>
                                         <td>
                                             {blog.blogPictures.map(bp => {
                                                 return (

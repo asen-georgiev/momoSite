@@ -1,0 +1,12 @@
+.page-link {
+    color: red !important;
+    border-color: goldenrod !important;
+    box-shadow: none !important;
+}
+
+
+.page-item.active .page-link {
+    color: white !important;
+    background-color: coral !important;
+    border-color: red !important;
+}

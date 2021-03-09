@@ -5,20 +5,28 @@ import Col from "react-bootstrap/Col";
 import Table from "react-bootstrap/Table";
 import {Button, Image} from "react-bootstrap";
 import {toast, Zoom} from "react-toastify";
+import _ from "lodash";
 import {deleteComment, getComments} from "../../services/commentService";
 import "../../css/admin/comments/commentAllList.css";
+import Paginate from "../../components/paginate";
+import {paginateFunction} from "../../services/paginateFunction";
 
 class AllCommentsList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            comments: []
+            comments: [],
+            commentsPerPage: 5,
+            currentPage: 1
         }
     }
 
 
     async componentDidMount() {
         const {data: comments} = await getComments();
+        //Creating new array with objects by unique 'userEmail
+        const uniqList = _.uniqBy(comments,'userEmail');
+        console.log(uniqList);
         this.setState({
             comments
         });
@@ -46,34 +54,60 @@ class AllCommentsList extends Component {
 
     }
 
+    handlePageChange = (pageNumber) => {
+        this.setState({
+            currentPage: pageNumber
+        });
+    }
 
     adminRedirect = () => {
         this.props.history.push("/admin");
     }
 
     render() {
+
+        const paginatedComments = paginateFunction(this.state.comments, this.state.commentsPerPage, this.state.currentPage);
+
         return (
             <div>
                 <Container className="commentlist-main-container" fluid={true}>
                     <Container className="commentlist-sub-container container" fluid={true}>
                         <Row className="m-0">
-                            <span className="commentlist-span">All users Comments :</span>
+                            <Col className="commentlist-span-col">
+                                <span className="commentlist-span">All users Comments :</span>
+                            </Col>
+                            <Col className="commentlist-span-col d-flex justify-content-end">
+                                <Paginate
+                                    className="m-0"
+                                    itemsCount={this.state.comments.length}
+                                    itemsPerPage={this.state.commentsPerPage}
+                                    currentPage={this.state.currentPage}
+                                    onPageChange={this.handlePageChange}/>
+                            </Col>
                         </Row>
                         <Table responsive hover className="commentlist-table">
                             <thead className="commentlist-thead">
                             <tr>
                                 <th>User</th>
+                                <th>Email</th>
                                 <th>Comment</th>
                                 <th>Date</th>
                                 <th>Delete</th>
                             </tr>
                             </thead>
                             <tbody className="commentlist-tbody">
-                            {this.state.comments.map(comment => {
+                            {paginatedComments.map(comment => {
                                 return (
                                     <tr>
                                         <td>{comment.user.userName} {comment.user.userFamily}</td>
-                                        <td>{comment.commentText}</td>
+                                        <td>{comment.user.userEmail}</td>
+                                        <td>
+                                            <div
+                                                className="overflow-auto"
+                                                style={{height: 150}}>
+                                                {comment.commentText}
+                                            </div>
+                                        </td>
                                         <td>{new Date(comment.commentDate).toLocaleString()}</td>
                                         <td>
                                             <Button
@@ -85,18 +119,18 @@ class AllCommentsList extends Component {
                                     </tr>
                                 )
                             })}
-                            </tbody>
-                        </Table>
-                        <Button
-                            className="commentlist-redirect-button"
-                            onClick={this.adminRedirect}>
-                            BACK TO ADMIN PANEL
-                        </Button>
-                    </Container>
-                </Container>
-            </div>
-        );
-    }
+                                </tbody>
+                                </Table>
+                                <Button
+                                className="commentlist-redirect-button"
+                                onClick={this.adminRedirect}>
+                                BACK TO ADMIN PANEL
+                                </Button>
+                                </Container>
+                                </Container>
+                                </div>
+                                );
+                            }
 }
 
 export default AllCommentsList;

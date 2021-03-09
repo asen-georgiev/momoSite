@@ -9,12 +9,16 @@ import {Link} from "react-router-dom";
 import {picUrl} from "../../config.json";
 import {deleteDesign, getDesigns} from "../../services/designService";
 import "../../css/admin/designs/designAllList.css";
+import {paginateFunction} from "../../services/paginateFunction";
+import Paginate from "../../components/paginate";
 
 class AllDesignsList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            designs: []
+            designs: [],
+            designsPerPage: 3,
+            currentPage: 1
         }
     }
 
@@ -48,17 +52,36 @@ class AllDesignsList extends Component {
         }
     }
 
+    handlePageChange = (pageNumber) => {
+        this.setState({
+            currentPage: pageNumber
+        });
+    }
+
     adminRedirect = () => {
         this.props.history.push("/admin");
     }
 
     render() {
+
+        const paginatedDesigns = paginateFunction(this.state.designs, this.state.designsPerPage,this.state.currentPage);
+
         return (
             <div>
                 <Container className="designlist-main-container" fluid={true}>
                     <Container className="designlist-sub-container container" fluid={true}>
                         <Row className="m-0">
+                            <Col className="designlist-span-col">
                             <span className="designlist-span">All created Designs :</span>
+                            </Col>
+                            <Col className="designlist-span-col d-flex justify-content-end">
+                                <Paginate
+                                    className="m-0"
+                                    itemsCount={this.state.designs.length}
+                                    itemsPerPage={this.state.designsPerPage}
+                                    currentPage={this.state.currentPage}
+                                    onPageChange={this.handlePageChange}/>
+                            </Col>
                         </Row>
                         <Table responsive hover className="designlist-table">
                             <thead className="designlist-thead">
@@ -71,7 +94,7 @@ class AllDesignsList extends Component {
                             </tr>
                             </thead>
                             <tbody className="designlist-tbody">
-                            {this.state.designs.map(design => {
+                            {paginatedDesigns.map(design => {
                                 return (
                                     <tr key={design._id}>
                                         <td>{design.designTitle}</td>

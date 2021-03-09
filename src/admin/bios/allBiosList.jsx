@@ -9,13 +9,17 @@ import {Link} from "react-router-dom";
 import {picUrl} from "../../config.json";
 import "../../css/admin/bios/bioAllList.css";
 import {deleteBio, getBios} from "../../services/bioService";
+import {paginateFunction} from "../../services/paginateFunction";
+import Paginate from "../../components/paginate";
 
 
 class AllBiosList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            bios: []
+            bios: [],
+            biosPerPage: 3,
+            currentPage: 1
         }
     }
 
@@ -45,17 +49,34 @@ class AllBiosList extends Component {
         }
     }
 
+    handlePageChange = (pageNumber) => {
+        this.setState({currentPage: pageNumber});
+    }
+
     adminRedirect = () => {
         this.props.history.push("/admin");
     }
 
     render() {
+
+        const paginatedBios = paginateFunction(this.state.bios, this.state.biosPerPage,this.state.currentPage);
+
         return (
             <div>
                 <Container className="biolist-main-container" fluid={true}>
                     <Container className="biolist-sub-container container" fluid={true}>
                         <Row className="m-0">
+                            <Col className="biolist-span-col">
                             <span className="biolist-span">All created Biographies :</span>
+                            </Col>
+                            <Col className="biolist-span-col d-flex justify-content-end">
+                                <Paginate
+                                    className="m-0"
+                                    itemsCount={this.state.bios.length}
+                                    itemsPerPage={this.state.biosPerPage}
+                                    currentPage={this.state.currentPage}
+                                    onPageChange={this.handlePageChange}/>
+                            </Col>
                         </Row>
                         <Table responsive hover className="biolist-table">
                             <thead className="biolist-thead">
@@ -68,11 +89,17 @@ class AllBiosList extends Component {
                             </tr>
                             </thead>
                             <tbody className="biolist-tbody">
-                            {this.state.bios.map(bio => {
+                            {paginatedBios.map(bio => {
                                 return (
                                     <tr key={bio._id}>
                                         <td>{bio.bioTitle}</td>
-                                        <td>{bio.bioText}</td>
+                                        <td>
+                                            <div
+                                                className="overflow-auto"
+                                                style={{height: 150}}>
+                                                {bio.bioText}
+                                            </div>
+                                        </td>
                                         <td>
                                             <Row className="justify-content-center">
                                                 {bio.bioPictures.map(bp => {
