@@ -10,12 +10,15 @@ import {deleteComment, getComments} from "../../services/commentService";
 import "../../css/admin/comments/commentAllList.css";
 import Paginate from "../../components/paginate";
 import {paginateFunction} from "../../services/paginateFunction";
+import DropDownComp from "../../components/DropDownComp";
 
 class AllCommentsList extends Component {
     constructor(props) {
         super(props);
         this.state = {
             comments: [],
+            emailsList: [],
+            selectedEmail: 'ALL USERS COMMENTS',
             commentsPerPage: 5,
             currentPage: 1
         }
@@ -25,10 +28,12 @@ class AllCommentsList extends Component {
     async componentDidMount() {
         const {data: comments} = await getComments();
         //Creating new array with objects by unique 'userEmail
-        const uniqList = _.uniqBy(comments,'userEmail');
-        console.log(uniqList);
+        const uniqList = _.uniqBy(comments, 'user.userEmail');
+        const emailsList = [{user: {userEmail: 'ALL USERS COMMENTS'}}, ...uniqList];
+        console.log(emailsList);
         this.setState({
-            comments
+            comments,
+            emailsList
         });
     }
 
@@ -54,6 +59,13 @@ class AllCommentsList extends Component {
 
     }
 
+    handleEmailSort = (email) => {
+        this.setState({
+            selectedEmail: email,
+            currentPage: 1
+        })
+    }
+
     handlePageChange = (pageNumber) => {
         this.setState({
             currentPage: pageNumber
@@ -66,7 +78,16 @@ class AllCommentsList extends Component {
 
     render() {
 
-        const paginatedComments = paginateFunction(this.state.comments, this.state.commentsPerPage, this.state.currentPage);
+        //If selectedEmail is true then apply filter where userEmail property is equal to selectedEmail property
+        //We are checking for the userEmail and id property because ALL USERS object don't have ID so we can
+        //Render all the user comments.
+        const filteredByEmail = this.state.selectedEmail && this.state.selectedEmail._id
+            ? this.state.comments.filter(e => e.user.userEmail === this.state.selectedEmail.userEmail)
+            : this.state.comments;
+
+        const paginatedComments = paginateFunction(filteredByEmail, this.state.commentsPerPage, this.state.currentPage);
+
+        console.log(this.state.selectedEmail);
 
         return (
             <div>
@@ -79,7 +100,7 @@ class AllCommentsList extends Component {
                             <Col className="commentlist-span-col d-flex justify-content-end">
                                 <Paginate
                                     className="m-0"
-                                    itemsCount={this.state.comments.length}
+                                    itemsCount={filteredByEmail.length}
                                     itemsPerPage={this.state.commentsPerPage}
                                     currentPage={this.state.currentPage}
                                     onPageChange={this.handlePageChange}/>
@@ -98,7 +119,7 @@ class AllCommentsList extends Component {
                             <tbody className="commentlist-tbody">
                             {paginatedComments.map(comment => {
                                 return (
-                                    <tr>
+                                    <tr key={comment._id}>
                                         <td>{comment.user.userName} {comment.user.userFamily}</td>
                                         <td>{comment.user.userEmail}</td>
                                         <td>
@@ -119,18 +140,30 @@ class AllCommentsList extends Component {
                                     </tr>
                                 )
                             })}
-                                </tbody>
-                                </Table>
+                            </tbody>
+                        </Table>
+                        <Row>
+                            <Col>
                                 <Button
-                                className="commentlist-redirect-button"
-                                onClick={this.adminRedirect}>
-                                BACK TO ADMIN PANEL
+                                    className="commentlist-redirect-button"
+                                    onClick={this.adminRedirect}>
+                                    BACK TO ADMIN PANEL
                                 </Button>
-                                </Container>
-                                </Container>
-                                </div>
-                                );
-                            }
+                            </Col>
+                            <Col className="d-flex justify-content-end">
+                                <DropDownComp
+                                    items={this.state.emailsList}
+                                    valueProperty="userEmail"
+                                    textProperty="userEmail"
+                                    selectedItem={this.state.selectedEmail}
+                                    onSelectDropDown={this.handleEmailSort}/>
+                            </Col>
+                        </Row>
+                    </Container>
+                </Container>
+            </div>
+        );
+    }
 }
 
 export default AllCommentsList;

@@ -19,7 +19,7 @@
     color: wheat;
 }
 
-.commentlist-span-col{
+.commentlist-span-col {
     margin-top: 10%;
 }
 
@@ -46,10 +46,14 @@
     margin-top: 1rem;
     padding-inline: 5rem;
     margin-bottom: 10%;
+    color: antiquewhite;
 }
 
 .commentlist-redirect-button:hover {
     background-color: red;
+    color: antiquewhite;
+    box-shadow: 0 0 0 2px darkred !important;
+    border-radius: 5px !important;
 }
 
 .commentlist-delete-button {
@@ -76,5 +80,41 @@
 }
 
 .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
-    color:yellow;
+    color: yellow;
+}
+
+.drd-menu {
+    background-color: rgba(255, 255, 200, 0.9) !important;
+    /*display: inline-flex !important;*/
+}
+
+
+.drd-item:focus {
+    background-color: coral !important;
+}
+
+.drd-item:hover {
+    background-color: lightseagreen !important;
+    color: antiquewhite !important;
+}
+
+.drd-toggle {
+    background-color: slateblue !important;
+    color: antiquewhite !important;
+    border: none !important;
+    margin-top: 1rem;
+    padding-inline: 5rem;
+    margin-bottom: 10%;
+}
+
+.drd-toggle:hover {
+    background-color: darkslateblue !important;
+    color: antiquewhite !important;
+    box-shadow: 0 0 0 2px indigo !important;
+    border-radius: 5px !important;
+}
+
+.drd-toggle:focus {
+    border: none !important;
+    box-shadow: none !important;
 }
