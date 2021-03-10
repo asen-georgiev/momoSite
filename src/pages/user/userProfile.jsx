@@ -2,16 +2,10 @@ import React, {Component} from 'react';
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Form from "react-bootstrap/Form";
-import FormGroup from "react-bootstrap/FormGroup";
-import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
-import Joi from "joi";
 import {toast} from "react-toastify";
-import Card from "react-bootstrap/Card";
 import {getCurrentUser, userLogout} from "../../services/userLoginService";
 import jwtDecode from "jwt-decode";
-import {CardImg} from "react-bootstrap";
 import {picUrl} from "../../config.json";
 import Usercard from "../../components/usercard";
 import '../../css/user/userProfile.css'
@@ -29,7 +23,8 @@ class UserProfile extends Component {
             loggedUser: [],
             comments: [],
             url: '',
-            showAlert: false
+            showAlert: false,
+            isLogged: false
         }
     }
 
@@ -38,7 +33,7 @@ class UserProfile extends Component {
         const jwtUser = getCurrentUser();
         const loggedUser = jwtDecode(jwtUser);
         const {data: comments} = await getCommentsByUser(loggedUser._id)
-        this.setState({loggedUser, url, comments});
+        this.setState({loggedUser, url, comments,isLogged:true});
     }
 
     handleDelete = async (user) => {
@@ -62,7 +57,8 @@ class UserProfile extends Component {
 
     logoutUser = () => {
         userLogout();
-        this.props.history.push("/userlogin");
+        this.setState({isLogged:false});
+        this.props.history.push("/");
     }
 
 

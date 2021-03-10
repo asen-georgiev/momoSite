@@ -6,11 +6,119 @@
 
 .app-navbar-link {
     color: wheat !important;
-    padding: 0.5rem 1rem !important;
-    font-size: x-large;
+    padding: 0.5rem 2rem !important;
+    font-size: xx-large;
+    text-decoration: none !important;
 }
 
 .app-navbar-link:hover {
-    color: white !important;
+    color: antiquewhite !important;
     text-decoration: none;
+    background-color: rgba(20, 20, 41,1);
+    border-radius: 50%;
+}
+
+
+#Home-hide{
+    display: none;
+    font-size: large;
+    position: absolute;
+}
+
+#Home:hover #Home-hide{
+    display: block;
+    color: antiquewhite !important;
+    text-decoration: none !important;
+}
+
+#Designs-hide{
+    display: none;
+    font-size: large;
+    position: absolute;
+}
+
+#Designs:hover #Designs-hide{
+    display: block;
+    color: antiquewhite !important;
+    text-decoration: none !important;
+}
+
+#About-hide{
+    display: none;
+    font-size: large;
+    position: absolute;
+}
+
+#About:hover #About-hide{
+    display: block;
+    color: antiquewhite !important;
+    text-decoration: none !important;
+}
+
+#Contacts-hide{
+    display: none;
+    font-size: large;
+    position: absolute;
+}
+
+#Contacts:hover #Contacts-hide{
+    display: block;
+    color: antiquewhite !important;
+    text-decoration: none !important;
+}
+
+#Blog-hide{
+    display: none;
+    font-size: large;
+    position: absolute;
+}
+
+#Blog:hover #Blog-hide{
+    display: block;
+    color: antiquewhite !important;
+    text-decoration: none !important;
+}
+
+#User-hide{
+    display: none;
+    font-size: large;
+    position: absolute;
+}
+
+#User:hover #User-hide{
+    display: block;
+    color: antiquewhite !important;
+    text-decoration: none !important;
+}
+
+.logout-nav-button{
+    font-size: large;
+    background-color: indigo;
+    border: none;
+    padding-inline: 1rem;
+    margin-top: auto;
+    margin-bottom: auto;
+    height: 2.5rem;
+}
+
+.logout-nav-button:hover{
+    text-decoration: none;
+    background-color: darkred;
+    color: antiquewhite;
+}
+
+.login-nav-button{
+    font-size: large;
+    background-color: indigo;
+    border: none;
+    padding-inline: 1rem;
+    margin-top: auto;
+    margin-bottom: auto;
+    height: 2.5rem;
+}
+
+.login-nav-button:hover{
+    text-decoration: none;
+    background-color: darkred;
+    color: antiquewhite;
 }
