@@ -1,0 +1,38 @@
+.app-footer{
+    background-color: rgb(7, 2, 36);
+}
+
+.app-footer-link{
+    color: blueviolet !important;
+    padding-inline:  2rem !important;
+    font-size: large;
+    text-decoration: none !important;
+}
+
+.app-footer-link:hover{
+    color: wheat !important;
+    padding-inline:  2rem !important;
+    font-size: large;
+    text-decoration: none !important;
+}
+
+.app-footer-span{
+    color: wheat;
+    margin-bottom: 1rem;
+}
+
+.app-footer-span-site{
+    color: darkslateblue;
+    margin-top: 1rem;
+}
+
+.app-footer-span-site-link{
+    color: blueviolet;
+    margin-top: 1rem;
+}
+
+.app-footer-span-site-link:hover{
+    color: wheat;
+    text-decoration: none;
+}
+

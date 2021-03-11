@@ -37,6 +37,7 @@ import AllCommentsList from "./admin/comments/AllCommentsList";
 import RegisterDesignForm from "./admin/designs/registerDesignForm";
 import AllDesignsList from "./admin/designs/allDesignsList";
 import UpdateDesignForm from "./admin/designs/updateDesignForm";
+import Footer from "./components/footer";
 
 class App extends Component {
     constructor(props) {
@@ -105,6 +106,7 @@ class App extends Component {
                         <Route path="/admin" component={AdminPanel}/>
                     </Switch>}
                 </Switch>
+                <Footer/>
             </div>
         );
     }

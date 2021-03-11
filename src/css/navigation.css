@@ -1,124 +1,199 @@
-.app-navbar{
+.app-navbar {
     background-color: rgb(7, 2, 36);
     /*box-shadow:*/
     /*        0 0 0 2px yellow;*/
 }
 
 .app-navbar-link {
-    color: wheat !important;
+    color: blueviolet !important;
     padding: 0.5rem 2rem !important;
     font-size: xx-large;
     text-decoration: none !important;
 }
 
 .app-navbar-link:hover {
-    color: antiquewhite !important;
+    color: wheat !important;
     text-decoration: none;
-    background-color: rgba(20, 20, 41,1);
+    background-color: rgba(152, 28, 235, 0.1);
     border-radius: 50%;
 }
 
+@media screen and (max-width: 760px) {
+    .Home-hide {
+        display: none !important;
+    }
 
-#Home-hide{
+    .Designs-hide {
+        display: none !important;
+    }
+
+    .About-hide {
+        display: none !important;
+    }
+
+    .Contacts-hide {
+        display: none !important;
+    }
+
+    .Blog-hide {
+        display: none !important;
+    }
+}
+
+@media screen and (min-width: 760px) {
+    .Home-show {
+        display: none !important;
+    }
+
+    .Designs-show {
+        display: none !important;
+    }
+
+    .About-show {
+        display: none !important;
+    }
+
+    .Contacts-show {
+        display: none !important;
+    }
+
+    .Blog-show {
+        display: none !important;
+    }
+}
+
+
+#Home-hide {
     display: none;
     font-size: large;
     position: absolute;
+    margin-top: -0.5rem;
 }
 
-#Home:hover #Home-hide{
+#Home:hover #Home-hide {
     display: block;
-    color: antiquewhite !important;
+    color: wheat !important;
     text-decoration: none !important;
 }
 
-#Designs-hide{
+#Designs-hide {
     display: none;
     font-size: large;
     position: absolute;
+    margin-top: -0.5rem;
 }
 
-#Designs:hover #Designs-hide{
+#Designs:hover #Designs-hide {
     display: block;
-    color: antiquewhite !important;
+    color: wheat !important;
     text-decoration: none !important;
 }
 
-#About-hide{
+#About-hide {
     display: none;
     font-size: large;
     position: absolute;
+    margin-top: -0.5rem;
 }
 
-#About:hover #About-hide{
+#About:hover #About-hide {
     display: block;
-    color: antiquewhite !important;
+    color: wheat !important;
     text-decoration: none !important;
 }
 
-#Contacts-hide{
+#Contacts-hide {
     display: none;
     font-size: large;
     position: absolute;
+    margin-top: -0.5rem;
 }
 
-#Contacts:hover #Contacts-hide{
+#Contacts:hover #Contacts-hide {
     display: block;
-    color: antiquewhite !important;
+    color: wheat !important;
     text-decoration: none !important;
 }
 
-#Blog-hide{
+#Blog-hide {
     display: none;
     font-size: large;
     position: absolute;
+    margin-top: -0.5rem;
 }
 
-#Blog:hover #Blog-hide{
+#Blog:hover #Blog-hide {
     display: block;
-    color: antiquewhite !important;
+    color: wheat !important;
     text-decoration: none !important;
 }
 
-#User-hide{
+#User-hide {
     display: none;
     font-size: large;
     position: absolute;
+    margin-top: -0.1rem;
 }
 
-#User:hover #User-hide{
+#User:hover #User-hide {
     display: block;
-    color: antiquewhite !important;
+    color: wheat !important;
     text-decoration: none !important;
 }
 
-.logout-nav-button{
+.Home-show {
     font-size: large;
+    margin-left: 1rem;
+}
+
+.Designs-show {
+    font-size: large;
+    margin-left: 1rem;
+}
+
+.About-show {
+    font-size: large;
+    margin-left: 1rem;
+}
+
+.Contacts-show {
+    font-size: large;
+    margin-left: 1rem;
+}
+
+.Blog-show {
+    font-size: large;
+    margin-left: 1rem;
+}
+
+.logout-nav-button {
+    font-size: medium;
     background-color: indigo;
     border: none;
     padding-inline: 1rem;
     margin-top: auto;
     margin-bottom: auto;
-    height: 2.5rem;
+    height: 2.2rem;
 }
 
-.logout-nav-button:hover{
+.logout-nav-button:hover {
     text-decoration: none;
-    background-color: darkred;
-    color: antiquewhite;
+    background-color: wheat;
+    color: blueviolet;
 }
 
-.login-nav-button{
-    font-size: large;
+.login-nav-button {
+    font-size: medium;
     background-color: indigo;
     border: none;
     padding-inline: 1rem;
     margin-top: auto;
     margin-bottom: auto;
-    height: 2.5rem;
+    height: 2.2rem;
 }
 
-.login-nav-button:hover{
+.login-nav-button:hover {
     text-decoration: none;
-    background-color: darkred;
-    color: antiquewhite;
+    background-color: wheat;
+    color: blueviolet;
 }

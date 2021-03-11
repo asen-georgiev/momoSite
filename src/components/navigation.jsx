@@ -12,6 +12,7 @@ import jwtDecode from "jwt-decode";
 import {picUrl} from "../config.json";
 import Image from "react-bootstrap/Image";
 import Button from "react-bootstrap/Button";
+import {getCurrentAdmin} from "../services/adminLoginService";
 
 const navbars = [
     {_id: 1, name: "Home", to: "/", icon: faHome},
@@ -26,17 +27,25 @@ class Navigation extends Component {
         super(props);
         this.state = {
             user: '',
+            admin: '',
             isLogged: false
         }
     }
 
     async componentDidMount() {
         const jwtUser = getCurrentUser();
+        const jwtAdmin = getCurrentAdmin();
         if (jwtUser !== null) {
             const user = jwtDecode(jwtUser);
             this.setState({user, isLogged: true});
         } else {
             this.setState({user: null});
+        }
+        if (jwtAdmin !== null) {
+            const admin = jwtDecode(jwtAdmin);
+            this.setState({admin, isLogged: true});
+        } else {
+            this.setState({admin: null});
         }
     }
 
@@ -51,6 +60,7 @@ class Navigation extends Component {
             <div>
                 <header>
                     <Navbar
+                        fixed="top"
                         className="app-navbar p-3 px-5"
                         expand="md">
                         <NavLink
@@ -71,9 +81,14 @@ class Navigation extends Component {
                                     <FontAwesomeIcon
                                         icon={faHome}
                                         className="icon"/>
+
+                                    <span className="Home-show">
+                                            HOME
+                                        </span>
+
                                     <div className="d-flex justify-content-center">
-                                        <span id="Home-hide">
-                                            Home
+                                        <span id="Home-hide" className="Home-hide">
+                                            HOME
                                         </span>
                                     </div>
                                 </Link>
@@ -85,9 +100,14 @@ class Navigation extends Component {
                                     <FontAwesomeIcon
                                         icon={faDiceD20}
                                         className="icon"/>
+
+                                    <span className="Designs-show">
+                                            DESIGNS
+                                        </span>
+
                                     <div className="d-flex justify-content-center">
-                                        <span id="Designs-hide">
-                                            Designs
+                                        <span id="Designs-hide" className="Designs-hide">
+                                            DESIGNS
                                         </span>
                                     </div>
                                 </Link>
@@ -99,9 +119,14 @@ class Navigation extends Component {
                                     <FontAwesomeIcon
                                         icon={faSignature}
                                         className="icon"/>
+
+                                    <span className="About-show">
+                                            ABOUT US
+                                        </span>
+
                                     <div className="d-flex justify-content-center">
-                                        <span id="About-hide">
-                                            About us
+                                        <span id="About-hide" className="About-hide">
+                                            ABOUT US
                                         </span>
                                     </div>
                                 </Link>
@@ -113,9 +138,14 @@ class Navigation extends Component {
                                     <FontAwesomeIcon
                                         icon={faPenNib}
                                         className="icon"/>
+
+                                    <span className="Contacts-show">
+                                            CONTACTS
+                                        </span>
+
                                     <div className="d-flex justify-content-center">
-                                        <span id="Contacts-hide">
-                                            Contacts
+                                        <span id="Contacts-hide" className="Contacts-hide">
+                                            CONTACTS
                                         </span>
                                     </div>
                                 </Link>
@@ -127,20 +157,25 @@ class Navigation extends Component {
                                     <FontAwesomeIcon
                                         icon={faUserFriends}
                                         className="icon"/>
+
+                                    <span className="Blog-show">
+                                            BLOG
+                                        </span>
+
                                     <div className="d-flex justify-content-center">
-                                        <span id="Blog-hide">
-                                            Blog
+                                        <span id="Blog-hide" className="Blog-hide">
+                                            BLOG
                                         </span>
                                     </div>
                                 </Link>
                             </Nav>
                         </Navbar.Collapse>
 
-                        {this.state.user === null &&
+                        {this.state.user === null && this.state.admin === null &&
                         <Button
                             className="login-nav-button"
                             href="/userlogin">
-                            Login
+                            LOGIN
                         </Button>}
 
                         {this.state.user !== null &&
@@ -164,7 +199,7 @@ class Navigation extends Component {
                                 className="ml-4 logout-nav-button"
                                 onClick={this.logoutUser}
                                 href="/">
-                                Logout
+                                LOGOUT
                             </Button>
                         </Row>}
 

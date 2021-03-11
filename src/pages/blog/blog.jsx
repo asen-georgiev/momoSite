@@ -27,7 +27,7 @@ class Blog extends Component {
     render() {
         return (
             <div>
-                <Container className="container" fluid={true}>
+                <Container className="bg-danger" style={{height:'auto'}} fluid={true}>
                     <Row>
                         <Col>
                             {this.state.blogs.map(blog => {

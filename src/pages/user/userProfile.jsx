@@ -65,7 +65,7 @@ class UserProfile extends Component {
     render() {
         return (
             <div>
-                <Container>
+                <Container className="bg-danger" fluid={true}>
                     <Row className="justify-content-center">
                         <UserDeleteAlert
                             heading="Are you sure you want to delete your profile?"
