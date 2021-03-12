@@ -26,8 +26,8 @@ class Navigation extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            user: '',
-            admin: '',
+            user: null,
+            admin: null,
             isLogged: false
         }
     }

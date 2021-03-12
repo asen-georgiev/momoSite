@@ -51,6 +51,11 @@
     background-color: red;
 }
 
+.userlist-redirect-button:focus {
+    box-shadow: none !important;
+    background-color: darkorange !important;
+}
+
 .userlist-delete-button {
     background-color: red;
     border: none;
@@ -63,7 +68,7 @@
 }
 
 .userlist-delete-button:focus {
-    background-color: orangered;
+    background-color: darkorange !important;
     box-shadow: none !important;
 }
 

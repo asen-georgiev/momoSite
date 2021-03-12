@@ -48,6 +48,11 @@
     background-color: red;
 }
 
+.adminlist-redirect-button:focus{
+    box-shadow: none !important;
+    background-color: darkorange !important;
+}
+
 .adminlist-delete-button{
     background-color: red;
     border: none;
@@ -60,7 +65,7 @@
 }
 
 .adminlist-delete-button:focus{
-    background-color: orangered;
+    background-color: darkorange !important;
     box-shadow: none !important;
 }
 

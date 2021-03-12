@@ -15,6 +15,12 @@ import {uploadImageAdmin} from "../../services/imgService";
 import {createDesign} from "../../services/designService";
 import "../../css/admin/designs/designRegister.css"
 
+const designTypes = [
+    {_id: 1, type: 'photography'},
+    {_id: 2, type: 'graphic design'},
+    {_id: 3, type: 'prepress'}
+];
+
 class RegisterDesignForm extends Component {
     constructor(props) {
         super(props);
@@ -22,6 +28,7 @@ class RegisterDesignForm extends Component {
             designTitle: '',
             designText: '',
             designPictures: '',
+            designType: '',
             errors: {},
             isDisabled: true,
             showPictures: [],
@@ -45,7 +52,12 @@ class RegisterDesignForm extends Component {
         designPictures: Joi.array()
             .items(Joi.string().required())
             .required()
-            .label('Design pictures')
+            .label('Design pictures'),
+        designType: Joi.string()
+            .required()
+            .min(3)
+            .max(30)
+            .label('Design type')
     })
 
 
@@ -74,7 +86,8 @@ class RegisterDesignForm extends Component {
         const design = {
             designTitle: this.state.designTitle,
             designText: this.state.designText,
-            designPictures: this.state.designPictures
+            designPictures: this.state.designPictures,
+            designType: this.state.designType
         }
         await createDesign(design);
         toast('New Design was successfully created!', {
@@ -138,7 +151,8 @@ class RegisterDesignForm extends Component {
         const design = {
             designTitle: this.state.designTitle,
             designText: this.state.designText,
-            designPictures: this.state.designPictures
+            designPictures: this.state.designPictures,
+            designType: this.state.designType
         };
         const options = {abortEarly: false};
         const result = this.schema.validate(design, options);
@@ -181,7 +195,7 @@ class RegisterDesignForm extends Component {
                                                 )
                                             })}
                                         </Row>
-
+                                        <Row className="m-0">
                                         <FormGroup className="px-5 pt-5">
                                             <Form.File
                                                 className="register-design-form"
@@ -193,6 +207,32 @@ class RegisterDesignForm extends Component {
                                                 multiple
                                                 onChange={this.handleImages}/>
                                         </FormGroup>
+
+                                        <FormGroup className="px-5 pt-5" as={Col}>
+                                            <FormControl
+                                                className="register-design-form-control-option"
+                                                name="designType"
+                                                as="select"
+                                                onChange={this.handleChange}>
+                                                <option className="register-design-option">Choose design type...</option>
+                                                {designTypes.map(des => {
+                                                    return (
+                                                        <option
+                                                            className="register-design-option"
+                                                            key={des._id}
+                                                            value={des.type}>
+                                                            {des.type}
+                                                        </option>
+                                                    )
+                                                })}
+                                            </FormControl>
+                                            {this.state.errors.designType &&
+                                            <FormLabel className="text-danger pt-3">
+                                                {this.state.errors.designType}
+                                            </FormLabel>
+                                            }
+                                        </FormGroup>
+                                        </Row>
                                         <FormGroup className="px-5 pt-3">
                                             {this.state.errors.designTitle &&
                                             <FormLabel className="text-danger">

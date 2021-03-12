@@ -9,6 +9,7 @@ import Row from "react-bootstrap/Row";
 import TrTdTable from "../../components/trTdTable";
 
 
+
 class AdminPanel extends Component {
     constructor(props) {
         super(props);
@@ -26,7 +27,6 @@ class AdminPanel extends Component {
 
     logoutAdmin = () => {
         adminLogout();
-        this.props.history.push("/adminlogin");
     }
 
     render() {
@@ -91,8 +91,10 @@ class AdminPanel extends Component {
                         </tbody>
                     </Table>
                     <Button
+                        href="/adminlogin"
                         className="panel-logout-button"
-                        onClick={this.logoutAdmin}>
+                        onClick={this.logoutAdmin}
+                    >
                         LOGOUT
                     </Button>
                     </Container>

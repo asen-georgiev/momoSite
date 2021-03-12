@@ -52,6 +52,11 @@
     background-color: red;
 }
 
+.bloglist-redirect-button:focus {
+    box-shadow: none !important;
+    background-color: darkorange !important;
+}
+
 .bloglist-delete-button {
     background-color: red;
     border: none;
@@ -64,7 +69,7 @@
 }
 
 .bloglist-delete-button:focus {
-    background-color: orangered;
+    background-color: darkorange !important;
     box-shadow: none !important;
 }
 

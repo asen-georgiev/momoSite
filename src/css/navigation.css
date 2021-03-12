@@ -38,6 +38,13 @@
     .Blog-hide {
         display: none !important;
     }
+    .app-navbar {
+        background-color: navajowhite;
+        padding-bottom: 1.8rem !important;
+        padding-top: 1.8rem !important;
+        /*box-shadow:*/
+        /*        0 0 0 2px yellow;*/
+    }
 }
 
 @media screen and (min-width: 760px) {
@@ -182,6 +189,14 @@
     color: blueviolet;
 }
 
+.logout-nav-button:focus {
+    text-decoration: none;
+    background-color: darkslateblue !important;
+    color: wheat !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
 .login-nav-button {
     font-size: medium;
     background-color: indigo;
@@ -197,3 +212,13 @@
     background-color: wheat;
     color: blueviolet;
 }
+
+.login-nav-button:focus {
+    text-decoration: none;
+    background-color: darkslateblue !important;
+    color: wheat !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+

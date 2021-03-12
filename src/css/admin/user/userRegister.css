@@ -46,7 +46,7 @@
 }
 
 .register-user-register-button:focus{
-    background-color: red;
+    background-color: darkorange !important;
     box-shadow: none !important;
 }
 
@@ -66,7 +66,7 @@
 }
 
 .register-user-redirect-button:focus{
-    background-color: red;
+    background-color: darkorange !important;
     box-shadow: none !important;
 }
 

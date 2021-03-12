@@ -49,7 +49,7 @@
 }
 
 .register-register-button:focus{
-    background-color: red;
+    background-color: darkorange !important;
     box-shadow: none !important;
 }
 
@@ -69,7 +69,7 @@
 }
 
 .register-redirect-button:focus{
-    background-color: red;
+    background-color: darkorange !important;
     box-shadow: none !important;
 }
 

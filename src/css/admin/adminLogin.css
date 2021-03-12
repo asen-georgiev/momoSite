@@ -53,7 +53,7 @@ input:-webkit-autofill:active {
 }
 
 .admin-login-button:focus{
-    background-color: red;
+    background-color: darkorange !important;
     box-shadow: none !important;
 }
 
@@ -73,7 +73,7 @@ input:-webkit-autofill:active {
 }
 
 .admin-redirect-button:focus{
-    background-color: red;
+    background-color: darkorange !important;
     box-shadow: none !important;
 }
 

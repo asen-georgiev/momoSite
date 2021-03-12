@@ -44,6 +44,11 @@
     background-color: red;
 }
 
+.panel-logout-button:focus{
+    box-shadow: none !important;
+    background-color: darkorange !important;
+}
+
 .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
     color:yellow;
 }

@@ -51,9 +51,11 @@
 
 .commentlist-redirect-button:hover {
     background-color: red;
-    color: antiquewhite;
-    box-shadow: 0 0 0 2px darkred !important;
-    border-radius: 5px !important;
+}
+
+.commentlist-redirect-button:focus {
+    box-shadow: none !important;
+    background-color: darkorange !important;
 }
 
 .commentlist-delete-button {
@@ -68,7 +70,7 @@
 }
 
 .commentlist-delete-button:focus {
-    background-color: orangered;
+    background-color: darkorange !important;
     box-shadow: none !important;
 }
 
@@ -99,7 +101,7 @@
 }
 
 .drd-toggle {
-    background-color: slateblue !important;
+    background-color: darkviolet !important;
     color: antiquewhite !important;
     border: none !important;
     margin-top: 1rem;
@@ -110,8 +112,7 @@
 .drd-toggle:hover {
     background-color: darkslateblue !important;
     color: antiquewhite !important;
-    box-shadow: 0 0 0 2px indigo !important;
-    border-radius: 5px !important;
+    box-shadow: none !important;
 }
 
 .drd-toggle:focus {
