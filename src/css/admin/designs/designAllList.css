@@ -83,3 +83,38 @@
 .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
     color:yellow;
 }
+
+.drd-designs-menu {
+    background-color: rgba(255, 255, 200, 0.9) !important;
+    /*display: inline-flex !important;*/
+}
+
+
+.drd-design-item:focus {
+    background-color: coral !important;
+}
+
+.drd-design-item:hover {
+    background-color: lightseagreen !important;
+    color: antiquewhite !important;
+}
+
+.drd-designs-toggle {
+    background-color: darkviolet !important;
+    color: antiquewhite !important;
+    border: none !important;
+    margin-top: 1rem;
+    padding-inline: 5rem;
+    margin-bottom: 10%;
+}
+
+.drd-designs-toggle:hover {
+    background-color: darkslateblue !important;
+    color: antiquewhite !important;
+    box-shadow: none !important;
+}
+
+.drd-designs-toggle:focus {
+    border: none !important;
+    box-shadow: none !important;
+}

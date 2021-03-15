@@ -10,7 +10,7 @@ import {deleteComment, getComments} from "../../services/commentService";
 import "../../css/admin/comments/commentAllList.css";
 import Paginate from "../../components/paginate";
 import {paginateFunction} from "../../services/paginateFunction";
-import DropDownComp from "../../components/DropDownComp";
+import DropDownComments from "../../components/DropDownComments";
 
 class AllCommentsList extends Component {
     constructor(props) {
@@ -18,7 +18,7 @@ class AllCommentsList extends Component {
         this.state = {
             comments: [],
             emailsList: [],
-            selectedEmail: 'ALL USERS COMMENTS',
+            selectedEmail: {userEmail:'ALL USERS COMMENTS'},
             commentsPerPage: 5,
             currentPage: 1
         }
@@ -27,7 +27,7 @@ class AllCommentsList extends Component {
 
     async componentDidMount() {
         const {data: comments} = await getComments();
-        //Creating new array with objects by unique 'userEmail
+        //Creating new array with objects by unique 'userEmail'
         const uniqList = _.uniqBy(comments, 'user.userEmail');
         const emailsList = [{user: {userEmail: 'ALL USERS COMMENTS'}}, ...uniqList];
         console.log(emailsList);
@@ -151,7 +151,7 @@ class AllCommentsList extends Component {
                                 </Button>
                             </Col>
                             <Col className="d-flex justify-content-end">
-                                <DropDownComp
+                                <DropDownComments
                                     items={this.state.emailsList}
                                     valueProperty="userEmail"
                                     textProperty="userEmail"

@@ -214,7 +214,10 @@ class RegisterDesignForm extends Component {
                                                 name="designType"
                                                 as="select"
                                                 onChange={this.handleChange}>
-                                                <option className="register-design-option">Choose design type...</option>
+                                                <option
+                                                    className="register-design-option">
+                                                    Choose design type...
+                                                </option>
                                                 {designTypes.map(des => {
                                                     return (
                                                         <option

@@ -16,6 +16,12 @@ import {getDesign, updateDesign} from "../../services/designService";
 import {uploadImageAdmin} from "../../services/imgService";
 import "../../css/admin/designs/designUpdate.css";
 
+const designTypes = [
+    {_id: 1, type: 'photography'},
+    {_id: 2, type: 'graphic design'},
+    {_id: 3, type: 'prepress'}
+];
+
 class UpdateDesignForm extends Component {
     constructor(props) {
         super(props);
@@ -23,6 +29,7 @@ class UpdateDesignForm extends Component {
             design: {
                 designTitle: '',
                 designText: '',
+                designType: '',
                 designPictures: []
             },
             errors: {},
@@ -44,13 +51,18 @@ class UpdateDesignForm extends Component {
         designText: Joi.string()
             .allow('')
             .min(10)
-            .max(100)
+            .max(200)
             .trim(true)
             .label('Design text'),
         designPictures: Joi.array()
             .items(Joi.string().required())
             .required()
-            .label('Design pictures')
+            .label('Design pictures'),
+        designType: Joi.string()
+            .required()
+            .min(3)
+            .max(30)
+            .label('Design type')
     })
 
 
@@ -76,7 +88,8 @@ class UpdateDesignForm extends Component {
         const design = {
             designTitle: this.state.design.designTitle,
             designText: this.state.design.designText,
-            designPictures: this.state.design.designPictures
+            designPictures: this.state.design.designPictures,
+            designType: this.state.design.designType
         }
         toast('Design update was successful', {
             position: "top-center",
@@ -150,7 +163,8 @@ class UpdateDesignForm extends Component {
             _id: design._id,
             designTitle: design.designTitle,
             designText: design.designText,
-            designPictures: design.designPictures
+            designPictures: design.designPictures,
+            designType: design.designType,
         }
     }
 
@@ -175,7 +189,8 @@ class UpdateDesignForm extends Component {
             _id: this.state.design._id,
             designTitle: this.state.design.designTitle,
             designText: this.state.design.designText,
-            designPictures: this.state.design.designPictures
+            designPictures: this.state.design.designPictures,
+            designType: this.state.design.designType
         };
         const options = {abortEarly: false};
         const result = this.schema.validate(design, options);
@@ -232,17 +247,46 @@ class UpdateDesignForm extends Component {
                                                 )
                                             })}
                                         </Row>}
+                                        <Row className="m-0">
+                                            <FormGroup className="px-5 pt-5">
+                                                <Form.File
+                                                    className="update-design-form"
+                                                    type="file"
+                                                    id="images"
+                                                    name="designPictures"
+                                                    label="Maximum images allowed to upload : 20"
+                                                    multiple
+                                                    onChange={this.handleImages}/>
+                                            </FormGroup>
+                                            <FormGroup className="px-5 pt-5" as={Col}>
+                                                <FormControl
+                                                    className="update-design-form-control-option"
+                                                    name="designType"
+                                                    as="select"
+                                                    onChange={this.handleChange}>
+                                                    <option
+                                                        className="update-design-option">
+                                                        Current : {this.state.designType}
+                                                    </option>
+                                                    {designTypes.map(des => {
+                                                        return (
+                                                            <option
+                                                                className="register-design-option"
+                                                                key={des._id}
+                                                                value={des.type}>
+                                                                {des.type}
+                                                            </option>
+                                                        )
+                                                    })}
+                                                </FormControl>
+                                                {this.state.errors.designType &&
+                                                <FormLabel className="text-danger pt-3">
+                                                    {this.state.errors.designType}
+                                                </FormLabel>
+                                                }
+                                            </FormGroup>
+                                        </Row>
 
-                                        <FormGroup className="px-5 pt-5">
-                                            <Form.File
-                                                className="update-design-form"
-                                                type="file"
-                                                id="images"
-                                                name="designPictures"
-                                                label="Maximum images allowed to upload : 20"
-                                                multiple
-                                                onChange={this.handleImages}/>
-                                        </FormGroup>
                                         <FormGroup className="px-5 pt-3">
                                             {this.state.errors.designTitle &&
                                             <FormLabel className="text-danger">

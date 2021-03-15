@@ -11,12 +11,16 @@ import {deleteDesign, getDesigns} from "../../services/designService";
 import "../../css/admin/designs/designAllList.css";
 import {paginateFunction} from "../../services/paginateFunction";
 import Paginate from "../../components/paginate";
+import _ from "lodash";
+import DropDownDesigns from "../../components/DropDownDesigns";
 
 class AllDesignsList extends Component {
     constructor(props) {
         super(props);
         this.state = {
             designs: [],
+            designsList: [],
+            selectedDesign: {designType: 'ALL DESIGNS'},
             designsPerPage: 3,
             currentPage: 1
         }
@@ -25,10 +29,13 @@ class AllDesignsList extends Component {
 
     async componentDidMount() {
         const {data: designs} = await getDesigns();
+        //Sreating new array with objects by unique 'designType'
+        const uniqList = _.uniqBy(designs, 'designType');
+        const designsList = [{designType: 'ALL DESIGNS'}, ...uniqList]
         this.setState({
-            designs
+            designs,
+            designsList
         });
-        console.log(this.state.designs);
     }
 
 
@@ -52,6 +59,13 @@ class AllDesignsList extends Component {
         }
     }
 
+    handleDesignSort = (design) => {
+        this.setState({
+            selectedDesign: design, currentPage: 1
+        });
+        console.log(design);
+    }
+
     handlePageChange = (pageNumber) => {
         this.setState({
             currentPage: pageNumber
@@ -64,7 +78,11 @@ class AllDesignsList extends Component {
 
     render() {
 
-        const paginatedDesigns = paginateFunction(this.state.designs, this.state.designsPerPage,this.state.currentPage);
+        const filteredByDesign = this.state.selectedDesign && this.state.selectedDesign._id
+            ? this.state.designs.filter(des => des.designType === this.state.selectedDesign.designType)
+            : this.state.designs;
+
+        const paginatedDesigns = paginateFunction(filteredByDesign, this.state.designsPerPage, this.state.currentPage);
 
         return (
             <div>
@@ -72,12 +90,12 @@ class AllDesignsList extends Component {
                     <Container className="designlist-sub-container container" fluid={true}>
                         <Row className="m-0">
                             <Col className="designlist-span-col">
-                            <span className="designlist-span">All created Designs :</span>
+                                <span className="designlist-span">All created Designs :</span>
                             </Col>
                             <Col className="designlist-span-col d-flex justify-content-end">
                                 <Paginate
                                     className="m-0"
-                                    itemsCount={this.state.designs.length}
+                                    itemsCount={filteredByDesign.length}
                                     itemsPerPage={this.state.designsPerPage}
                                     currentPage={this.state.currentPage}
                                     onPageChange={this.handlePageChange}/>
@@ -88,6 +106,7 @@ class AllDesignsList extends Component {
                             <tr>
                                 <th>Title</th>
                                 <th>Text</th>
+                                <th>Type</th>
                                 <th>Pictures</th>
                                 <th>Update</th>
                                 <th>Delete</th>
@@ -99,18 +118,23 @@ class AllDesignsList extends Component {
                                     <tr key={design._id}>
                                         <td>{design.designTitle}</td>
                                         <td>{design.designText}</td>
-                                        <td>
-                                            {design.designPictures.map(dp => {
-                                                return (
-                                                    <Image
-                                                        key={dp}
-                                                        src={picUrl + dp}
-                                                        width="70"
-                                                        height="70"
-                                                        className="m-1"
-                                                    />
-                                                )
-                                            })}
+                                        <td>{design.designType}</td>
+                                        <td style={{width: 40}}>
+                                            <div
+                                                className="overflow-auto"
+                                                style={{height: 200}}>
+                                                {design.designPictures.map(dp => {
+                                                    return (
+                                                        <Image
+                                                            key={dp}
+                                                            src={picUrl + dp}
+                                                            width="150"
+                                                            height="150"
+                                                            className="mb-1"
+                                                        />
+                                                    )
+                                                })}
+                                            </div>
                                         </td>
                                         <td>
                                             <Link
@@ -131,11 +155,22 @@ class AllDesignsList extends Component {
                             })}
                             </tbody>
                         </Table>
+                        <Row>
+                            <Col>
                         <Button
                             className="designlist-redirect-button"
                             onClick={this.adminRedirect}>
                             BACK TO ADMIN PANEL
                         </Button>
+                            </Col>
+                            <Col className="d-flex justify-content-end">
+                                <DropDownDesigns
+                                designs={this.state.designsList}
+                                designProperty="designType"
+                                selectedDesign={this.state.selectedDesign}
+                                onSelectDropDown={this.handleDesignSort}/>
+                            </Col>
+                        </Row>
                     </Container>
                 </Container>
             </div>

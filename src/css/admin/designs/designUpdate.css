@@ -117,3 +117,30 @@
     font-size: x-large;
     text-align: center !important;
 }
+
+.update-design-option {
+    font-size: large;
+    font-style: normal;
+    color: antiquewhite;
+}
+
+.update-design-form-control-option {
+    border-radius: 0 !important;
+    font-size: large !important;
+    font-style: italic !important;
+    background: transparent !important;
+    border-top: transparent !important;
+    border-left: transparent !important;
+    border-right: transparent !important;
+    border-bottom-color: wheat !important;
+    color: wheat !important;
+    border-bottom-width: 2px !important;
+}
+
+.update-design-form-control-option:focus {
+    box-shadow: none !important;
+}
+
+.update-design-form-control-option option{
+    background-color: darkslateblue;
+}

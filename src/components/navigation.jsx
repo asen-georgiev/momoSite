@@ -69,7 +69,7 @@ class Navigation extends Component {
                             Momo Design
                         </NavLink>
                         <Navbar.Toggle
-                            className="border-0"
+                            className="app-navbar-toggle border-0"
                             aria-controls="navbar-toggle"/>
                         <Navbar.Collapse id="navbar-toggle">
                             <Nav className="ml-auto mr-auto">

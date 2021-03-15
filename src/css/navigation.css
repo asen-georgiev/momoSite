@@ -18,7 +18,7 @@
     border-radius: 50%;
 }
 
-@media screen and (max-width: 760px) {
+@media screen and (max-width: 767px) {
     .Home-hide {
         display: none !important;
     }
@@ -39,7 +39,7 @@
         display: none !important;
     }
     .app-navbar {
-        background-color: navajowhite;
+        background-color: rgb(7, 2, 36);
         padding-bottom: 1.8rem !important;
         padding-top: 1.8rem !important;
         /*box-shadow:*/
@@ -47,7 +47,7 @@
     }
 }
 
-@media screen and (min-width: 760px) {
+@media screen and (min-width: 767px) {
     .Home-show {
         display: none !important;
     }
@@ -67,6 +67,7 @@
     .Blog-show {
         display: none !important;
     }
+
 }
 
 
@@ -220,5 +221,16 @@
     border: none !important;
     box-shadow: none !important;
 }
+
+.app-navbar-toggle{
+    background-color: blueviolet !important;
+}
+
+.app-navbar-toggle:hover{
+    background-color: wheat !important;
+}
+
+
+
 
 
