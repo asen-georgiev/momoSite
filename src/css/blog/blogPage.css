@@ -1,0 +1,30 @@
+.blogpage-main{
+    background-image: url("../../assets/city-1.jpg");
+}
+
+.blogpage-title-row{
+    height: 50vh;
+    background-color: rgba(75, 0, 130, 0.4);
+}
+
+.blogpage-title-span{
+    font-size: 5vw;
+    color: wheat;
+    text-decoration: overline;
+}
+
+.blogpage-subtitle-span{
+    font-size: 2vw;
+    color: wheat;
+    /*text-decoration: underline;*/
+}
+
+.blogpage-ul{
+    list-style-type: none;
+}
+
+.blogpage-info-col{
+    font-size: x-large;
+    color: darkslateblue;
+    background-color: rgba(245, 222, 179, 0.6);
+}
