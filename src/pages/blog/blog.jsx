@@ -4,9 +4,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {Link} from "react-router-dom";
-import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import CardImg from "react-bootstrap/CardImg";
 import {getBlogs} from "../../services/blogService";
 import "../../css/blog/blogPage.css";
 import Image from "react-bootstrap/Image";
@@ -17,12 +15,16 @@ import {faFacebookSquare} from "@fortawesome/free-brands-svg-icons/faFacebookSqu
 import {faInstagramSquare} from "@fortawesome/free-brands-svg-icons/faInstagramSquare";
 import {faTwitterSquare} from "@fortawesome/free-brands-svg-icons/faTwitterSquare";
 import {faLinkedin} from "@fortawesome/free-brands-svg-icons/faLinkedin";
+import {paginateFunction} from "../../services/paginateFunction";
+import Paginate from "../../components/paginate";
 
 class Blog extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            blogs: []
+            blogs: [],
+            blogsPerPage: 3,
+            currentPage: 1
         }
     }
 
@@ -33,13 +35,22 @@ class Blog extends Component {
         });
     }
 
+    handlePageChange = (pageNumber) => {
+        this.setState({currentPage: pageNumber});
+    }
+
 
     render() {
+
+        const paginatedBlogs = paginateFunction(this.state.blogs, this.state.blogsPerPage, this.state.currentPage);
+
         return (
             <div>
                 <Container className="blogpage-main" fluid={true}>
-                    <Row className="blogpage-title-row justify-content-center align-content-center">
-                        <Col className="d-flex flex-column text-center">
+                    <Row className="blogpage-title-row">
+                        <Col
+                            style={{height: 400}}
+                            className="d-flex flex-column text-center justify-content-center">
                             <span className="blogpage-title-span">
                                 MOMO DESIGN BLOG
                             </span>
@@ -50,14 +61,14 @@ class Blog extends Component {
                     </Row>
                     <Row>
                         <Col className="blogpage-info-col">
-                            <Row>
-                                <Col md="auto" className='p-0'>
+                            <Row className="m-0">
+                                <Col md="auto" className='p-0 py-5'>
                                     <Image
-                                        className="p-4"
+                                        className="px-4"
                                         src={maria}
                                         style={{width: 430, height: "auto"}}/>
                                 </Col>
-                                <Col className='d-flex flex-column p-4'>
+                                <Col className='d-flex flex-column px-4 pt-5'>
                                     <ul className="blogpage-ul">
                                         <li>name : MARIA TASHKOVA</li>
                                         <li>born : 19.09.1979</li>
@@ -67,7 +78,7 @@ class Blog extends Component {
                                     </ul>
                                     <ul className="blogpage-ul">
                                         <li>
-                                            <Link>
+                                            <Link className="blogpage-info-link">
                                                 <FontAwesomeIcon
                                                     className="icon mr-2"
                                                     icon={faFacebookSquare}/>
@@ -75,7 +86,7 @@ class Blog extends Component {
                                             </Link>
                                         </li>
                                         <li>
-                                            <Link>
+                                            <Link className="blogpage-info-link">
                                                 <FontAwesomeIcon
                                                     className="icon mr-2"
                                                     icon={faInstagramSquare}/>
@@ -83,7 +94,7 @@ class Blog extends Component {
                                             </Link>
                                         </li>
                                         <li>
-                                            <Link>
+                                            <Link className="blogpage-info-link">
                                                 <FontAwesomeIcon
                                                     className="icon mr-2"
                                                     icon={faTwitterSquare}/>
@@ -91,7 +102,7 @@ class Blog extends Component {
                                             </Link>
                                         </li>
                                         <li>
-                                            <Link>
+                                            <Link className="blogpage-info-link">
                                                 <FontAwesomeIcon
                                                     className="icon mr-2"
                                                     icon={faLinkedin}/>
@@ -101,7 +112,7 @@ class Blog extends Component {
                                     </ul>
                                     <ul className="blogpage-ul">
                                         <li>
-                                            <Link>
+                                            <Link className="blogpage-info-link">
                                                 <FontAwesomeIcon
                                                     className="icon mr-2"
                                                     icon={faPhoneSquare}/>
@@ -109,7 +120,7 @@ class Blog extends Component {
                                             </Link>
                                         </li>
                                         <li>
-                                            <Link>
+                                            <Link className="blogpage-info-link">
                                                 <FontAwesomeIcon
                                                     className="icon mr-2"
                                                     icon={faMailBulk}/>
@@ -119,34 +130,57 @@ class Blog extends Component {
                                     </ul>
                                 </Col>
                             </Row>
-                            <Row className="bg-info" style={{height:100}}>
-                                Take a look at my work!
+                            <Row
+                                className="blogpage-work-row">
+                                <Col className="d-flex flex-column text-center justify-content-center"
+                                     style={{height: 200}}>
+                                    <Link
+                                        className="blogpage-work-link"
+                                        id="Designs"
+                                        to="/designs">
+                                        <span>TAKE A LOOK AT MY WORK</span>
+                                    </Link>
+                                </Col>
                             </Row>
                         </Col>
-                        <Col>
-                            {this.state.blogs.map(blog => {
-                                    return (
-                                        <Card key={blog._id}>
-                                            <Card.Header>
-                                                Date : {new Date(blog.blogDate).toLocaleString()}
-                                            </Card.Header>
-                                            <Card.Body>
-                                                <Card.Title>
-                                                    {blog.blogTitle}
-                                                </Card.Title>
-                                                <Card.Text>
-                                                    {blog.blogSubTitle}
-                                                </Card.Text>
-                                            </Card.Body>
-                                            <Card.Footer>
-                                                <Link to={`/blog/${blog._id}`}>
-                                                    Continue reading...
-                                                </Link>
-                                            </Card.Footer>
-                                        </Card>
-                                    )
-                                }
-                            )}
+                        <Col className="blogpage-cards-col">
+                            <Row className="mx-3 mt-4 justify-content-between">
+                                <Paginate
+                                    itemsCount={this.state.blogs.length}
+                                    itemsPerPage={this.state.blogsPerPage}
+                                    currentPage={this.state.currentPage}
+                                    onPageChange={this.handlePageChange}/>
+                                <span className="blogpage-span">BLOG EVENTS</span>
+                            </Row>
+                            <Row>
+                                <Col className="p-0 overflow-auto" style={{height: 700}}>
+                                    {paginatedBlogs.map(blog => {
+                                            return (
+                                                <Card key={blog._id} className="blogpage-card mt-2">
+                                                    <Card.Header>
+                                                        Date : {new Date(blog.blogDate).toLocaleString()}
+                                                    </Card.Header>
+                                                    <Card.Body>
+                                                        <Card.Title className="blogpage-card-title">
+                                                            {blog.blogTitle}
+                                                        </Card.Title>
+                                                        <Card.Text>
+                                                            {blog.blogSubTitle}
+                                                        </Card.Text>
+                                                    </Card.Body>
+                                                    <Card.Footer>
+                                                        <Link
+                                                            className="blogpage-card-link"
+                                                            to={`/blog/${blog._id}`}>
+                                                            Continue reading...
+                                                        </Link>
+                                                    </Card.Footer>
+                                                </Card>
+                                            )
+                                        }
+                                    )}
+                                </Col>
+                            </Row>
                         </Col>
                     </Row>
                 </Container>

@@ -1,0 +1,75 @@
+.blogdetails-main{
+    background-image: url("../../assets/neoncity3.jpg");
+}
+
+.blogdetails-card{
+    background-color: rgba(25, 25, 112, 0.2);
+    font-size: x-large;
+    color: wheat;
+}
+
+.blogdetails-card-col{
+    background-color: rgba(25, 25, 112, 0.2);
+}
+
+.blogdetails-card-title{
+    padding: 1rem;
+    background-color: rgba(148, 0, 211, 0.25);
+    color: deeppink;
+    font-size: xx-large;
+    text-transform: uppercase;
+}
+
+.blogdetails-card-image{
+    width: 35rem;
+}
+
+@media screen and (max-width: 767px) {
+    .blogdetails-card-image{
+        width: 70vw;
+    }
+}
+
+.blogdetails-card-link{
+    font-size: large;
+    text-transform: uppercase;
+    color: aquamarine !important;
+}
+
+.blogdetails-card-link:hover{
+    text-decoration: overline;
+}
+
+.blogdetails-links-row{
+
+}
+
+.blogdetails-links-return{
+    color: deeppink !important;
+    font-size: xx-large;
+}
+
+.blogdetails-links-return:hover{
+    color: deeppink !important;
+    font-size: xx-large;
+    text-decoration: overline;
+}
+
+.blogdetails-links-comment{
+    color: indigo !important;
+    font-size: xx-large;
+}
+
+.blogdetails-links-comment:hover{
+    color: indigo !important;
+    font-size: xx-large;
+    text-decoration: overline;
+}
+
+.blogdetails-links-col1{
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.blogdetails-links-col2{
+    background-color: rgba(250, 235, 215, 0.5);
+}

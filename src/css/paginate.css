@@ -1,12 +1,28 @@
 .page-link {
-    color: red !important;
-    border-color: goldenrod !important;
+    background-color: transparent;
+    color: wheat !important;
+    border-color: wheat !important;
+    box-shadow: none !important;
+}
+
+.page-link:hover {
+    background-color: rgba(75, 0, 130, 0.6) !important;
+    color: wheat !important;
+    border-color: wheat !important;
     box-shadow: none !important;
 }
 
 
 .page-item.active .page-link {
-    color: white !important;
-    background-color: coral !important;
-    border-color: red !important;
+    color: wheat !important;
+    background-color: rgba(199, 21, 133, 0.6) !important;
+    border-color: wheat !important;
 }
+
+.page-item.disabled .page-link {
+    color: wheat !important;
+    background-color: rgba(199, 21, 133, 0.6) !important;
+    border-color: wheat !important;
+}
+
+

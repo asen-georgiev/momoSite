@@ -1,20 +1,20 @@
 .blogpage-main{
-    background-image: url("../../assets/city-1.jpg");
+    background-image: url("../../assets/neoncity3.jpg");
 }
 
 .blogpage-title-row{
-    height: 50vh;
-    background-color: rgba(75, 0, 130, 0.4);
+    /*height: 40vh;*/
+    background-color: rgba(75, 0, 130, 0.7);
 }
 
 .blogpage-title-span{
-    font-size: 5vw;
+    font-size: 6rem;
     color: wheat;
     text-decoration: overline;
 }
 
 .blogpage-subtitle-span{
-    font-size: 2vw;
+    font-size: 2.5rem;
     color: wheat;
     /*text-decoration: underline;*/
 }
@@ -25,6 +25,79 @@
 
 .blogpage-info-col{
     font-size: x-large;
-    color: darkslateblue;
-    background-color: rgba(245, 222, 179, 0.6);
+    color: wheat;
+    background-color: rgba(25, 25, 112, 0.5);
+}
+
+.blogpage-info-link{
+    font-size: large;
+    text-transform: uppercase;
+    color: deeppink !important;
+}
+
+.blogpage-info-link:hover{
+    text-decoration: overline;
+}
+
+.blogpage-cards-col{
+    font-size: x-large;
+    color: wheat;
+    background-color: rgba(199, 21, 133, 0.1);
+}
+
+.blogpage-card{
+    margin: 2rem;
+    background-color: rgba(199, 21, 133, 0.2);
+}
+
+.blogpage-card-title{
+    padding: 1rem;
+    background-color: rgba(25, 25, 112, 0.5);
+    font-size: x-large;
+    color: aquamarine;
+    text-transform: uppercase;
+}
+
+.blogpage-card-link{
+    font-size: large;
+    text-transform: uppercase;
+    color: aquamarine !important;
+}
+
+.blogpage-card-link:hover{
+    text-decoration: overline;
+}
+
+.blogpage-span{
+    color: wheat;
+    font-size: 3rem;
+}
+
+
+@media screen and (max-width: 767px) {
+    .blogpage-title-span{
+        font-size: 4rem;
+        color: wheat;
+        text-decoration: overline;
+    }
+
+    .blogpage-subtitle-span{
+        font-size: 2rem;
+        color: wheat;
+        /*text-decoration: underline;*/
+    }
+}
+
+.blogpage-work-row{
+    background-color: rgba(220, 20, 60, 0.5);
+}
+
+.blogpage-work-link{
+    color: wheat;
+    font-size: 3rem;
+}
+
+.blogpage-work-link:hover{
+    color: wheat;
+    text-decoration: overline;
 }

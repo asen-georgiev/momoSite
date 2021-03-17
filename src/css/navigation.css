@@ -5,7 +5,7 @@
 }
 
 .app-navbar-link {
-    color: blueviolet !important;
+    color: mediumvioletred !important;
     padding: 0.5rem 2rem !important;
     font-size: xx-large;
     text-decoration: none !important;
@@ -199,6 +199,7 @@
 }
 
 .login-nav-button {
+    color: wheat;
     font-size: medium;
     background-color: indigo;
     border: none;
@@ -211,7 +212,7 @@
 .login-nav-button:hover {
     text-decoration: none;
     background-color: wheat;
-    color: blueviolet;
+    color: indigo;
 }
 
 .login-nav-button:focus {
@@ -223,7 +224,7 @@
 }
 
 .app-navbar-toggle{
-    background-color: blueviolet !important;
+    background-color: indigo !important;
 }
 
 .app-navbar-toggle:hover{

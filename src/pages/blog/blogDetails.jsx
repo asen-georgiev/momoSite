@@ -6,6 +6,7 @@ import Joi from "joi";
 import Form from "react-bootstrap/Form";
 import FormGroup from "react-bootstrap/FormGroup";
 import FormControl from "react-bootstrap/FormControl";
+import {Link} from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import {toast} from "react-toastify";
@@ -17,6 +18,7 @@ import Image from 'react-bootstrap/Image'
 import BlogComments from "../../components/blogComments";
 import {getCurrentUser} from "../../services/userLoginService";
 import jwtDecode from "jwt-decode";
+import "../../css/blog/blogDetails.css";
 
 class BlogDetails extends Component {
     constructor(props) {
@@ -136,20 +138,33 @@ class BlogDetails extends Component {
     render() {
         return (
             <div>
-                <Container className="container" fluid={true}>
+                <Container className="blogdetails-main" fluid={true}>
                     <Row>
-                        <Col>
+                        <Col className="blogdetails-card-col">
                             <BlogCard
+                                className="blogdetails-card m-4"
                                 items={this.state.blog}/>
                         </Col>
                     </Row>
                     {!this.state.user &&
-                    <Row>
-                        <Col className="d-flex flex-row-reverse">
-                            <Button
-                                onClick={this.registerRedirect}>
-                                Leave a comment
-                            </Button>
+                    <Row className="blogdetails-links-row">
+                        <Col
+                            className="blogdetails-links-col1 d-flex flex-column text-center justify-content-center"
+                        >
+                            <Link
+                                className="blogdetails-links-return"
+                                to="/blog">
+                                I WANT TO RETURN TO BLOG PAGE
+                            </Link>
+                        </Col>
+                        <Col
+                            className="blogdetails-links-col2 d-flex flex-column text-center justify-content-center"
+                            style={{height: 150}}>
+                            <Link
+                                className="blogdetails-links-comment"
+                                to="/userlogin">
+                                I WANT TO LEAVE A COMMENT
+                            </Link>
                         </Col>
                     </Row>}
                     {this.state.user &&
