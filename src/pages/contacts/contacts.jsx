@@ -11,6 +11,7 @@ import ContactsMailForm from "../../components/contactsMailForm";
 import ReCAPTCHA from "react-google-recaptcha";
 import {sendEmail} from "../../services/emailService";
 import {toast} from "react-toastify";
+import "../../css/contacts/contactsPage.css";
 
 class Contacts extends Component {
     constructor(props) {
@@ -104,9 +105,24 @@ class Contacts extends Component {
     render() {
         return (
             <div>
-                <Container className="container" fluid={true}>
-                    <Row className="m-0">
-                        <Col>
+                <Container className="contacts-main" fluid={true}>
+                    <Row>
+                        <Col
+                            className="contacts-title-col d-flex flex-column text-center justify-content-center"
+                            style={{height: 400}}>
+                                <span className="contacts-title-span">
+                                    GIVE US YOUR FEEDBACK
+                                </span>
+                                <span className="contacts-subtitle-span">
+                                    Feel free to write and ask us anything
+                                </span>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col className="bg-secondary">
+
+                        </Col>
+                        <Col className="contacts-form-col px-5 py-4">
                             <ContactsMailForm
                                 {...this.state}
                                 onChange={this.handleChange}

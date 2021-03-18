@@ -146,17 +146,18 @@ class BlogDetails extends Component {
                                 items={this.state.blog}/>
                         </Col>
                     </Row>
-                    {!this.state.user &&
+
                     <Row className="blogdetails-links-row">
                         <Col
-                            className="blogdetails-links-col1 d-flex flex-column text-center justify-content-center"
-                        >
+                            style={{height: 150}}
+                            className="blogdetails-links-col1 d-flex flex-column text-center justify-content-center">
                             <Link
                                 className="blogdetails-links-return"
                                 to="/blog">
                                 I WANT TO RETURN TO BLOG PAGE
                             </Link>
                         </Col>
+                        {!this.state.user &&
                         <Col
                             className="blogdetails-links-col2 d-flex flex-column text-center justify-content-center"
                             style={{height: 150}}>
@@ -165,12 +166,12 @@ class BlogDetails extends Component {
                                 to="/userlogin">
                                 I WANT TO LEAVE A COMMENT
                             </Link>
-                        </Col>
-                    </Row>}
+                        </Col>}
+                    </Row>
                     {this.state.user &&
                     <Row>
-                        <Col>
-                            <Card>
+                        <Col className="blogdetails-comment-col">
+                            <Card className="m-4 blogdetails-comment-card">
                                 <Card.Body className="d-flex flex-row">
                                     <Image
                                         src={picUrl + this.state.user.userPicture}
@@ -180,6 +181,7 @@ class BlogDetails extends Component {
                                         <Form onKeyPress={this.handleKeyPress}>
                                             <FormGroup>
                                                 <FormControl
+                                                    className="blogdetails-comment-formcontrol"
                                                     autoFocus={true}
                                                     name="commentText"
                                                     as="textarea"
@@ -200,7 +202,7 @@ class BlogDetails extends Component {
                     </Row>}
                     {this.state.comments &&
                     <Row>
-                        <Col>
+                        <Col className="blogdetails-comments-col">
                             <BlogComments
                                 comments={this.state.comments}
                             />

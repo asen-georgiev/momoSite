@@ -1,0 +1,96 @@
+.contacts-main{
+    background-image: url("../../assets/neoncity5.jpg");
+}
+
+.contacts-title-col{
+    /*height: 40vh;*/
+    background-color: rgba(255, 20, 147, 0.7);
+}
+
+.contacts-title-span{
+    font-size: 6rem;
+    color: wheat;
+    text-decoration: overline;
+}
+
+.contacts-subtitle-span{
+    font-size: 2.5rem;
+    color: wheat;
+    /*text-decoration: underline;*/
+}
+
+.contacts-form-control{
+    margin-top: 2rem;
+    border-radius: 0 !important;
+    /*font-style: italic !important;*/
+    font-size: x-large !important;
+    background: transparent !important;
+    border-top: transparent !important;
+    border-left: transparent !important;
+    border-right: transparent !important;
+    border-bottom-color: deeppink !important;
+    color:  antiquewhite !important;
+    border-bottom-width: 2px !important;
+}
+
+.contacts-form-control-message{
+    margin-top: 2rem;
+    border-radius: 0 !important;
+    /*font-style: italic !important;*/
+    font-size: x-large !important;
+    background: transparent !important;
+    color:  antiquewhite !important;
+    border: 2px solid deeppink !important;
+}
+
+.contacts-form-control:focus {
+    box-shadow: none !important;
+}
+
+.contacts-form-control-message:focus {
+    box-shadow: none !important;
+}
+
+.contacts-form-control::placeholder{
+    font-style: italic !important;
+    color:aquamarine !important;
+    font-size: x-large !important;
+}
+
+.contacts-form-control-message::placeholder{
+    font-style: italic !important;
+    color:aquamarine!important;
+    font-size: x-large !important;
+}
+
+.contacts-message-button{
+    font-size: x-large;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    padding-inline: 16.1vw;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    background-color: indigo;
+    color: wheat;
+    border: none !important;
+}
+
+.contacts-message-button:hover{
+    background-color: wheat;
+    color: indigo;
+}
+
+.contacts-message-button:disabled{
+    background-color: indigo;
+    color: wheat;
+}
+
+.contacts-form-label{
+    font-size: large;
+    color: deeppink;
+    margin-top: 1rem;
+}
+
+.contacts-form-col{
+    background-color: rgba(0, 0, 0, 0.7);
+}

@@ -18,12 +18,12 @@ class Footer extends Component {
         return (
             <div>
                 <footer>
-                    <Navbar className="p-4 px-5 w-100 app-footer d-flex flex-column" expand="md">
+                    <Navbar className="p-4 px-5 w-100 app-footer d-flex flex-column" expand="lg">
                         <span className="app-footer-span">
                             FOLLOW US ON THE SOCIAL MEDIA :
                         </span>
-                        <Navbar.Toggle aria-controls="navbar-toggle"/>
-                        <Navbar.Collapse id="navbar-toggle">
+                        {/*<Navbar.Toggle aria-controls="navbar-toggle"/>*/}
+                        {/*<Navbar.Collapse id="navbar-toggle">*/}
                             <Nav className="ml-auto mr-auto mt-1">
                                 <Link
                                     className="app-footer-link">
@@ -68,7 +68,7 @@ class Footer extends Component {
                                     <span>LINKEDIN</span>
                                 </Link>
                             </Nav>
-                        </Navbar.Collapse>
+                        {/*</Navbar.Collapse>*/}
                         <span className="app-footer-span-site">
                             This website is developed by : <a
                             href="https://www.facebook.com/flurvian.sea.3/"
