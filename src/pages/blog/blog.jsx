@@ -47,10 +47,9 @@ class Blog extends Component {
         return (
             <div>
                 <Container className="blogpage-main" fluid={true}>
-                    <Row className="blogpage-title-row">
+                    <Row>
                         <Col
-                            className="d-flex flex-column text-center justify-content-center"
-                            style={{height: 400}}>
+                            className="blogpage-title-col d-flex flex-column text-center justify-content-center">
                             <span className="blogpage-title-span">
                                 MOMO DESIGN BLOG
                             </span>

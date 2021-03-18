@@ -2,8 +2,8 @@
     background-image: url("../../assets/neoncity3.jpg");
 }
 
-.blogpage-title-row{
-    /*height: 40vh;*/
+.blogpage-title-col{
+    padding: 6rem;
     background-color: rgba(75, 0, 130, 0.7);
 }
 
@@ -74,19 +74,19 @@
 }
 
 
-@media screen and (max-width: 767px) {
-    .blogpage-title-span{
-        font-size: 4rem;
-        color: wheat;
-        text-decoration: overline;
-    }
+/*@media screen and (max-width: 767px) {*/
+/*    .blogpage-title-span{*/
+/*        font-size: 4rem;*/
+/*        color: wheat;*/
+/*        text-decoration: overline;*/
+/*    }*/
 
-    .blogpage-subtitle-span{
-        font-size: 2rem;
-        color: wheat;
-        /*text-decoration: underline;*/
-    }
-}
+/*    .blogpage-subtitle-span{*/
+/*        font-size: 2rem;*/
+/*        color: wheat;*/
+/*        !*text-decoration: underline;*!*/
+/*    }*/
+/*}*/
 
 .blogpage-work-row{
     background-color: rgba(220, 20, 60, 0.5);

@@ -95,11 +95,11 @@
 }
 
 .blogdetails-comment-col{
-    background-color: rgba(250, 235, 215, 0.3);
+    background-color: rgba(250, 235, 215, 0.2);
 }
 
 .blogdetails-comment-card{
-    background-color: rgba(138, 43, 226, 0.4);
+    background-color: rgba(250, 235, 215, 0.3);
 }
 
 .blogdetails-comment-formcontrol{
@@ -108,7 +108,7 @@
     font-size: x-large !important;
     background: transparent !important;
     border: 2px solid deeppink !important;
-    color: wheat !important;
+    color: indigo !important;
 }
 
 .blogdetails-comment-formcontrol:focus{
@@ -117,6 +117,6 @@
 
 .blogdetails-comment-formcontrol::placeholder{
     font-style: italic !important;
-    color:aquamarine!important;
+    color:darkslateblue!important;
     font-size: x-large !important;
 }

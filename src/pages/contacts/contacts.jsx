@@ -10,7 +10,7 @@ import Button from "react-bootstrap/Button";
 import ContactsMailForm from "../../components/contactsMailForm";
 import ReCAPTCHA from "react-google-recaptcha";
 import {sendEmail} from "../../services/emailService";
-import {toast} from "react-toastify";
+import {toast, Zoom} from "react-toastify";
 import "../../css/contacts/contactsPage.css";
 
 class Contacts extends Component {
@@ -99,7 +99,11 @@ class Contacts extends Component {
         };
 
         await sendEmail(email);
-        toast.success('Your message was sent successfully!');
+        toast('Your message was sent successfully!',{
+            position: "top-center",
+            transition: Zoom,
+            className: 'contacts-message-toaster'
+        });
     }
 
     render() {
@@ -109,7 +113,7 @@ class Contacts extends Component {
                     <Row>
                         <Col
                             className="contacts-title-col d-flex flex-column text-center justify-content-center"
-                            style={{height: 400}}>
+                            >
                                 <span className="contacts-title-span">
                                     GIVE US YOUR FEEDBACK
                                 </span>
@@ -119,8 +123,20 @@ class Contacts extends Component {
                         </Col>
                     </Row>
                     <Row>
-                        <Col className="bg-secondary">
-
+                        <Col className="contacts-contacts-col d-flex flex-column px-4 pt-5 text-center">
+                            <span className="contacts-contacts-span-logo">
+                                MOMO DESIGN LTD.
+                            </span>
+                            <ul className="contacts-ul p-0">
+                                <li>CANADA, VANCOUVER BC 2800</li>
+                                <li>CANADSKA MURA STR. NO 1</li>
+                                <li>TEL:  +359/123456789</li>
+                                <li>EMAIL : momodesign@gmail.com</li>
+                                <li>FROM : 08.00h. to 17.00h.</li>
+                            </ul>
+                            <span className="contacts-contacts-span-moto">
+                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed lacus eget ante mattis consectetur et ac ipsum"
+                            </span>
                         </Col>
                         <Col className="contacts-form-col px-5 py-4">
                             <ContactsMailForm

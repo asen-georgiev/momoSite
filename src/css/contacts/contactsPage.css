@@ -4,6 +4,7 @@
 
 .contacts-title-col{
     /*height: 40vh;*/
+    padding: 6rem;
     background-color: rgba(255, 20, 147, 0.7);
 }
 
@@ -67,7 +68,7 @@
     font-size: x-large;
     padding-top: 2vh;
     padding-bottom: 2vh;
-    padding-inline: 16.1vw;
+    padding-inline: 15.9vw;
     margin-top: 2rem;
     margin-bottom: 2rem;
     background-color: indigo;
@@ -93,4 +94,39 @@
 
 .contacts-form-col{
     background-color: rgba(0, 0, 0, 0.7);
+}
+
+.contacts-contacts-col{
+    background-color: rgba(250, 235, 215, 0.2);
+}
+
+.contacts-ul{
+    color: wheat;
+    margin-top: 2rem;
+    font-size: xx-large;
+    list-style-type: none;
+}
+
+.contacts-contacts-span-logo{
+    color: aquamarine;
+    font-size: 4rem;
+    text-decoration: overline;
+    margin-inline: 2rem;
+    margin-top: 3rem;
+}
+
+.contacts-contacts-span-moto{
+    color: aquamarine;
+    font-size: x-large;
+    font-style: italic;
+    margin-inline: 2rem;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+}
+
+.contacts-message-toaster{
+    background-color: indigo;
+    color: wheat;
+    font-size: x-large;
+    text-align: center !important;
 }
