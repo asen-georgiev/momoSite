@@ -1,0 +1,40 @@
+.biography-main{
+    /*background-size: contain;*/
+    background-image: url("../../assets/neoncity2.jpg");
+    background-repeat: repeat-y;
+}
+
+.biography-title-col{
+    padding: 6rem;
+    background-color: rgba(250, 235, 215, 0.2);
+}
+
+.biography-title-span{
+    font-size: 6rem;
+    color: deeppink;
+    text-decoration: overline;
+}
+
+.biography-subtitle-span{
+    font-size: 2.5rem;
+    color: aquamarine;
+    /*text-decoration: underline;*/
+}
+
+.biography-col{
+    color: wheat;
+    font-size: x-large;
+    background-color: rgba(25, 25, 112, 0.4);
+}
+
+.biography-reverse-col{
+    background-color: rgba(255, 20, 147, 0.4);
+    color: wheat;
+    font-size: x-large;
+}
+
+.biography-span-title{
+    color: aquamarine;
+    font-size: xx-large;
+    text-transform: uppercase;
+}

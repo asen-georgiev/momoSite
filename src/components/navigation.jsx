@@ -112,8 +112,8 @@ class Navigation extends Component {
                                     </div>
                                 </Link>
                                 <Link
-                                    id="About"
-                                    to="/about"
+                                    id="Biography"
+                                    to="/biography"
                                     className="app-navbar-link"
                                 >
                                     <FontAwesomeIcon

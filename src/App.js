@@ -38,6 +38,7 @@ import RegisterDesignForm from "./admin/designs/registerDesignForm";
 import AllDesignsList from "./admin/designs/allDesignsList";
 import UpdateDesignForm from "./admin/designs/updateDesignForm";
 import Footer from "./components/footer";
+import Biography from "./pages/biography/biography";
 
 class App extends Component {
     constructor(props) {
@@ -72,6 +73,7 @@ class App extends Component {
                 <Navigation/>
                 <Switch>
                     <Route path="/adminlogin" component={AdminLoginForm}/>
+                    <Route path="/biography" component={Biography}/>
                     <Route path="/blog/:id" component={BlogDetails}/>
                     <Route path="/blog" component={Blog}/>
                     <Route path="/contacts" component={Contacts}/>
