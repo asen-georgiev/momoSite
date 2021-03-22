@@ -39,6 +39,8 @@ import AllDesignsList from "./admin/designs/allDesignsList";
 import UpdateDesignForm from "./admin/designs/updateDesignForm";
 import Footer from "./components/footer";
 import Biography from "./pages/biography/biography";
+import Designs from "./pages/designs/designs";
+import DesignsDetails from "./pages/designs/designsDetails";
 
 class App extends Component {
     constructor(props) {
@@ -77,6 +79,8 @@ class App extends Component {
                     <Route path="/blog/:id" component={BlogDetails}/>
                     <Route path="/blog" component={Blog}/>
                     <Route path="/contacts" component={Contacts}/>
+                    <Route path="/designs/:id" component={DesignsDetails}/>
+                    <Route path="/designs" component={Designs}/>
                     <Route path="/userregister" component={RegisterUserFormUsr}/>
                     <Route path="/userlogin" component={UserLoginForm}/>
                     {this.state.user !== null &&
