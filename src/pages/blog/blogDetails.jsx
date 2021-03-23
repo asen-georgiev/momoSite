@@ -64,7 +64,7 @@ class BlogDetails extends Component {
             comments
         });
 
-        console.log(this.state.user);
+        console.log(this.state.blog);
     }
 
     handleKeyPress = async (event) => {

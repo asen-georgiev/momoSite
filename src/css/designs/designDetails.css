@@ -1,0 +1,95 @@
+.design-details-main {
+    background-size: cover;
+    background-image: url("../../assets/neoncity6.jpg");
+}
+
+.design-details-leftcol {
+    background-color: rgba(25, 25, 112, 0.5);
+}
+
+.design-details-leftcol-span {
+    background-color: rgba(199, 21, 133, 0.4);
+    font-size: xxx-large;
+    color: aquamarine;
+    text-transform: uppercase;
+}
+
+.design-details-rightcol {
+    height: auto;
+}
+
+.design-details-rightcol-images {
+    background-color: rgba(199, 21, 133, 0.4);
+    height: 53rem;
+}
+
+.design-details-images {
+    box-shadow: -6px 6px 6px 3px rgba(199, 21, 133, 0.7);
+    cursor: pointer;
+    filter: grayscale(100%);
+}
+
+.design-details-images:hover {
+    filter: grayscale(0%);
+}
+
+.design-details-rightcol-span {
+    font-size: xx-large;
+    color: wheat;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.design-details-rightcol-link {
+    font-size: xx-large;
+    background-color: rgba(25, 25, 112, 0.5);
+}
+
+.design-details-link {
+    color: deeppink;
+}
+
+.design-details-link:hover {
+    color: aquamarine;
+    text-decoration: overline;
+}
+
+.design-details-image {
+    box-shadow: 6px 6px 6px 3px rgba(25, 25, 112, 0.7);
+    width: 75rem;
+    height: auto;
+    cursor: zoom-in;
+}
+
+@media screen and (max-width: 767px) {
+    .design-details-image {
+        width: 90vw;
+        height: auto;
+    }
+}
+
+
+.image-overlay {
+    cursor: zoom-out;
+    position: absolute;
+    z-index: 999;
+    top: 5rem;
+    left: 0;
+    width: 100%;
+    height: auto;
+}
+
+#show-span {
+    display: none;
+    font-size: xxx-large;
+    color: deeppink;
+    margin-top: 10rem;
+    position: absolute;
+    text-decoration: overline;
+}
+
+#Span:hover #show-span {
+    display: block;
+}
+
+
+
