@@ -1,0 +1,44 @@
+.homepage-main {
+    background-image: url("../../assets/neoncity4.jpg");
+}
+
+.homepage-title-col {
+    padding: 6rem;
+    background-color: rgba(75, 0, 130, 0.7);
+}
+
+.homepage-title-span {
+    font-size: 6rem;
+    color: wheat;
+    text-decoration: overline;
+}
+
+.homepage-subtitle-span {
+    font-size: 2.5rem;
+    color: wheat;
+}
+
+.homepage-card{
+    font-size: x-large;
+    border: none!important;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.homepage-cardheader{
+    color: aquamarine;
+}
+
+.homepage-cardbody{
+    color: wheat;
+}
+
+.homepage-foot-link{
+    color: deeppink;
+}
+
+.homepage-foot-link:hover{
+    color: deeppink;
+    text-decoration: overline;
+}
+
+

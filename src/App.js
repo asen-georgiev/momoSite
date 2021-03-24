@@ -41,6 +41,7 @@ import Footer from "./components/footer";
 import Biography from "./pages/biography/biography";
 import Designs from "./pages/designs/designs";
 import DesignsDetails from "./pages/designs/designsDetails";
+import Homepage from "./pages/homepage/homepage";
 
 class App extends Component {
     constructor(props) {
@@ -81,6 +82,7 @@ class App extends Component {
                     <Route path="/contacts" component={Contacts}/>
                     <Route path="/designs/:id" component={DesignsDetails}/>
                     <Route path="/designs" component={Designs}/>
+                    <Route path="/" component={Homepage}/>
                     <Route path="/userregister" component={RegisterUserFormUsr}/>
                     <Route path="/userlogin" component={UserLoginForm}/>
                     {this.state.user !== null &&
