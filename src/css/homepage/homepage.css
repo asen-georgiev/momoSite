@@ -1,10 +1,11 @@
 .homepage-main {
+    background-size: cover;
     background-image: url("../../assets/neoncity4.jpg");
 }
 
 .homepage-title-col {
     padding: 6rem;
-    background-color: rgba(75, 0, 130, 0.7);
+    background-color: rgba(75, 0, 130, 0.5);
 }
 
 .homepage-title-span {
@@ -25,6 +26,9 @@
 }
 
 .homepage-cardheader{
+    margin-top: 0.5rem;
+    font-size: xx-large;
+    text-decoration: overline;
     color: aquamarine;
 }
 
@@ -39,6 +43,31 @@
 .homepage-foot-link:hover{
     color: deeppink;
     text-decoration: overline;
+}
+
+.homepage-mission-col{
+    background-color: rgba(199, 21, 133, 0.4);
+}
+
+.homepage-mission-span{
+    color: aquamarine;
+    font-size: xxx-large;
+    text-decoration: overline;
+}
+
+.homepage-mission-p{
+    font-size: xx-large;
+    color:wheat;
+}
+
+.homepage-mission-link{
+    font-size: xx-large;
+    color: aquamarine;
+}
+
+.homepage-mission-link:hover{
+    text-decoration: overline;
+    color: aquamarine;
 }
 
 
