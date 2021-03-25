@@ -82,9 +82,9 @@ class App extends Component {
                     <Route path="/contacts" component={Contacts}/>
                     <Route path="/designs/:id" component={DesignsDetails}/>
                     <Route path="/designs" component={Designs}/>
-                    <Route path="/" component={Homepage}/>
                     <Route path="/userregister" component={RegisterUserFormUsr}/>
                     <Route path="/userlogin" component={UserLoginForm}/>
+                    <Route path="/" component={Homepage}/>
                     {this.state.user !== null &&
                     <Switch>
                         <Route path="/userprofile/:id" component={UpdateUserFormUsr}/>

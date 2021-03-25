@@ -29,12 +29,29 @@ class Homepage extends Component {
                             </span>
                         </Col>
                     </Row>
+                    <Row className="photo-row d-flex flex-row justify-content-center px-5 pt-5">
+                        <p className="photo-row-p text-center">
+                            Hello from me,<br/>
+                            Vestibulum lobortis maximus libero ac rhoncus.<br/>
+                            Aliquam sit amet rhoncus purus, vitae condimentum nibh.<br/>
+                            Pellentesque habitant morbi tristique<br/>
+                            senectus et netus et malesuada fames ac turpis
+                            egestas.<br/>
+                            In commodo lacus nec lorem feugiat fringilla.<br/>
+                            <span className="photo-row-span">
+                                - MARIA TASHKOVA -
+                            </span>
+                        </p>
+                        <Image
+                            style={{width: 660}}
+                            src={profile}/>
+                    </Row>
                     <Row>
                         <Col className="homepage-cards-col p-5">
                             <HomepageCards/>
                         </Col>
                     </Row>
-                    <Row className="pl-5 pr-5 pb-5">
+                    <Row >
                         <Col
                             className="homepage-mission-col d-flex flex-column text-center justify-content-center p-5">
                             <span className="homepage-mission-span">
@@ -58,21 +75,6 @@ class Homepage extends Component {
                                     CONTACT US
                                 </span>
                             </Link>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col>
-                            <span>
-                                MARIA TASHKOVA
-                            </span>
-                            <p>
-
-                            </p>
-                        </Col>
-                        <Col className="bg-danger p-5">
-                            <Image
-                                style={{width:800}}
-                            src={profile}/>
                         </Col>
                     </Row>
                 </Container>
