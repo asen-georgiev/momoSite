@@ -84,7 +84,7 @@ class App extends Component {
                     <Route path="/designs" component={Designs}/>
                     <Route path="/userregister" component={RegisterUserFormUsr}/>
                     <Route path="/userlogin" component={UserLoginForm}/>
-                    <Route path="/" component={Homepage}/>
+                    <Route exact path="/" component={Homepage}/>
                     {this.state.user !== null &&
                     <Switch>
                         <Route path="/userprofile/:id" component={UpdateUserFormUsr}/>
@@ -114,6 +114,7 @@ class App extends Component {
                         <Route path="/admin/imagesupload" component={ImagesUpload}/>
                         <Route path="/admin" component={AdminPanel}/>
                     </Switch>}
+
                 </Switch>
                 <Footer/>
             </div>

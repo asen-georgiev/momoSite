@@ -41,7 +41,7 @@ class RegisterBlogForm extends Component {
         blogSubTitle: Joi.string()
             .required()
             .min(5)
-            .max(200)
+            .max(300)
             .trim(true)
             .label('Blog sub title'),
         blogText: Joi.string()
@@ -234,7 +234,8 @@ class RegisterBlogForm extends Component {
                                             <FormControl
                                                 className="register-blog-form-control"
                                                 name="blogSubTitle"
-                                                type="text"
+                                                as="textarea"
+                                                rows="3"
                                                 value={this.state.blogSubTitle}
                                                 placeholder="Enter short expose for the Blog"
                                                 onChange={this.handleChange}/>

@@ -9,7 +9,6 @@ import Button from "react-bootstrap/Button";
 import Joi from "joi";
 import {toast, Zoom} from "react-toastify";
 import {FormLabel} from "react-bootstrap";
-import Card from "react-bootstrap/Card";
 import CardImg from "react-bootstrap/CardImg";
 import {uploadImageAdmin} from "../../services/imgService";
 import {createDesign} from "../../services/designService";
@@ -196,7 +195,7 @@ class RegisterDesignForm extends Component {
                                             })}
                                         </Row>
                                         <Row className="m-0">
-                                        <FormGroup className="px-5 pt-5">
+                                        <FormGroup className="px-5 pt-5" as={Col}>
                                             <Form.File
                                                 className="register-design-form"
                                                 type="file"

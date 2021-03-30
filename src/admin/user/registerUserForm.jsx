@@ -13,7 +13,7 @@ import "../../css/admin/user/userRegister.css"
 import {CardImg, FormLabel} from "react-bootstrap";
 import {uploadImageAdmin} from "../../services/imgService";
 import {registerUserAdmin} from "../../services/userService";
-import vvitch from '../../assets/vvitch.jpg'
+import profile from '../../assets/profile-default.png'
 
 class RegisterUserForm extends Component {
     constructor(props) {
@@ -183,15 +183,15 @@ class RegisterUserForm extends Component {
                                                 <CardImg
                                                     className="ml-5 mt-5"
                                                     src={this.state.showPicture}
-                                                    style={{width: 300, height: 365}}/>
+                                                    style={{width: 330, height: 365}}/>
                                                 }
                                                 {!this.state.showPicture &&
                                                 <CardImg
                                                     className="ml-5 mt-5"
-                                                    src={vvitch}
-                                                    style={{width: 300, height: 365}}/>
+                                                    src={profile}
+                                                    style={{width: 330, height: 365}}/>
                                                 }
-                                                <FormGroup className="px-5 pt-4">
+                                                <FormGroup className="pl-5 pt-4">
                                                     <Form.File
                                                         className="register-user-form"
                                                         id="image"

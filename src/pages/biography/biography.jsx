@@ -42,7 +42,8 @@ class Biography extends Component {
                                 <Col className="biography-reverse-col p-5" md="auto">
                                     {bio.bioPictures.map(bp => {
                                         return (
-                                            <Image src={picUrl + bp}/>
+                                            <Image src={picUrl + bp}
+                                                   style={{width: 300}}/>
                                         )
                                     })}
                                 </Col>
@@ -62,7 +63,8 @@ class Biography extends Component {
                                 <Col className="biography-col p-5" md="auto">
                                     {bio.bioPictures.map(bp => {
                                         return (
-                                            <Image src={picUrl + bp}/>
+                                            <Image src={picUrl + bp}
+                                                   style={{width: 300}}/>
                                         )
                                     })}
                                 </Col>

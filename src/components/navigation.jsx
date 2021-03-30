@@ -112,7 +112,7 @@ class Navigation extends Component {
                                     </div>
                                 </Link>
                                 <Link
-                                    id="Biography"
+                                    id="Bio"
                                     to="/biography"
                                     className="app-navbar-link"
                                 >
@@ -120,12 +120,12 @@ class Navigation extends Component {
                                         icon={faSignature}
                                         className="icon"/>
 
-                                    <span className="About-show">
+                                    <span className="Bio-show">
                                             ABOUT US
                                         </span>
 
                                     <div className="d-flex justify-content-center">
-                                        <span id="About-hide" className="About-hide">
+                                        <span id="Bio-hide" className="Bio-hide">
                                             ABOUT US
                                         </span>
                                     </div>
