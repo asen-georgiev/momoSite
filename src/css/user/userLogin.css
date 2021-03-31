@@ -1,0 +1,129 @@
+.user-login-main{
+    background-image: url("../../assets/neon-city-login.png");
+}
+
+.user-login-row1{
+    background-color: rgba(75, 0, 130, 0.5);
+}
+
+.user-login-row2{
+    background-color: rgba(199, 21, 133, 0.5);
+}
+
+.user-login-password-col{
+    font-size: x-large;
+}
+
+.user-login-card1{
+    font-size: x-large;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.user-login-form-control{
+    margin-top: 2rem;
+    border-radius: 0 !important;
+    /*font-style: italic !important;*/
+    font-size: xx-large !important;
+    background: transparent !important;
+    border-top: transparent !important;
+    border-left: transparent !important;
+    border-right: transparent !important;
+    border-bottom-color: deeppink !important;
+    color:  antiquewhite !important;
+    border-bottom-width: 2px !important;
+}
+
+.user-login-form-control:focus {
+    box-shadow: none !important;
+}
+
+.user-login-form-control::placeholder{
+    font-style: italic !important;
+    color:aquamarine !important;
+    font-size: x-large !important;
+}
+
+.user-login-button{
+    font-size: large;
+    color: wheat;
+    background-color: indigo;
+    border: none !important;
+}
+
+.user-login-button:hover{
+    background-color: wheat;
+    color: indigo;
+}
+
+.user-login-button:focus{
+    box-shadow: none !important;
+    border:none !important;
+    background-color: wheat;
+    color: indigo;
+}
+
+.user-login-button:active{
+    box-shadow: none !important;
+    border:none !important;
+    background-color: wheat !important;
+    color: indigo !important;
+}
+
+.user-login-button:disabled{
+    font-size: large;
+    color: wheat;
+    background-color: indigo;
+    border: none !important;
+}
+
+
+.user-login-password-button{
+    font-size: large;
+    color: wheat;
+    background-color: deeppink;
+    border: none !important;
+}
+
+.user-login-password-button:hover{
+    color:deeppink;
+    background-color: wheat;
+}
+
+.user-login-register-span{
+    color: wheat;
+}
+
+.user-login-account-link{
+    color:aquamarine;
+}
+
+.user-login-account-link:hover{
+    color:aquamarine;
+    text-decoration: overline;
+}
+
+.user-login-profile-button{
+    font-size: large;
+    color: wheat;
+    background-color: indigo;
+    border: none !important;
+}
+
+.user-login-profile-button:hover{
+    color:indigo;
+    background-color: wheat;
+}
+
+.user-login-profile-button:focus{
+    font-size: large;
+    color: wheat !important;
+    background-color: indigo !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.user-login-toaster{
+    font-size: x-large;
+    color: wheat;
+    background-color: indigo;
+}
