@@ -73,9 +73,9 @@ class Navigation extends Component {
                             aria-controls="navbar-toggle"/>
                         <Navbar.Collapse id="navbar-toggle">
                             <Nav className="ml-auto mr-auto">
-                                <Link
+                                <a
                                     id="Home"
-                                    to="/"
+                                    href="/"
                                     className="app-navbar-link"
                                 >
                                     <FontAwesomeIcon
@@ -91,10 +91,10 @@ class Navigation extends Component {
                                             HOME
                                         </span>
                                     </div>
-                                </Link>
-                                <Link
+                                </a>
+                                <a
                                     id="Designs"
-                                    to="/designs"
+                                    href="/designs"
                                     className="app-navbar-link"
                                 >
                                     <FontAwesomeIcon
@@ -110,10 +110,10 @@ class Navigation extends Component {
                                             DESIGNS
                                         </span>
                                     </div>
-                                </Link>
-                                <Link
+                                </a>
+                                <a
                                     id="Bio"
-                                    to="/biography"
+                                    href="/biography"
                                     className="app-navbar-link"
                                 >
                                     <FontAwesomeIcon
@@ -129,10 +129,10 @@ class Navigation extends Component {
                                             ABOUT US
                                         </span>
                                     </div>
-                                </Link>
-                                <Link
+                                </a>
+                                <a
                                     id="Contacts"
-                                    to="/contacts"
+                                    href="/contacts"
                                     className="app-navbar-link"
                                 >
                                     <FontAwesomeIcon
@@ -148,10 +148,10 @@ class Navigation extends Component {
                                             CONTACTS
                                         </span>
                                     </div>
-                                </Link>
-                                <Link
+                                </a>
+                                <a
                                     id="Blog"
-                                    to="/blog"
+                                    href="/blog"
                                     className="app-navbar-link"
                                 >
                                     <FontAwesomeIcon
@@ -167,7 +167,7 @@ class Navigation extends Component {
                                             BLOG
                                         </span>
                                     </div>
-                                </Link>
+                                </a>
                             </Nav>
                         </Navbar.Collapse>
 

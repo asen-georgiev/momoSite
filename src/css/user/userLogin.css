@@ -10,13 +10,15 @@
     background-color: rgba(199, 21, 133, 0.5);
 }
 
-.user-login-password-col{
-    font-size: x-large;
-}
 
 .user-login-card1{
     font-size: x-large;
     background-color: rgba(0, 0, 0, 0.7);
+}
+
+.user-login-card2{
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 5rem;
 }
 
 .user-login-form-control{
@@ -42,6 +44,31 @@
     color:aquamarine !important;
     font-size: x-large !important;
 }
+
+.user-login-form-control2{
+    margin-top: 1rem;
+    border-radius: 0 !important;
+    /*font-style: italic !important;*/
+    font-size: xx-large !important;
+    background: transparent !important;
+    border-top: transparent !important;
+    border-left: transparent !important;
+    border-right: transparent !important;
+    border-bottom-color: deeppink !important;
+    color:  antiquewhite !important;
+    border-bottom-width: 2px !important;
+}
+
+.user-login-form-control2:focus {
+    box-shadow: none !important;
+}
+
+.user-login-form-control2::placeholder{
+    font-style: italic !important;
+    color:aquamarine !important;
+    font-size: x-large !important;
+}
+
 
 .user-login-button{
     font-size: large;
@@ -123,7 +150,8 @@
 }
 
 .user-login-toaster{
-    font-size: x-large;
+    font-size: large;
     color: wheat;
     background-color: indigo;
+    text-align: center;
 }

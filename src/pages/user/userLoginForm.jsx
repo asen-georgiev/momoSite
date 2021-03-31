@@ -204,13 +204,13 @@ class UserLoginForm extends Component {
                     {this.state.forgotPassword &&
                     <Row className="user-login-row2 justify-content-center align-content-center"
                          style={{height:'46rem'}}>
-                            <Card style={{width:'30rem'}}>
+                            <Card
+                                className="user-login-card2"
+                                style={{width:'40rem'}}>
                             <Form onSubmit={this.newPasswordSubmit}>
                                 <FormGroup>
-                                    <FormLabel>
-                                        Your email :
-                                    </FormLabel>
                                     <FormControl
+                                        className="user-login-form-control2"
                                         autoFocus={true}
                                         id="userEmail"
                                         name="userEmail"
@@ -218,9 +218,13 @@ class UserLoginForm extends Component {
                                         placeholder="Please enter your registration email"
                                         onChange={this.handleChange}/>
                                 </FormGroup>
-                                <Button type="submit">
-                                    Send me new password
+                                <Row className="justify-content-center">
+                                <Button
+                                    className="user-login-button m-3 px-5"
+                                    type="submit">
+                                    SEND THE NEW PASSWORD
                                 </Button>
+                                </Row>
                             </Form>
                             </Card>
                     </Row>
