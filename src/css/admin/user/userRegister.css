@@ -85,28 +85,28 @@
 }
 
 
-::-webkit-file-upload-button {
-    background-color: indigo !important;
-    padding: 0.5rem 2rem !important;
-    border: none !important;
-    border-radius: 5px;
-    color: lightblue !important;
-    margin-right: 1rem;
-}
+/*::-webkit-file-upload-button {*/
+/*    background-color: indigo !important;*/
+/*    padding: 0.5rem 2rem !important;*/
+/*    border: none !important;*/
+/*    border-radius: 5px;*/
+/*    color: lightblue !important;*/
+/*    margin-right: 1rem;*/
+/*}*/
 
-::-webkit-file-upload-button:hover {
-    background-color: lightblue !important;
-    color: indigo !important;
-    padding: 0.5rem 2rem !important;
-    border: none !important;
-}
+/*::-webkit-file-upload-button:hover {*/
+/*    background-color: wheat !important;*/
+/*    color: indigo !important;*/
+/*    padding: 0.5rem 2rem !important;*/
+/*    border: none !important;*/
+/*}*/
 
-::-webkit-file-upload-button:focus {
-    background-color: indigo !important;
-    padding: 0.5rem 2rem !important;
-    border: none !important;
-    border-radius: 5px;
-    color: lightblue !important;
-    margin-right: 1rem;
-}
+/*::-webkit-file-upload-button:focus {*/
+/*    background-color: indigo !important;*/
+/*    padding: 0.5rem 2rem !important;*/
+/*    border: none !important;*/
+/*    border-radius: 5px;*/
+/*    color: wheat !important;*/
+/*    margin-right: 1rem;*/
+/*}*/
 

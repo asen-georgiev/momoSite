@@ -1,0 +1,143 @@
+.user-register-main {
+    background-image: url("../../assets/neon-city-login.png");
+}
+
+.user-register-row-main {
+    background-color: rgba(199, 21, 133, 0.5);
+}
+
+.user-register-form {
+    width: 90%;
+    color: wheat;
+    font-size: medium;
+    font-style: italic !important;
+}
+
+
+.user-register-form-control {
+    border-radius: 0 !important;
+    font-size: xx-large !important;
+    background: transparent !important;
+    border-top: transparent !important;
+    border-left: transparent !important;
+    border-right: transparent !important;
+    border-bottom-color: deeppink !important;
+    color: antiquewhite !important;
+    border-bottom-width: 2px !important;
+}
+
+.user-register-form-control:focus {
+    box-shadow: none !important;
+}
+
+.user-register-card {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    margin-inline: 15rem;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.user-register-card2 {
+    padding: 3rem;
+    padding-inline: 5rem;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    margin-inline: 15rem;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.user-register-form-control::placeholder {
+    font-style: italic !important;
+    color: aquamarine !important;
+    font-size: x-large !important;
+}
+
+.user-register-register-button {
+    font-size: large;
+    color: wheat;
+    background-color: indigo;
+    border: none !important;
+    padding-inline: 5rem;
+    margin-bottom: 1rem;
+}
+
+.user-register-register-button:hover {
+    background-color: wheat;
+    color: indigo;
+}
+
+.user-register-register-button:focus {
+    box-shadow: none !important;
+    border: none !important;
+    background-color: wheat;
+    color: indigo;
+}
+
+.user-register-register-button:disabled {
+    font-size: large;
+    color: wheat;
+    background-color: indigo;
+    border: none !important;
+}
+
+.user-register-redirect-button {
+    font-size: large;
+    color: wheat;
+    background-color: deeppink;
+    border: none !important;
+    padding-inline: 5rem;
+    margin-bottom: 1rem;
+}
+
+.user-register-redirect-button:hover {
+    color: deeppink;
+    background-color: wheat;
+}
+
+.user-register-redirect-button:focus {
+    box-shadow: none !important;
+    border: none !important;
+    background-color: deeppink !important;
+    color: wheat !important;
+}
+
+.user-register-toaster {
+    background-color: indigo;
+    color: antiquewhite;
+    font-size: x-large;
+    text-align: center !important;
+}
+
+.user-register-welcome {
+    font-size: x-large;
+    color: deeppink;
+    margin-bottom: 2rem;
+}
+
+.user-register-names {
+    text-decoration: overline;
+    margin-bottom: 2rem;
+    font-size: xx-large;
+    color: wheat;
+}
+
+.user-register-profile-button {
+    font-size: large;
+    color: wheat;
+    background-color: indigo;
+    border: none !important;
+    padding-inline: 2rem;
+    margin-top: 1rem;
+}
+
+.user-register-profile-button:hover {
+    background-color: wheat;
+    color: indigo;
+}
+
+.user-register-profile-button:focus {
+    box-shadow: none !important;
+    border: none !important;
+    background-color: wheat;
+    color: indigo;
+}
