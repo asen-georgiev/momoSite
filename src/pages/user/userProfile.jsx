@@ -33,7 +33,7 @@ class UserProfile extends Component {
         const jwtUser = getCurrentUser();
         const loggedUser = jwtDecode(jwtUser);
         const {data: comments} = await getCommentsByUser(loggedUser._id)
-        this.setState({loggedUser, url, comments,isLogged:true});
+        this.setState({loggedUser, url, comments, isLogged: true});
     }
 
     handleDelete = async (user) => {
@@ -52,49 +52,62 @@ class UserProfile extends Component {
 
 
     showAlert = (boolean) => {
+        window.scrollTo({top: 0});
         this.setState({showAlert: boolean})
-    }
-
-    logoutUser = () => {
-        userLogout();
-        this.setState({isLogged:false});
-        this.props.history.push("/");
     }
 
 
     render() {
         return (
             <div>
-                <Container className="bg-danger" fluid={true}>
-                    <Row className="justify-content-center">
+                <Container className="user-profile-main" fluid={true}>
+                    <Row className="justify-content-center user-profile-alert-row">
                         <UserDeleteAlert
                             heading="Are you sure you want to delete your profile?"
                             showAlert={this.state.showAlert}
-                            variant="danger"
-                            buttonYes="Qj laina!"
-                            buttonNo="Ne qj laina!"
+                            buttonYes="YES, I want"
+                            buttonNo="NO, it was a mistake"
                             onYes={() => this.handleDelete(this.state.loggedUser)}
                             onNo={() => this.showAlert(false)}
                             buttonYesVariant="info"
                             buttonNoVariant="danger"/>
                     </Row>
-                    <Row className="justify-content-center bg-secondary">
-                        <Usercard
-                            className="d-flex flex-row user-profile-card"
-                            src={this.state.url + this.state.loggedUser.userPicture}
-                            imgWidth={'20rem'}
-                            loggedUser={this.state.loggedUser}/>
-                    </Row>
-                    <Row className="bg-dark d-flex justify-content-around">
-                        <Link to={`/userprofile/${this.state.loggedUser._id}`}>UPDATE PROFILE</Link>
-                        <Button onClick={() => this.showAlert(true)}>DELETE PROFILE</Button>
-                        <Button onClick={this.logoutUser}>LOG OUT</Button>
+                    <Row>
+                        <Col className="user-profile-col-card">
+                            <Usercard
+                                src={this.state.url + this.state.loggedUser.userPicture}
+                                loggedUser={this.state.loggedUser}/>
+                        </Col>
+                        <Col className="user-profile-col-comm pb-4">
+                            <Row className="user-profile-rowspan justify-content-center">
+                                <span>
+                                    MY COMMENTS
+                                </span>
+                            </Row>
+                            <Row>
+                                <Col
+                                    className="overflow-auto"
+                                    style={{height: 630}}>
+                                    <BlogComments
+                                        comments={this.state.comments}/>
+                                </Col>
+                            </Row>
+                        </Col>
                     </Row>
                     <Row>
-                        <Col>
-                            <h4>My comments: </h4>
-                            <BlogComments
-                                comments={this.state.comments}/>
+                        <Col className="user-profile-update text-center p-5">
+                            <Link
+                                className="user-profile-update-link"
+                                to={`/userprofile/${this.state.loggedUser._id}`}>
+                                UPDATE PROFILE
+                            </Link>
+                        </Col>
+                        <Col className="user-profile-delete text-center p-5">
+                            <Link
+                                className="user-profile-delete-link"
+                                onClick={() => this.showAlert(true)}>
+                                DELETE PROFILE
+                            </Link>
                         </Col>
                     </Row>
                 </Container>

@@ -1,3 +1,125 @@
-.user-profile-card{
-    width: 60rem;
+.user-profile-main {
+    background-image: url("../../assets/neon-city-login.png");
+}
+
+.user-profile-card {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 3rem;
+}
+
+.user-profile-card-title {
+    color: aquamarine;
+    margin-top: 0.5vh;
+    margin-bottom: 1vh;
+    font-size: xx-large;
+    text-transform: uppercase !important;
+}
+
+.user-profile-card-subtitle {
+    font-size: xx-large;
+    color: deeppink;
+}
+
+.user-profile-col-card {
+    background-color: rgba(25, 25, 112, 0.5);
+}
+
+.user-profile-col-comm {
+    font-size: x-large;
+    color: wheat;
+    background-color: rgba(199, 21, 133, 0.3);
+}
+
+.user-profile-rowspan {
+    background-color: rgba(25, 25, 112, 0.5);
+    font-size: xxx-large;
+    text-decoration: overline;
+    padding-top: 3rem;
+    padding-bottom: 1rem;
+}
+
+@media screen and (max-width: 767px) {
+    .user-profile-card-title {
+        font-size: large;
+        text-transform: uppercase !important;
+    }
+
+    .user-profile-card-subtitle {
+        font-size: large;
+    }
+}
+
+.user-profile-update {
+    background-color: rgba(199, 21, 133, 0.3);
+}
+
+.user-profile-update:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.user-profile-delete {
+    background-color: rgba(199, 21, 133, 0.3);
+}
+
+.user-profile-delete:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.user-profile-update-link {
+    font-size: xx-large;
+    color: aquamarine;
+}
+
+.user-profile-update-link:hover {
+    font-size: xx-large;
+    color: deeppink;
+    text-decoration: overline;
+}
+
+.user-profile-delete-link {
+    font-size: xx-large;
+    color: aquamarine;
+}
+
+.user-profile-delete-link:hover {
+    font-size: xx-large;
+    color: deeppink;
+    text-decoration: overline;
+}
+
+.user-profile-alert-row {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.user-profile-alert {
+    color: wheat;
+    text-transform: uppercase;
+}
+
+.user-profile-alert-yes {
+    color: wheat;
+    font-size: x-large;
+    border: none !important;
+    background-color: deeppink;
+}
+
+.user-profile-alert-yes:hover {
+    color: deeppink;
+    font-size: x-large;
+    border: none !important;
+    background-color: wheat;
+}
+
+.user-profile-alert-no {
+    color: wheat;
+    font-size: x-large;
+    border: none !important;
+    background-color: indigo;
+}
+
+.user-profile-alert-no:hover {
+    color: indigo;
+    font-size: x-large;
+    border: none !important;
+    background-color: wheat;
 }
