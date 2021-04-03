@@ -1,0 +1,119 @@
+.user-update-main{
+    background-image: url("../../assets/neon-city-login.png");
+}
+
+.user-update-row-main{
+    background-color: rgba(75, 0, 130, 0.5);
+}
+
+.user-update-card {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    margin-inline: 15rem;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.user-update-form {
+    width: 90%;
+    color: wheat;
+    font-size: medium;
+    font-style: italic !important;
+}
+
+.user-update-form-control {
+    border-radius: 0 !important;
+    font-size: xx-large !important;
+    background: transparent !important;
+    border-top: transparent !important;
+    border-left: transparent !important;
+    border-right: transparent !important;
+    border-bottom-color: deeppink !important;
+    color: antiquewhite !important;
+    border-bottom-width: 2px !important;
+}
+
+.user-update-form-control:focus {
+    box-shadow: none !important;
+}
+
+.user-update-form-control::placeholder {
+    font-style: italic !important;
+    color: aquamarine !important;
+    font-size: x-large !important;
+}
+
+.user-update-button {
+    font-size: large;
+    color: wheat;
+    background-color: indigo;
+    border: none !important;
+    padding-inline: 5rem;
+    margin-bottom: 1rem;
+}
+
+.user-update-button:hover {
+    background-color: wheat;
+    color: indigo;
+}
+
+.user-update-button:focus {
+    box-shadow: none !important;
+    border: none !important;
+    background-color: wheat;
+    color: indigo;
+}
+
+.user-update-button:active {
+    box-shadow: none !important;
+    border: none !important;
+    background-color: wheat;
+    color: indigo;
+}
+
+.user-update-button:disabled {
+    font-size: large;
+    color: wheat;
+    background-color: indigo;
+    border: none !important;
+}
+
+.user-update-redirect-button {
+    font-size: large;
+    color: wheat;
+    background-color: deeppink;
+    border: none !important;
+    padding-inline: 5rem;
+    margin-bottom: 1rem;
+}
+
+.user-update-redirect-button:hover {
+    color: deeppink;
+    background-color: wheat;
+}
+
+.user-update-redirect-button:focus {
+    box-shadow: none !important;
+    border: none !important;
+    background-color: deeppink !important;
+    color: wheat !important;
+}
+
+.user-update-span{
+    font-size: large;
+    color: deeppink;
+}
+
+.user-update-toaster{
+    background-color: indigo;
+    color: antiquewhite;
+    font-size: x-large;
+    text-align: center !important;
+}
+
+.user-update-toaster-error{
+    background-color: darkred;
+    color: antiquewhite;
+    font-size: x-large;
+    text-align: center !important;
+}
+

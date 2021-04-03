@@ -178,13 +178,13 @@ class RegisterUserFormUsr extends Component {
                                             <CardImg
                                                 className="ml-5 mt-5"
                                                 src={this.state.showPicture}
-                                                style={{width: 330, height: 365}}/>
+                                                style={{width: 330, height: 'auto'}}/>
                                             }
                                             {!this.state.showPicture &&
                                             <CardImg
                                                 className="ml-5 mt-5"
                                                 src={profile}
-                                                style={{width: 330, height: 365}}/>
+                                                style={{width: 330, height: 'auto'}}/>
                                             }
                                             <FormGroup className="pl-5 pt-4">
                                                 <Form.File

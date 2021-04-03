@@ -38,9 +38,21 @@ class Homepage extends Component {
                             senectus et netus et malesuada fames ac turpis
                             egestas.<br/>
                             In commodo lacus nec lorem feugiat fringilla.<br/>
-                            <span className="photo-row-span">
+                            <a
+                                className="maria-link"
+                                id="Maria"
+                                href="/blog">
+                            <span>
                                 - MARIA TASHKOVA -
                             </span>
+                                <div className="d-flex justify-content-center">
+                                        <span
+                                            id="Maria-hide"
+                                            className="Maria-hide">
+                                            VISIT MY BLOG
+                                        </span>
+                                </div>
+                            </a>
                         </p>
                         <Image
                             style={{width: 660}}
@@ -51,7 +63,7 @@ class Homepage extends Component {
                             <HomepageCards/>
                         </Col>
                     </Row>
-                    <Row >
+                    <Row>
                         <Col
                             className="homepage-mission-col d-flex flex-column text-center justify-content-center p-5">
                             <span className="homepage-mission-span">
