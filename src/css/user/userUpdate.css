@@ -59,15 +59,15 @@
 .user-update-button:focus {
     box-shadow: none !important;
     border: none !important;
-    background-color: wheat;
-    color: indigo;
+    background-color: wheat !important;
+    color: indigo !important;
 }
 
 .user-update-button:active {
     box-shadow: none !important;
     border: none !important;
-    background-color: wheat;
-    color: indigo;
+    background-color: wheat !important;
+    color: indigo !important;
 }
 
 .user-update-button:disabled {
@@ -92,6 +92,13 @@
 }
 
 .user-update-redirect-button:focus {
+    box-shadow: none !important;
+    border: none !important;
+    background-color: deeppink !important;
+    color: wheat !important;
+}
+
+.user-update-redirect-button:disabled {
     box-shadow: none !important;
     border: none !important;
     background-color: deeppink !important;

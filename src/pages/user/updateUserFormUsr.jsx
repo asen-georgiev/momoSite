@@ -183,7 +183,7 @@ class UpdateUserFormUsr extends Component {
             className: 'user-update-toaster'
         });
         userLogout();
-
+        setTimeout(function (){window.location.href = "/userlogin";},1500);
     }
 
 
@@ -384,23 +384,23 @@ class UpdateUserFormUsr extends Component {
                                         </Col>
                                         <Col className="row text-center">
                                             <span className="user-update-span">
-                                            *After UPDATE - LOGIN AGAIN for changes to take effect!
+                                            *After UPDATE you will be redirected to LOGIN page!
                                         </span>
                                         </Col>
                                         <Col className="d-flex justify-content-end">
-                                            {this.state.isDisabled &&
                                             <Button
+                                                disabled={!this.state.isDisabled}
                                                 className="user-update-redirect-button"
                                                 onClick={this.userRedirect}>
                                                 BACK TO PROFILE
-                                            </Button>}
-                                            {!this.state.isDisabled &&
-                                            <Button
-                                                className="user-update-redirect-button"
-                                                href="/userlogin">
-                                                TO USER LOGIN
                                             </Button>
-                                            }
+                                            {/*{!this.state.isDisabled &&*/}
+                                            {/*<Button*/}
+                                            {/*    className="user-update-redirect-button"*/}
+                                            {/*    href="/userlogin">*/}
+                                            {/*    TO USER LOGIN*/}
+                                            {/*</Button>*/}
+                                            {/*}*/}
                                         </Col>
                                     </Row>
                                 </Form>

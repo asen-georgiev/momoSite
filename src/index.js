@@ -6,11 +6,13 @@ import 'font-awesome/css/font-awesome.css';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import ScrollToTop from "./components/scrollToTop";
 
 
 ReactDOM.render(
   <React.StrictMode>
       <BrowserRouter>
+          <ScrollToTop/>
           <Suspense fallback={(<div>Site loading...</div>)}>
     <App />
           </Suspense>

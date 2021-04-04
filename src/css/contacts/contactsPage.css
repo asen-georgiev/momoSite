@@ -86,6 +86,11 @@
     color: wheat;
 }
 
+.contacts-message-button:focus{
+    background-color: indigo !important;
+    color: wheat !important;
+}
+
 .contacts-form-label{
     font-size: large;
     color: deeppink;

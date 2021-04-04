@@ -1,5 +1,6 @@
 import React from 'react';
 import Card from "react-bootstrap/Card";
+import Col from "react-bootstrap/Col";
 import {CardImg} from "react-bootstrap";
 import "../css/user/userProfile.css";
 
@@ -7,9 +8,11 @@ function Usercard(props) {
     return (
         <React.Fragment>
             <Card className="d-flex flex-row user-profile-card mx-4 my-5">
+                <Col className="p-0">
                     <CardImg
                         src={props.src}
-                        style={{width:'25vw',height:'auto'}}/>
+                        style={{width:'22vw',height:'auto'}}/>
+                </Col>
                 <Card.Body className="text-center ml-4">
                     <Card.Subtitle className="user-profile-card-subtitle">
                         name :
