@@ -83,14 +83,14 @@
 
 #Maria-hide{
     display: none;
-    font-size: large;
+    font-size: x-large;
     position: absolute;
     margin-top: -0.5rem;
 }
 
 #Maria:hover #Maria-hide{
     display: block;
-    color: aquamarine !important;
+    color: deeppink !important;
     text-decoration: none !important;
 }
 
@@ -99,6 +99,6 @@
 }
 
 .maria-link:hover{
-    color: deeppink !important;
-    text-decoration: none !important;
+    color: aquamarine !important;
+    text-decoration: overline !important;
 }

@@ -116,6 +116,11 @@
     background-color: wheat;
 }
 
+.user-login-password-button:focus{
+    color:deeppink !important;
+    background-color: wheat !important;
+}
+
 .user-login-register-span{
     color: wheat;
 }
@@ -154,4 +159,12 @@
     color: wheat;
     background-color: indigo;
     text-align: center;
+}
+
+.user-login-already{
+    text-decoration: overline;
+    padding: 10rem;
+    font-size: xxx-large;
+    background-color: rgba(75, 0, 130, 0.7);
+    color: aquamarine;
 }

@@ -74,12 +74,15 @@ class UserLoginForm extends Component {
         const user = {userEmail: this.state.userEmail, userPassword: this.state.userPassword};
         await userLogin(user);
 
-        toast('You are now logged in!',{
+        toast('You are now logged in!', {
             position: "top-center",
             transition: Zoom,
             className: 'user-login-toaster'
         });
         this.setState({isDisabled: true});
+        setTimeout(function () {
+            window.location.href = "/userprofile";
+        }, 1500);
 
     }
 
@@ -88,7 +91,7 @@ class UserLoginForm extends Component {
         const userEmail = {userEmail: this.state.userEmail};
         await updateUserPassword(userEmail);
         this.setState({forgotPassword: false});
-        toast(`Your new password was sent to ${this.state.userEmail}!`,{
+        toast(`Your new password was sent to ${this.state.userEmail}!`, {
             position: "top-center",
             transition: Zoom,
             className: 'user-login-toaster'
@@ -108,6 +111,12 @@ class UserLoginForm extends Component {
         return errors;
     }
 
+    loginRedirect = () => {
+        this.setState({
+            forgotPassword: false
+        });
+    }
+
 
     render() {
         return (
@@ -116,7 +125,7 @@ class UserLoginForm extends Component {
 
                     {!this.state.forgotPassword && this.state.loggedUser === null &&
                     <Row className="user-login-row1 justify-content-center align-content-center"
-                         style={{height:'50rem'}}>
+                         style={{height: '50rem'}}>
                         <Card
                             className="user-login-card1 p-5"
                             style={{width: '40rem'}}>
@@ -169,24 +178,24 @@ class UserLoginForm extends Component {
                                         }
 
                                         {!this.state.isDisabled &&
-                                            <Row className="justify-content-center mt-2">
+                                        <Row className="justify-content-center mt-2">
                                                 <span className="user-login-register-span mb-1">
                                                     Not registered : &nbsp;
                                                 </span>
-                                                <Link
-                                                    className="user-login-account-link"
-                                                    to={"/userregister"}>
-                                                    CREATE AN ACCOUNT
-                                                </Link>
-                                            </Row>
+                                            <Link
+                                                className="user-login-account-link"
+                                                to={"/userregister"}>
+                                                CREATE AN ACCOUNT
+                                            </Link>
+                                        </Row>
                                         }
 
-                                        {this.state.isDisabled &&
-                                        <Button
-                                            className="user-login-profile-button m-3"
-                                            href="/userprofile">
-                                            TO YOUR PROFILE
-                                        </Button>}
+                                        {/*{this.state.isDisabled &&*/}
+                                        {/*<Button*/}
+                                        {/*    className="user-login-profile-button m-3"*/}
+                                        {/*    href="/userprofile">*/}
+                                        {/*    TO YOUR PROFILE*/}
+                                        {/*</Button>}*/}
 
                                     </Col>
                                 </Row>
@@ -196,16 +205,18 @@ class UserLoginForm extends Component {
                     </Row>}
 
                     {this.state.loggedUser &&
-                    <Row>
-                        <h3>YOU ARE ALREADY LOGGED IN!</h3>
+                    <Row className="justify-content-center align-content-center" style={{height: '46rem'}}>
+                            <span className="user-login-already text-center">
+                                YOU ARE ALREADY LOGGED IN!
+                            </span>
                     </Row>}
 
                     {this.state.forgotPassword &&
                     <Row className="user-login-row2 justify-content-center align-content-center"
-                         style={{height:'46rem'}}>
-                            <Card
-                                className="user-login-card2"
-                                style={{width:'40rem'}}>
+                         style={{height: '46rem'}}>
+                        <Card
+                            className="user-login-card2"
+                            style={{width: '40rem'}}>
                             <Form onSubmit={this.newPasswordSubmit}>
                                 <FormGroup>
                                     <FormControl
@@ -217,15 +228,22 @@ class UserLoginForm extends Component {
                                         placeholder="Please enter your registration email"
                                         onChange={this.handleChange}/>
                                 </FormGroup>
-                                <Row className="justify-content-center">
-                                <Button
-                                    className="user-login-button m-3 px-5"
-                                    type="submit">
-                                    SEND THE NEW PASSWORD
-                                </Button>
+                                <Row>
+                                    <Col className="d-flex flex-column">
+                                        <Button
+                                            className="user-login-button m-3 px-5"
+                                            type="submit">
+                                            SEND THE NEW PASSWORD
+                                        </Button>
+                                        <Button
+                                            className="user-login-password-button m-3 px-5"
+                                            onClick={this.loginRedirect}>
+                                            BACK TO LOGIN FORM
+                                        </Button>
+                                    </Col>
                                 </Row>
                             </Form>
-                            </Card>
+                        </Card>
                     </Row>
                     }
 

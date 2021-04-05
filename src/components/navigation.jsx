@@ -64,9 +64,9 @@ class Navigation extends Component {
                         className="app-navbar p-3 px-5"
                         expand="md">
                         <NavLink
-                            className="pb-0"
+                            className="app-navbar-momo pb-0"
                             to="/">
-                            Momo Design
+                            MOMO DESIGN
                         </NavLink>
                         <Navbar.Toggle
                             className="app-navbar-toggle border-0"

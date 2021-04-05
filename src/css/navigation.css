@@ -4,6 +4,16 @@
     /*        0 0 0 2px yellow;*/
 }
 
+.app-navbar-momo{
+    font-size: large;
+    color:aquamarine;
+}
+
+.app-navbar-momo:hover{
+    text-decoration: overline;
+    color:aquamarine !important;
+}
+
 .app-navbar-link {
     color: mediumvioletred !important;
     padding: 0.5rem 2rem !important;

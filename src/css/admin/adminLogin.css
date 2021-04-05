@@ -38,8 +38,8 @@ input:-webkit-autofill:active {
 
 ::placeholder{
     font-style: italic !important;
-    color:wheat !important;
-    font-size: large !important;
+    color:aquamarine !important;
+    font-size: x-large !important;
 }
 
 .admin-login-button{
