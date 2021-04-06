@@ -1,9 +1,9 @@
 import httpService from "./httpService";
 import {getCurrentAdmin} from "./adminLoginService";
-import {getCurrentUser} from "./userLoginService";
 import {apiUrl} from "../config.json";
 
-const apiEndPoint = apiUrl + "/images";
+// const apiEndPoint = apiUrl + "/images";
+const apiEndPoint = "/images";
 
 
 export function uploadImageAdmin(data){

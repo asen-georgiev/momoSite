@@ -2,7 +2,8 @@ import httpService from "./httpService";
 import {getCurrentAdmin} from "./adminLoginService";
 import {apiUrl} from "../config.json";
 
-const apiEndPoint = apiUrl + "/emails";
+// const apiEndPoint = apiUrl + "/emails";
+const apiEndPoint = "/emails";
 
 function emailUrl(id){
     return `${apiEndPoint}/${id}`;

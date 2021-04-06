@@ -4,7 +4,6 @@ import Nav from 'react-bootstrap/Nav';
 import '../css/navigation.css'
 import {Link, NavLink} from "react-router-dom";
 import Row from "react-bootstrap/Row";
-import NavLinkComp from "./navLinkComp";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faHome, faDiceD20, faPenNib, faUserFriends, faSignature} from "@fortawesome/free-solid-svg-icons";
 import {getCurrentUser, userLogout} from "../services/userLoginService";
@@ -14,13 +13,15 @@ import Image from "react-bootstrap/Image";
 import Button from "react-bootstrap/Button";
 import {getCurrentAdmin} from "../services/adminLoginService";
 
-const navbars = [
-    {_id: 1, name: "Home", to: "/", icon: faHome},
-    {_id: 2, name: "Designs", to: "/designs", icon: faDiceD20},
-    {_id: 3, name: "About us", to: "/about", icon: faSignature},
-    {_id: 4, name: "Contacts", to: "/contacts", icon: faPenNib},
-    {_id: 5, name: "Blog", to: "/blog", icon: faUserFriends},
-]
+// const navbars = [
+//     {_id: 1, name: "Home", to: "/", icon: faHome},
+//     {_id: 2, name: "Designs", to: "/designs", icon: faDiceD20},
+//     {_id: 3, name: "About us", to: "/about", icon: faSignature},
+//     {_id: 4, name: "Contacts", to: "/contacts", icon: faPenNib},
+//     {_id: 5, name: "Blog", to: "/blog", icon: faUserFriends},
+// ]
+
+const pictureUrl = process.env.REACT_APP_PICTURES_URL;
 
 class Navigation extends Component {
     constructor(props) {
@@ -184,7 +185,7 @@ class Navigation extends Component {
                                 <Link
                                     id="User"
                                     to="/userprofile">
-                                    <Image src={picUrl + this.state.user.userPicture}
+                                    <Image src={pictureUrl + this.state.user.userPicture}
                                            style={{width: '3rem', height: '3rem'}}
                                            roundedCircle
                                     />

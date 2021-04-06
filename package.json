@@ -13,6 +13,7 @@
     "@testing-library/user-event": "^12.5.0",
     "axios": "^0.21.0",
     "bootstrap": "^4.5.3",
+    "dotenv": "^8.2.0",
     "font-awesome": "^4.7.0",
     "history": "^4.9.0",
     "joi": "^17.3.0",

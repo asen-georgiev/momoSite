@@ -15,6 +15,9 @@ import {uploadImageAdmin} from "../../services/imgService";
 import "../../css/admin/user/userUpdate.css"
 import CardImg from "react-bootstrap/CardImg";
 
+
+const pictureUrl = process.env.REACT_APP_PICTURES_URL;
+
 class UpdateUserForm extends Component {
     constructor(props) {
         super(props);
@@ -84,7 +87,7 @@ class UpdateUserForm extends Component {
 
 
     async componentDidMount() {
-        const url = picUrl;
+        const url = pictureUrl;
         await this.populateUser();
         this.setState({url: url})
         console.log(this.state);

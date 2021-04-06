@@ -1,10 +1,9 @@
 import React, {Component} from "react";
-import {Route, Redirect, Switch} from "react-router-dom";
+import {Route, Switch} from "react-router-dom";
 import {ToastContainer} from "react-toastify";
 import jwtDecode from "jwt-decode";
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
-import Container from 'react-bootstrap/Container';
 import Navigation from "./components/navigation";
 import AdminLoginForm from "./admin/admin/adminLoginForm";
 import RegisterAdminForm from "./admin/admin/registerAdminForm";

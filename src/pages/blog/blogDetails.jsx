@@ -7,7 +7,6 @@ import Form from "react-bootstrap/Form";
 import FormGroup from "react-bootstrap/FormGroup";
 import FormControl from "react-bootstrap/FormControl";
 import {Link} from "react-router-dom";
-import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import {toast} from "react-toastify";
 import {getBlog} from "../../services/blogService";
@@ -19,6 +18,9 @@ import BlogComments from "../../components/blogComments";
 import {getCurrentUser} from "../../services/userLoginService";
 import jwtDecode from "jwt-decode";
 import "../../css/blog/blogDetails.css";
+
+
+const pictureUrl = process.env.REACT_APP_PICTURES_URL;
 
 class BlogDetails extends Component {
     constructor(props) {
@@ -130,9 +132,9 @@ class BlogDetails extends Component {
     }
 
 
-    registerRedirect = () => {
-        this.props.history.push("/userlogin");
-    }
+    // registerRedirect = () => {
+    //     this.props.history.push("/userlogin");
+    // }
 
 
     render() {
@@ -174,7 +176,7 @@ class BlogDetails extends Component {
                             <Card className="m-4 blogdetails-comment-card">
                                 <Card.Body className="d-flex flex-row">
                                     <Image
-                                        src={picUrl + this.state.user.userPicture}
+                                        src={pictureUrl + this.state.user.userPicture}
                                         style={{width: '5rem', height: '5rem'}}
                                         roundedCircle/>
                                     <Col>

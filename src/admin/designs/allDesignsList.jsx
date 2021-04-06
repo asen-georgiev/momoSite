@@ -14,6 +14,9 @@ import Paginate from "../../components/paginate";
 import _ from "lodash";
 import DropDownDesigns from "../../components/DropDownDesigns";
 
+
+const pictureUrl = process.env.REACT_APP_PICTURES_URL;
+
 class AllDesignsList extends Component {
     constructor(props) {
         super(props);
@@ -127,7 +130,7 @@ class AllDesignsList extends Component {
                                                     return (
                                                         <Image
                                                             key={dp}
-                                                            src={picUrl + dp}
+                                                            src={pictureUrl + dp}
                                                             width="150"
                                                             height="150"
                                                             className="mb-1"

@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
 import {toast} from "react-toastify";
 import {getCurrentUser, userLogout} from "../../services/userLoginService";
 import jwtDecode from "jwt-decode";
@@ -15,6 +14,7 @@ import {Link} from "react-router-dom";
 import {getCommentsByUser} from "../../services/commentService";
 import BlogComments from "../../components/blogComments";
 
+const pictureUrl = process.env.REACT_APP_PICTURES_URL;
 
 class UserProfile extends Component {
     constructor(props) {
@@ -29,7 +29,7 @@ class UserProfile extends Component {
     }
 
     async componentDidMount() {
-        const url = picUrl;
+        const url = pictureUrl;
         const jwtUser = getCurrentUser();
         const loggedUser = jwtDecode(jwtUser);
         const {data: comments} = await getCommentsByUser(loggedUser._id)

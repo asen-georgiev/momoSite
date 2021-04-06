@@ -3,9 +3,13 @@ import {getCurrentAdmin} from "./adminLoginService";
 import {getCurrentUser} from "./userLoginService";
 import {apiUrl} from "../config.json";
 
-const apiEndPoint = apiUrl + "/comments";
-const apiBlogEndPoint = apiUrl + "/comments/by-blog";
-const apiUserEndPoint = apiUrl + "/comments/by-user";
+// const apiEndPoint = apiUrl + "/comments";
+// const apiBlogEndPoint = apiUrl + "/comments/by-blog";
+// const apiUserEndPoint = apiUrl + "/comments/by-user";
+
+const apiEndPoint = "/comments";
+const apiBlogEndPoint = "/comments/by-blog";
+const apiUserEndPoint = "/comments/by-user";
 
 function commentUrl(id) {
     return `${apiEndPoint}/${id}`;

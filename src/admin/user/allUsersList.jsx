@@ -14,6 +14,8 @@ import {paginateFunction} from "../../services/paginateFunction";
 import Paginate from "../../components/paginate";
 
 
+const pictureUrl = process.env.REACT_APP_PICTURES_URL;
+
 class AllUsersList extends Component {
     constructor(props) {
         super(props);
@@ -94,7 +96,7 @@ class AllUsersList extends Component {
                                         <td>{usr.userEmail}</td>
                                         <td>
                                             <Image
-                                                src={picUrl + usr.userPicture}
+                                                src={pictureUrl + usr.userPicture}
                                                 width="100"
                                                 height="100"/>
                                         </td>

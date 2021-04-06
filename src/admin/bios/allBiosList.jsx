@@ -12,6 +12,7 @@ import {deleteBio, getBios} from "../../services/bioService";
 import {paginateFunction} from "../../services/paginateFunction";
 import Paginate from "../../components/paginate";
 
+const pictureUrl = process.env.REACT_APP_PICTURES_URL;
 
 class AllBiosList extends Component {
     constructor(props) {
@@ -105,7 +106,7 @@ class AllBiosList extends Component {
                                                 {bio.bioPictures.map(bp => {
                                                     return (
                                                         <Image
-                                                            src={picUrl + bp}
+                                                            src={pictureUrl + bp}
                                                             width="70"
                                                             height="70"
                                                             className="m-1"/>

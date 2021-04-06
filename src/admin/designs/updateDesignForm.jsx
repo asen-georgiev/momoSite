@@ -9,12 +9,13 @@ import Button from "react-bootstrap/Button";
 import Joi from "joi";
 import {toast, Zoom} from "react-toastify";
 import {FormLabel} from "react-bootstrap";
-import Card from "react-bootstrap/Card";
 import CardImg from "react-bootstrap/CardImg";
 import {picUrl} from "../../config.json";
 import {getDesign, updateDesign} from "../../services/designService";
 import {uploadImageAdmin} from "../../services/imgService";
 import "../../css/admin/designs/designUpdate.css";
+
+const pictureUrl = process.env.REACT_APP_PICTURES_URL;
 
 const designTypes = [
     {_id: 1, type: 'photography'},
@@ -230,7 +231,7 @@ class UpdateDesignForm extends Component {
                                                         key={dp}
                                                         className="mt-5 m-3"
                                                         style={{width: 300, height: 300}}
-                                                        src={picUrl + dp}/>
+                                                        src={pictureUrl + dp}/>
                                                 )
                                             })}
                                         </Row>}

@@ -4,7 +4,11 @@ import {getCurrentAdmin} from "./adminLoginService";
 import {apiUrl} from "../config.json";
 import {getCurrentUser} from "./userLoginService";
 
-const apiEndPoint = apiUrl + "/users";
+//While in working process:
+// const apiEndPoint = apiUrl + "/users";
+
+//Before deploying finished app:
+const apiEndPoint = "/users";
 
 function userUrl(userId){
     return `${apiEndPoint}/${userId}`;

@@ -1,9 +1,9 @@
 import httpService from "./httpService";
-import {toast} from "react-toastify";
 import {getCurrentAdmin} from "./adminLoginService";
 import {apiUrl} from "../config.json";
 
-const apiEndPoint = apiUrl + "/admins";
+// const apiEndPoint = apiUrl + "/admins";
+const apiEndPoint = "/admins";
 
 function adminUrl(adminId) {
     return `${apiEndPoint}/${adminId}`;

@@ -12,6 +12,8 @@ import "../../css/admin/blogs/blogAllList.css";
 import Paginate from "../../components/paginate";
 import {paginateFunction} from "../../services/paginateFunction";
 
+const pictureUrl = process.env.REACT_APP_PICTURES_URL;
+
 class AllBlogsList extends Component {
     constructor(props) {
         super(props);
@@ -119,7 +121,7 @@ class AllBlogsList extends Component {
                                                 return (
                                                     <Image
                                                         key={bp}
-                                                        src={picUrl + bp}
+                                                        src={pictureUrl + bp}
                                                         width="70"
                                                         height="70"
                                                         className="m-1"/>

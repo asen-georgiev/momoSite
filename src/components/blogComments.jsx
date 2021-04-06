@@ -5,6 +5,8 @@ import {picUrl} from "../config.json";
 import Col from "react-bootstrap/Col";
 import "../css/blog/blogDetails.css";
 
+const pictureUrl = process.env.REACT_APP_PICTURES_URL;
+
 function BlogComments(props) {
     const {comments} = props;
 
@@ -16,7 +18,7 @@ function BlogComments(props) {
                         <Card.Body className="d-flex flex-row blogdetails-comments-cardbody"
                                    key={comment._id}>
                             <Image
-                                src={picUrl + comment.user.userPicture}
+                                src={pictureUrl + comment.user.userPicture}
                                 style={{width: '5rem', height: '5rem'}}
                                 roundedCircle/>
                             <Col>

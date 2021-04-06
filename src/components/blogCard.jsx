@@ -1,12 +1,12 @@
 import React from 'react';
 import Row from "react-bootstrap/Row";
 import {Link} from "react-router-dom";
-import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import CardImg from "react-bootstrap/CardImg";
 import {picUrl} from "../config.json";
 import "../css/blog/blogDetails.css";
 
+const pictureUrl = process.env.REACT_APP_PICTURES_URL;
 
 function BlogCard(props) {
 
@@ -28,7 +28,7 @@ function BlogCard(props) {
                                 <CardImg
                                     key={bp}
                                     className="m-2 blogdetails-card-image"
-                                    src={picUrl + bp}/>
+                                    src={pictureUrl + bp}/>
                             )
                         })}
                     </Row>}

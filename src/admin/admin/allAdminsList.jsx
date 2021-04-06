@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import Table from "react-bootstrap/Table";
 import {Link} from "react-router-dom";
 import {toast, Zoom} from "react-toastify";

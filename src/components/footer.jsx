@@ -1,10 +1,8 @@
 import React, {Component} from 'react';
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
-import {Container, Navbar} from "react-bootstrap";
+import {Navbar} from "react-bootstrap";
 import Nav from "react-bootstrap/Nav";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {Link, NavLink} from "react-router-dom";
+import {Link} from "react-router-dom";
 import {faPhoneSquare} from "@fortawesome/free-solid-svg-icons/faPhoneSquare";
 import {faMailBulk} from "@fortawesome/free-solid-svg-icons/faMailBulk";
 import {faFacebookSquare} from "@fortawesome/free-brands-svg-icons/faFacebookSquare";

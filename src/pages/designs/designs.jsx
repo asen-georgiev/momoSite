@@ -11,6 +11,9 @@ import {Link} from "react-router-dom";
 import _ from 'lodash';
 import ListGroupDesigns from "../../components/listGroupDesigns";
 
+
+const pictureUrl = process.env.REACT_APP_PICTURES_URL;
+
 class Designs extends Component {
     constructor(props) {
         super(props);
@@ -82,17 +85,17 @@ class Designs extends Component {
                                                 <Image
                                                     id="a"
                                                     className="designs-carousel-image"
-                                                    src={picUrl + des.designPictures[0]}
+                                                    src={pictureUrl + des.designPictures[0]}
                                                     style={{width: 610, height: 610}}
                                                     alt="Design N/A"/>
                                                 <Image
                                                     className="designs-carousel-image"
-                                                    src={picUrl + des.designPictures[1]}
+                                                    src={pictureUrl + des.designPictures[1]}
                                                     style={{width: 610, height: 610}}
                                                     alt="Design N/A"/>
                                                 <Image
                                                     className="designs-carousel-image"
-                                                    src={picUrl + des.designPictures[2]}
+                                                    src={pictureUrl + des.designPictures[2]}
                                                     style={{width: 610, height: 610}}
                                                     alt="Design N/A"/>
                                             </Row>

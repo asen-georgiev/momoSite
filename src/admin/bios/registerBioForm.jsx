@@ -9,7 +9,6 @@ import Button from "react-bootstrap/Button";
 import Joi from "joi";
 import {toast, Zoom} from "react-toastify";
 import {FormLabel} from "react-bootstrap";
-import Card from "react-bootstrap/Card";
 import CardImg from "react-bootstrap/CardImg";
 import {createBio} from "../../services/bioService";
 import {uploadImageAdmin} from "../../services/imgService";

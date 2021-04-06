@@ -18,6 +18,8 @@ import {userLogout} from "../../services/userLoginService";
 import "../../css/user/userUpdate.css";
 import CardImg from "react-bootstrap/CardImg";
 
+const pictureUrl = process.env.REACT_APP_PICTURES_URL;
+
 class UpdateUserFormUsr extends Component {
     constructor(props) {
         super(props);
@@ -93,7 +95,7 @@ class UpdateUserFormUsr extends Component {
 
 
     async componentDidMount() {
-        const url = picUrl;
+        const url = pictureUrl;
         await this.populateUser();
         this.setState({url: url});
         console.log(this.state);

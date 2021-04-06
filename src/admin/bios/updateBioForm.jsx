@@ -9,12 +9,14 @@ import Button from "react-bootstrap/Button";
 import Joi from "joi";
 import {toast, Zoom} from "react-toastify";
 import {FormLabel} from "react-bootstrap";
-import Card from "react-bootstrap/Card";
 import CardImg from "react-bootstrap/CardImg";
 import {picUrl} from "../../config.json";
 import {getBio, updateBio} from "../../services/bioService";
 import {uploadImageAdmin} from "../../services/imgService";
 import "../../css/admin/bios/bioUpdate.css";
+
+
+const pictureUrl = process.env.REACT_APP_PICTURES_URL;
 
 class UpdateBioForm extends Component {
     constructor(props) {
@@ -226,7 +228,7 @@ class UpdateBioForm extends Component {
                                                         key={bp}
                                                         className="mt-5 m-3"
                                                         style={{width: 300,height:300}}
-                                                        src={picUrl + bp}/>
+                                                        src={pictureUrl + bp}/>
                                                 )
                                             })}
                                         </Row>

@@ -9,12 +9,13 @@ import Button from "react-bootstrap/Button";
 import Joi from "joi";
 import {toast, Zoom} from "react-toastify";
 import {FormLabel} from "react-bootstrap";
-import Card from "react-bootstrap/Card";
 import CardImg from "react-bootstrap/CardImg";
 import {picUrl} from "../../config.json";
 import {getBlog, updateBlog} from "../../services/blogService";
 import {uploadImageAdmin} from "../../services/imgService";
 import "../../css/admin/blogs/blogUpdate.css";
+
+const pictureUrl = process.env.REACT_APP_PICTURES_URL;
 
 class UpdateBlogForm extends Component {
     constructor(props) {
@@ -246,7 +247,7 @@ class UpdateBlogForm extends Component {
                                                         key={bp}
                                                         className="mt-5 m-3"
                                                         style={{width: 300, height: 300}}
-                                                        src={picUrl + bp}/>
+                                                        src={pictureUrl + bp}/>
                                                 )
                                             })}
                                         </Row>}

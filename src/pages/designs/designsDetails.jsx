@@ -8,6 +8,7 @@ import {getDesign} from "../../services/designService";
 import "../../css/designs/designDetails.css";
 import {Link} from "react-router-dom";
 
+const pictureUrl = process.env.REACT_APP_PICTURES_URL;
 
 class DesignsDetails extends Component {
     constructor(props) {
@@ -64,7 +65,7 @@ class DesignsDetails extends Component {
                         <Image
                             onClick={this.closeFullScreen}
                             className="image-overlay"
-                            src={picUrl + this.state.mainPicture}
+                            src={pictureUrl + this.state.mainPicture}
                         />
                     </Container>
                     }
@@ -85,7 +86,7 @@ class DesignsDetails extends Component {
                                     <Image
                                         onClick={this.showFullscreen}
                                         className="design-details-image"
-                                        src={picUrl + this.state.mainPicture}
+                                        src={pictureUrl + this.state.mainPicture}
                                     />
                                 </Col>
                             </Row>
@@ -100,7 +101,7 @@ class DesignsDetails extends Component {
                                                 key={dp}
                                                 onClick={() => this.pictureChange(dp)}
                                                 className="design-details-images mb-3"
-                                                src={picUrl + dp}
+                                                src={pictureUrl + dp}
                                                 style={{width: 525, height: "auto"}}/>
                                         )
                                     })}

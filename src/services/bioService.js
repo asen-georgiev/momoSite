@@ -2,7 +2,8 @@ import httpService from "./httpService";
 import {getCurrentAdmin} from "./adminLoginService";
 import {apiUrl} from "../config.json";
 
-const apiEndPoint = apiUrl + "/bios";
+// const apiEndPoint = apiUrl + "/bios";
+const apiEndPoint = "/bios";
 
 function bioUrl(id) {
     return `${apiEndPoint}/${id}`;

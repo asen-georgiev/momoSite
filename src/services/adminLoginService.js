@@ -1,8 +1,8 @@
 import httpService from "./httpService";
-import {toast} from "react-toastify";
 import {apiUrl} from "../config.json";
 
-const apiEndPoint = apiUrl + "/adminauthent";
+// const apiEndPoint = apiUrl + "/adminauthent";
+const apiEndPoint = "/adminauthent";
 
 //Fetching frontend admin data (email and password) to the server
 //Taking the response token and saving it in the session storage(Login after every browser closing required);

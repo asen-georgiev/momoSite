@@ -7,7 +7,7 @@ import FormGroup from "react-bootstrap/FormGroup";
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
 import Joi from "joi";
-import {Slide, toast, Zoom} from "react-toastify";
+import {toast, Zoom} from "react-toastify";
 import {adminLogin, getCurrentAdmin} from "../../services/adminLoginService";
 import "../../css/admin/adminLogin.css"
 import FormLabel from "react-bootstrap/FormLabel";

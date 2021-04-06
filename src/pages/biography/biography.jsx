@@ -7,6 +7,8 @@ import Image from "react-bootstrap/Image";
 import "../../css/biography/biography.css";
 import {picUrl} from "../../config.json";
 
+const pictureUrl = process.env.REACT_APP_PICTURES_URL;
+
 class Biography extends Component {
     constructor(props) {
         super(props);
@@ -42,7 +44,7 @@ class Biography extends Component {
                                 <Col className="biography-reverse-col p-5" md="auto">
                                     {bio.bioPictures.map(bp => {
                                         return (
-                                            <Image src={picUrl + bp}
+                                            <Image src={pictureUrl + bp}
                                                    style={{width: 300}}/>
                                         )
                                     })}
@@ -63,7 +65,7 @@ class Biography extends Component {
                                 <Col className="biography-col p-5" md="auto">
                                     {bio.bioPictures.map(bp => {
                                         return (
-                                            <Image src={picUrl + bp}
+                                            <Image src={pictureUrl + bp}
                                                    style={{width: 300}}/>
                                         )
                                     })}

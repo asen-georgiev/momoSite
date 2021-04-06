@@ -8,7 +8,6 @@ import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
 import Joi from "joi";
 import {toast, Zoom} from "react-toastify";
-import Card from "react-bootstrap/Card";
 import "../../css/admin/user/userRegister.css"
 import {CardImg, FormLabel} from "react-bootstrap";
 import {uploadImageAdmin} from "../../services/imgService";
