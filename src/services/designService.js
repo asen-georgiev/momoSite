@@ -9,7 +9,7 @@ function designUrl(id){
     return `${apiEndPoint}/${id}`;
 }
 
-//Create single design object
+//Creating single Design object - admin rights only.
 export function createDesign(design){
     return httpService
         .post(apiEndPoint,design,{
@@ -19,19 +19,19 @@ export function createDesign(design){
         });
 }
 
-//Retireve all Designs
+//Retrieve all the Design objects from DB - no token needed.
 export function getDesigns(){
     return httpService
         .get(apiEndPoint);
 }
 
-//Retireving single Design object
+//Retireving single Design object - no token needed.
 export function getDesign(designId){
     return httpService
         .get(designUrl(designId));
 }
 
-//Updating single Design object
+//Updating single Design object - admin rights only.
 export function updateDesign(design,designId){
     const body = {...design}
     return httpService
@@ -42,7 +42,7 @@ export function updateDesign(design,designId){
         });
 }
 
-//Deleting single Design object
+//Deleting single Design object - admin rights only.
 export function deleteDesign(designId){
     return httpService
         .delete(designUrl(designId),{

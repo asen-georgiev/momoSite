@@ -9,7 +9,7 @@ function emailUrl(id){
     return `${apiEndPoint}/${id}`;
 }
 
-
+//Creating email object, sendind through SendGrid - no token needed.
 export function sendEmail(email){
     return httpService
         .post(apiEndPoint, email)
@@ -17,6 +17,7 @@ export function sendEmail(email){
         .catch(error => console.log(error))
 }
 
+//Retrieving all the Email objects from DB - admin rights only.
 export function getAllEmails(){
     return httpService
         .get(apiEndPoint, {
@@ -26,6 +27,7 @@ export function getAllEmails(){
         });
 }
 
+//Deleting single Email object from DB - admin rights only.
 export function deleteEmail(emailId){
     return httpService
         .delete(emailUrl(emailId),{

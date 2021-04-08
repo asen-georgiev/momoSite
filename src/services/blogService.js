@@ -9,7 +9,7 @@ function blogUrl(id) {
     return `${apiEndPoint}/${id}`;
 }
 
-//Create single Blog object
+//Create single Blog object - admin rights only.
 export function createBlog(blog) {
     return httpService
         .post(apiEndPoint, blog, {
@@ -19,19 +19,19 @@ export function createBlog(blog) {
         });
 }
 
-//Retrieving all the Blogs from Db
+//Retrieving all the Blog objects from DB - no token needed.
 export function getBlogs() {
     return httpService
         .get(apiEndPoint);
 }
 
-//Retrieving single Blog object from the Db
+//Retrieving single Blog object from the DB - no token needed.
 export function getBlog(blogId) {
     return httpService
         .get(blogUrl(blogId));
 }
 
-//Updating single Blog object
+//Updating single Blog object - admin rights only.
 export function updateBlog(blog, blogId) {
     const body = {...blog};
     return httpService
@@ -42,7 +42,7 @@ export function updateBlog(blog, blogId) {
         });
 }
 
-//Deleting single Blog object
+//Deleting single Blog object - admin rights only.
 export function deleteBlog(blogId) {
     return httpService
         .delete(blogUrl(blogId), {

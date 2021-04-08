@@ -10,6 +10,7 @@ function adminUrl(adminId) {
 }
 
 
+//Retrieving single Admin object from DB - admin rights only.
 export function getAdmin(adminId) {
     return httpService
         .get(adminUrl(adminId), {
@@ -20,6 +21,7 @@ export function getAdmin(adminId) {
 }
 
 
+//Retrieving all the Admin objects from the DB - admin rights only.
 export function getAllAdmins() {
     return httpService
         .get(apiEndPoint, {
@@ -30,6 +32,7 @@ export function getAllAdmins() {
 }
 
 
+//Creating Admin object in DB - admin rights only.
 export function registerAdmin(admin) {
     return httpService
         .post(apiEndPoint, admin,{
@@ -40,6 +43,7 @@ export function registerAdmin(admin) {
 }
 
 
+//Updating single Admin object - admin rights only.
 export function updateAdmin(admin, adminId) {
     const body = {...admin};
     return httpService
@@ -51,6 +55,7 @@ export function updateAdmin(admin, adminId) {
 }
 
 
+//Deleting single Admin object - admin rights only.
 export function deleteAdmin(adminId) {
     return httpService
         .delete(adminUrl(adminId), {
@@ -61,6 +66,7 @@ export function deleteAdmin(adminId) {
 }
 
 
+//Retrieving the currently logged Admin - admin rights only.
 export function loggedAdmin(){
     return httpService
         .get(apiEndPoint+"/adm",{

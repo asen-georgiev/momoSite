@@ -9,7 +9,7 @@ function bioUrl(id) {
     return `${apiEndPoint}/${id}`;
 }
 
-//Create single Bio object
+//Creating single Biography object - admin rights only.
 export function createBio(bio) {
     return httpService
         .post(apiEndPoint, bio, {
@@ -19,19 +19,19 @@ export function createBio(bio) {
         });
 }
 
-//Get all Bio object from DB
+//Retieving all the Biogaphy objects from DB - no token needed.
 export function getBios() {
     return httpService
         .get(apiEndPoint);
 }
 
-//Get single Bio object by ID
+//Retrieving single Biography object from DB - no token needed.
 export function getBio(bioId) {
     return httpService
         .get(bioUrl(bioId));
 }
 
-//Updating single Bio object
+//Updating single Biography object - admin rights only.
 export function updateBio(bio, bioId) {
     const body = {...bio};
     return httpService
@@ -42,7 +42,7 @@ export function updateBio(bio, bioId) {
         });
 }
 
-//Deleting single Bio object
+//Deleting single Biography object - admin rights only.
 export function deleteBio(bioId) {
     return httpService
         .delete(bioUrl(bioId), {

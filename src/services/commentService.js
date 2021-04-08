@@ -24,7 +24,7 @@ function byUserUrl(id) {
 }
 
 
-//Create single Comment
+//Creating single Comment object - user rights only.
 export function createComment(comment) {
     return httpService
         .post(apiEndPoint, comment, {
@@ -34,7 +34,7 @@ export function createComment(comment) {
         });
 }
 
-//Get all Comments (For Admin only!)
+//Retrieving all Comment objects from DB - admin rights only.
 export function getComments() {
     return httpService
         .get(apiEndPoint, {
@@ -44,19 +44,19 @@ export function getComments() {
         });
 }
 
-//Get single Comment
+//Retrieving single Comment object
 export function getComment(commentId) {
     return httpService
         .get(commentUrl(commentId));
 }
 
-//Get all Comments for a Blog by ID
+//Retrieving all the Comment objects by Blog ID - no token needed.
 export function getCommentsByBlog(blogId) {
     return httpService
         .get(byBlogUrl(blogId));
 }
 
-//Get all Comments for a User by ID (For auth user only!)
+//Retrieving all the Comment objects by User ID - user rights only.
 export function getCommentsByUser(userId) {
     return httpService
         .get(byUserUrl(userId), {
@@ -66,7 +66,7 @@ export function getCommentsByUser(userId) {
         })
 }
 
-//Deleting single Comment
+//Deleting single Comment object - admin rights only.
 export function deleteComment(commentId){
     return httpService
         .delete(commentUrl(commentId),{

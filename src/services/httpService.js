@@ -1,8 +1,10 @@
 import axios from "axios";
 import {toast} from "react-toastify";
 
+//Setting .env variable for the development and production process.
 axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 
+//General intercepting the responses from the API and returning success or error.
 axios.interceptors.response.use(success => {
     console.log(success);
     return (success);

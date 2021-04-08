@@ -14,7 +14,7 @@ function userUrl(userId){
     return `${apiEndPoint}/${userId}`;
 }
 
-
+//Register single User object in DB - no token needed.
 export function registerUser(user){
     return httpService
         .post(apiEndPoint,user)
@@ -30,7 +30,7 @@ export function registerUser(user){
         });
 }
 
-
+//Register single User object in DB - admin rights only.
 export function registerUserAdmin(user){
     return httpService
         .post(apiEndPoint,user,{
@@ -40,7 +40,7 @@ export function registerUserAdmin(user){
         });
 }
 
-
+//Retrieving single User object from DB - admin rights only.
 export function getUserAdmin(userId){
     return httpService
         .get(userUrl(userId),{
@@ -51,6 +51,7 @@ export function getUserAdmin(userId){
 }
 
 
+//Retrieving single User object from DB - user rights only.
 export function getUserUser(userId){
     return httpService
         .get(userUrl(userId),{
@@ -60,6 +61,8 @@ export function getUserUser(userId){
         });
 }
 
+
+//Retrieving all the User objects from DB - admin rights only.
 export function getAllUsers(){
     return httpService
         .get(apiEndPoint,{
@@ -70,6 +73,7 @@ export function getAllUsers(){
 }
 
 
+//Updating single User object - user rights only.
 export function updateUser(user, userId){
     const body = {...user};
     return httpService
@@ -81,6 +85,7 @@ export function updateUser(user, userId){
 }
 
 
+//Updating user password with automatically generated password in case of forgetting.
 export function updateUserPassword(userEmail){
     const body = {...userEmail}
     return httpService
@@ -88,8 +93,7 @@ export function updateUserPassword(userEmail){
 }
 
 
-
-
+//Updating single User object - admin rights only.
 export function updateUserAdmin(user, userId){
     const body = {...user};
     return httpService
@@ -101,6 +105,7 @@ export function updateUserAdmin(user, userId){
 }
 
 
+//Deleting single User object - user rights only.
 export function deleteUser(userId){
     return httpService
         .delete(userUrl(userId),{
@@ -111,6 +116,7 @@ export function deleteUser(userId){
 }
 
 
+//Deleting single User object admin rights only.
 export function deleteUserAdmin(userId){
     return httpService
         .delete(userUrl(userId),{
