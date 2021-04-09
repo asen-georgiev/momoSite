@@ -4,11 +4,12 @@ import Image from "react-bootstrap/Image";
 import {picUrl} from "../config.json";
 import Col from "react-bootstrap/Col";
 import "../css/blog/blogDetails.css";
+import Button from "react-bootstrap/Button";
 
 const pictureUrl = process.env.REACT_APP_PICTURES_URL;
 
 function BlogComments(props) {
-    const {comments} = props;
+    const {comments, user, deleteComment} = props;
 
     return (
         <React.Fragment>
@@ -28,6 +29,13 @@ function BlogComments(props) {
                                 <Card.Text>
                                     {comment['commentText']}
                                 </Card.Text>
+                                {comment.user._id === user._id &&
+                                <Button
+                                    className="blogdetails-delete-button"
+                                    onClick={() => deleteComment(comment)}>
+                                    DELETE COMMENT
+                                </Button>
+                                }
                             </Col>
                         </Card.Body>
                     )

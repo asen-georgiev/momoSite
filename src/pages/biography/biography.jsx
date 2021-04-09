@@ -38,7 +38,7 @@ class Biography extends Component {
                     </Col>
                 </Row>
                 {this.state.bios.map((bio, index) => {
-                    if (index % 2 == 0) {
+                    if (index % 2 === 0) {
                         return (
                             <Row key={bio._id} className="d-flex flex-row">
                                 <Col className="biography-reverse-col p-5" md="auto">
@@ -59,7 +59,7 @@ class Biography extends Component {
                                 </Col>
                             </Row>
                         )
-                    } else if (index % 2 == 1) {
+                    } else if (index % 2 === 1) {
                         return (
                             <Row key={bio._id} className="d-flex flex-row-reverse">
                                 <Col className="biography-col p-5" md="auto">

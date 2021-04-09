@@ -8,10 +8,10 @@ import FormGroup from "react-bootstrap/FormGroup";
 import FormControl from "react-bootstrap/FormControl";
 import {Link} from "react-router-dom";
 import Card from "react-bootstrap/Card";
-import {toast} from "react-toastify";
+import {toast, Zoom} from "react-toastify";
 import {getBlog} from "../../services/blogService";
 import {picUrl} from "../../config.json";
-import {createComment, getCommentsByBlog} from "../../services/commentService";
+import {createComment, getCommentsByBlog,deleteCommentUser} from "../../services/commentService";
 import BlogCard from "../../components/blogCard";
 import Image from 'react-bootstrap/Image'
 import BlogComments from "../../components/blogComments";
@@ -43,7 +43,8 @@ class BlogDetails extends Component {
         commentText: Joi.string()
             .min(10)
             .max(1000)
-            .required(),
+            .required()
+            .label("Comment text"),
         userId: Joi.string()
             .required(),
         blogId: Joi.string()
@@ -82,7 +83,11 @@ class BlogDetails extends Component {
                 blogId: this.props.match.params.id
             };
             await createComment(comment);
-            toast.success('Your comment was successfully posted');
+            toast('Your comment was successfully posted',{
+                position: "top-center",
+                transition: Zoom,
+                className: 'blogdetails-toaster'
+            });
 
             const blogId = this.props.match.params.id;
             const {data: comments} = await getCommentsByBlog(blogId);
@@ -131,6 +136,26 @@ class BlogDetails extends Component {
         return errors;
     }
 
+
+
+    handleDeleteComment = async (comment) => {
+        const allComments = this.state.comments;
+        const comments = allComments.filter(c => c._id !== comment._id);
+        this.setState({comments});
+
+        try{
+            await deleteCommentUser(comment._id);
+            toast(`Your comment was successfully deleted!`, {
+                position: "top-center",
+                transition: Zoom,
+                className: 'blogdetails-toaster'
+            });
+        } catch (e) {
+            if(e.response && e.response.status === 404) console.log("Comment with the given ID was not found!");
+            toast.error("This comment has already been deleted");
+            this.setState({comments: allComments});
+        }
+    }
 
     // registerRedirect = () => {
     //     this.props.history.push("/userlogin");
@@ -206,7 +231,9 @@ class BlogDetails extends Component {
                     <Row>
                         <Col className="blogdetails-comments-col">
                             <BlogComments
+                                user={this.state.user}
                                 comments={this.state.comments}
+                                deleteComment={this.handleDeleteComment}
                             />
                         </Col>
                     </Row>}

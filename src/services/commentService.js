@@ -75,3 +75,13 @@ export function deleteComment(commentId){
             }
         })
 }
+
+//Deleting single Comment object - user rights only
+export function deleteCommentUser(commentId){
+    return httpService
+        .delete(commentUrl(commentId),{
+            headers: {
+                'x-auth-token': getCurrentUser()
+            }
+        })
+}

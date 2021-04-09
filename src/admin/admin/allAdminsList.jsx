@@ -6,7 +6,7 @@ import Table from "react-bootstrap/Table";
 import {Link} from "react-router-dom";
 import {toast, Zoom} from "react-toastify";
 import "../../css/admin/adminAllList.css";
-import {deleteAdmin, getAllAdmins, loggedAdmin} from "../../services/adminService";
+import {deleteAdmin, getAllAdmins} from "../../services/adminService";
 
 class AllAdminsList extends Component {
     constructor(props) {

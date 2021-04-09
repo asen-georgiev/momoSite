@@ -120,3 +120,30 @@
     color:darkslateblue!important;
     font-size: x-large !important;
 }
+
+.blogdetails-toaster{
+    font-size: x-large;
+    color: wheat;
+    background-color: indigo;
+    text-align: center;
+}
+
+.blogdetails-delete-button{
+    border: none !important;
+    background-color: indigo;
+    color:wheat;
+}
+
+.blogdetails-delete-button:hover{
+    border: none !important;
+    background-color: wheat;
+    color:indigo;
+}
+
+.blogdetails-delete-button:focus{
+    box-shadow: none !important;
+    border: none !important;
+    background-color: wheat !important;
+    color:indigo !important;
+}
+
