@@ -123,3 +123,10 @@
     border: none !important;
     background-color: wheat;
 }
+
+.user-profile-toaster{
+    font-size: x-large;
+    color: wheat;
+    background-color: indigo;
+    text-align: center;
+}

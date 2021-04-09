@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import {toast} from "react-toastify";
+import {toast, Zoom} from "react-toastify";
 import {getCurrentUser, userLogout} from "../../services/userLoginService";
 import jwtDecode from "jwt-decode";
 import {picUrl} from "../../config.json";
@@ -11,7 +11,7 @@ import '../../css/user/userProfile.css'
 import {deleteUser} from "../../services/userService";
 import UserDeleteAlert from "../../components/userDeleteAlert";
 import {Link} from "react-router-dom";
-import {getCommentsByUser} from "../../services/commentService";
+import {deleteCommentUser, getCommentsByUser} from "../../services/commentService";
 import BlogComments from "../../components/blogComments";
 
 const pictureUrl = process.env.REACT_APP_PICTURES_URL;
@@ -57,6 +57,25 @@ class UserProfile extends Component {
     }
 
 
+    handleDeleteComment = async (comment) => {
+        const allComments = this.state.comments;
+        const comments = allComments.filter(c => c._id !== comment._id);
+        this.setState({comments});
+
+        try{
+            await deleteCommentUser(comment._id);
+            toast(`Your comment was successfully deleted!`, {
+                position: "top-center",
+                transition: Zoom,
+                className: 'user-profile-toaster'
+            });
+        } catch (e) {
+            if(e.response && e.response.status === 404) console.log("Comment with the given ID was not found!");
+            toast.error("This comment has already been deleted");
+            this.setState({comments: allComments});
+        }
+    }
+
     render() {
         return (
             <div>
@@ -89,7 +108,9 @@ class UserProfile extends Component {
                                     className="overflow-auto"
                                     style={{height: 630}}>
                                     <BlogComments
-                                        comments={this.state.comments}/>
+                                        comments={this.state.comments}
+                                        user={this.state.loggedUser}
+                                        deleteComment={this.handleDeleteComment}/>
                                 </Col>
                             </Row>
                         </Col>
