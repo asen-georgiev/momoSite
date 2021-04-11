@@ -69,7 +69,7 @@ class Blog extends Component {
                                 <Col className='d-flex flex-column px-4 pt-5'>
                                     <ul className="blogpage-ul">
                                         <li>name : MARIA TASHKOVA</li>
-                                        <li>born : 19.09.1979</li>
+                                        <li>born : 00.00.0000</li>
                                         <li>nationality : BULGARIAN</li>
                                         <li>education : ECONOMICS AND MANAGEMENT</li>
                                         <li>current : GRAPHIC DESIGNER / PHOTOGRAPHER</li>
