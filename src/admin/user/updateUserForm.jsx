@@ -82,7 +82,6 @@ class UpdateUserForm extends Component {
             .max(50)
             .trim(true)
             .label("Personal telephone")
-            .pattern(new RegExp('^\\+[0-9]?()[0-9](\\s|\\S)(\\d[0-9]{9})$'))
     })
 
 
