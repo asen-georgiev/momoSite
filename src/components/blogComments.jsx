@@ -36,6 +36,7 @@ function BlogComments(props) {
                                         DELETE COMMENT
                                     </Button> :
                                     <React.Fragment>
+                                        Edno
                                     </React.Fragment>
                                 }
                             </Col>
