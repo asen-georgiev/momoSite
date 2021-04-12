@@ -33,7 +33,7 @@ class BlogDetails extends Component {
                 userId: '',
                 blogId: ''
             },
-            user: null,
+            user: {},
             errors: {},
             isDisabled: true
         }
@@ -184,7 +184,7 @@ class BlogDetails extends Component {
                                 I WANT TO RETURN TO BLOG PAGE
                             </Link>
                         </Col>
-                        {!this.state.user &&
+                        {!this.state.user._id &&
                         <Col
                             className="blogdetails-links-col2 d-flex flex-column text-center justify-content-center"
                             style={{height: 150}}>
@@ -195,7 +195,7 @@ class BlogDetails extends Component {
                             </Link>
                         </Col>}
                     </Row>
-                    {this.state.user &&
+                    {this.state.user._id &&
                     <Row>
                         <Col className="blogdetails-comment-col">
                             <Card className="m-4 blogdetails-comment-card">
