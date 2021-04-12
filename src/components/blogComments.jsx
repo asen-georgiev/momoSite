@@ -29,12 +29,15 @@ function BlogComments(props) {
                                 <Card.Text>
                                     {comment['commentText']}
                                 </Card.Text>
-                                {/*{comment.user._id === user._id &&*/}
-                                <Button
-                                    className="blogdetails-delete-button"
-                                    onClick={() => deleteComment(comment)}>
-                                    DELETE COMMENT
-                                </Button>
+                                {comment.user._id === user._id ?
+                                    <Button
+                                        className="blogdetails-delete-button"
+                                        onClick={() => deleteComment(comment)}>
+                                        DELETE COMMENT
+                                    </Button> :
+                                    <React.Fragment>
+                                    </React.Fragment>
+                                }
                             </Col>
                         </Card.Body>
                     )
