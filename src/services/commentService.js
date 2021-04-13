@@ -85,3 +85,14 @@ export function deleteCommentUser(commentId){
             }
         })
 }
+
+//Updating single Comment object - users rights only
+export function updateCommentUser(comment, commentId){
+    const body = {...comment};
+    return httpService
+        .put(commentUrl(commentId),body,{
+            headers: {
+                'x-auth-token': getCurrentUser()
+            }
+        })
+}

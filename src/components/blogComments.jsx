@@ -9,7 +9,7 @@ import Button from "react-bootstrap/Button";
 const pictureUrl = process.env.REACT_APP_PICTURES_URL;
 
 function BlogComments(props) {
-    const {comments, user, deleteComment} = props;
+    const {comments, user, deleteComment,updateComment} = props;
 
     return (
         <React.Fragment>
@@ -34,6 +34,15 @@ function BlogComments(props) {
                                         className="blogdetails-delete-button"
                                         onClick={() => deleteComment(comment)}>
                                         DELETE COMMENT
+                                    </Button> :
+                                    <React.Fragment>
+                                    </React.Fragment>
+                                }
+                                {comment.user._id === user._id ?
+                                    <Button
+                                        className="blogdetails-update-button"
+                                        onClick={() => updateComment(comment)}>
+                                        UPDATE COMMENT
                                     </Button> :
                                     <React.Fragment>
                                     </React.Fragment>

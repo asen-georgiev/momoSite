@@ -130,17 +130,37 @@
 
 .blogdetails-delete-button{
     border: none !important;
-    background-color: indigo;
+    background-color: deeppink;
     color:wheat;
+    margin-right: 2rem;
 }
 
 .blogdetails-delete-button:hover{
     border: none !important;
     background-color: wheat;
-    color:indigo;
+    color:deeppink;
 }
 
 .blogdetails-delete-button:focus{
+    box-shadow: none !important;
+    border: none !important;
+    background-color: wheat !important;
+    color:deeppink !important;
+}
+
+.blogdetails-update-button{
+    border: none !important;
+    background-color: indigo;
+    color:wheat;
+}
+
+.blogdetails-update-button:hover{
+    border: none !important;
+    background-color: wheat;
+    color:indigo;
+}
+
+.blogdetails-update-button:focus{
     box-shadow: none !important;
     border: none !important;
     background-color: wheat !important;
