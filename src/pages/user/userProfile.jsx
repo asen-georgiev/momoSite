@@ -24,7 +24,8 @@ class UserProfile extends Component {
             comments: [],
             url: '',
             showAlert: false,
-            isLogged: false
+            isLogged: false,
+            updateButton:false
         }
     }
 
@@ -108,6 +109,7 @@ class UserProfile extends Component {
                                     className="overflow-auto"
                                     style={{height: 630}}>
                                     <BlogComments
+                                        updateButton={this.state.updateButton}
                                         comments={this.state.comments}
                                         user={this.state.loggedUser}
                                         deleteComment={this.handleDeleteComment}/>

@@ -53,6 +53,7 @@ class BlogDetails extends Component {
             errors: {},
             isDisabled: true,
             isUpdated: false,
+            updateButton: true
         }
     }
 
@@ -440,6 +441,7 @@ class BlogDetails extends Component {
                     <Row>
                         <Col className="blogdetails-comments-col">
                             <BlogComments
+                                updateButton={this.state.updateButton}
                                 user={this.state.user}
                                 comments={this.state.comments}
                                 deleteComment={this.handleDeleteComment}

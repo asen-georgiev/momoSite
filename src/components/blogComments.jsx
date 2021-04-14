@@ -9,7 +9,7 @@ import Button from "react-bootstrap/Button";
 const pictureUrl = process.env.REACT_APP_PICTURES_URL;
 
 function BlogComments(props) {
-    const {comments, user, deleteComment,updateComment} = props;
+    const {comments, user, deleteComment, updateComment,updateButton} = props;
 
     return (
         <React.Fragment>
@@ -39,11 +39,15 @@ function BlogComments(props) {
                                     </React.Fragment>
                                 }
                                 {comment.user._id === user._id ?
-                                    <Button
-                                        className="blogdetails-update-button"
-                                        onClick={() => updateComment(comment)}>
-                                        UPDATE COMMENT
-                                    </Button> :
+                                    <React.Fragment>
+                                        {updateButton &&
+                                        <Button
+                                            className="blogdetails-update-button"
+                                            onClick={() => updateComment(comment)}>
+                                            UPDATE COMMENT
+                                        </Button>
+                                        }
+                                    </React.Fragment> :
                                     <React.Fragment>
                                     </React.Fragment>
                                 }
