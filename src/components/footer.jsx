@@ -71,7 +71,7 @@ class Footer extends Component {
                             This website is developed by : <a
                             href="https://www.facebook.com/flurvian.sea.3/"
                             className="app-footer-span-site-link">
-                            FlurvianSea
+                            DevhostBG
                         </a>
                         </span>
                     </Navbar>
