@@ -57,7 +57,7 @@ class AdminLoginForm extends Component {
 
     handleSubmit = async (event) => {
         event.preventDefault();
-        const errors = this.validate();
+        const errors = this.validateAdmin();
         this.setState({errors: errors || {}});
         if (errors) return;
 
@@ -74,7 +74,7 @@ class AdminLoginForm extends Component {
         this.setState({isDisabled: true});
     }
 
-    validate = () => {
+    validateAdmin = () => {
         const admin = {adminEmail: this.state.adminEmail, adminPassword: this.state.adminPassword};
         const options = {abortEarly: false};
         const result = this.schema.validate(admin, options);

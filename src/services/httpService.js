@@ -21,7 +21,7 @@ axios.interceptors.response.use(success => {
     }
     if (!expectedError) {
         console.log(error);
-        toast.error('An Unexpected error occured!');
+        toast.error('An Unexpected error occurred!');
     }
     return Promise.reject(error);
 });
