@@ -60,7 +60,7 @@ class UpdateAdminForm extends Component {
         this.setState({
             admin,
             isDisabled: false
-        })
+        });
     }
 
 

@@ -17,7 +17,7 @@ export function getAdmin(adminId) {
             headers: {
                 'x-auth-token': getCurrentAdmin()
             }
-        })
+        });
 }
 
 

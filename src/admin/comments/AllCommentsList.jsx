@@ -87,7 +87,7 @@ class AllCommentsList extends Component {
 
         const paginatedComments = paginateFunction(filteredByEmail, this.state.commentsPerPage, this.state.currentPage);
 
-        console.log(this.state.selectedEmail);
+        console.log(this.state);
 
         return (
             <div>
